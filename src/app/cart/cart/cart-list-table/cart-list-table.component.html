@@ -1,0 +1,10 @@
+
+<div class="table-wrapper">
+    <div *ngFor="let item of cartItems">
+        <div class="item m-3" >
+            <app-cart-item [item]="item"></app-cart-item>
+        </div>
+        
+        <mat-divider></mat-divider>
+    </div>
+</div>

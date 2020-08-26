@@ -1,0 +1,92 @@
+
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+$md-accent: (
+    50 : #e8eaf6,
+    100 : #c5cbe9,
+    200 : #9fa8da,
+    300 : #7985cb,
+    400 : #5c6bc0,
+    500 : #3f51b5,
+    600 : #394aae,
+    700 : #3140a5,
+    800 : #29379d,
+    900 : #1b278d,
+    A100 : #c6cbff,
+    A200 : #939dff,
+    A400 : #606eff,
+    A700 : #4757ff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+
+$md-primary: (
+    50 : #e5f4f3,
+    100 : #bee4e1,
+    200 : #93d3cd,
+    300 : #67c1b8,
+    400 : #47b3a9,
+    500 : #26a69a,
+    600 : #229e92,
+    700 : #1c9588,
+    800 : #178b7e,
+    900 : #0d7b6c,
+    A100 : #adfff3,
+    A200 : #7affec,
+    A400 : #47ffe4,
+    A700 : #2dffe0,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$candy-app-primary: mat-palette($md-primary);
+$candy-app-accent:  mat-palette($md-accent, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$candy-app-warn:    mat-palette($mat-red);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as `color` or `typography`.
+$candy-app-theme: mat-light-theme($candy-app-primary,$candy-app-accent,$candy-app-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($candy-app-theme);
+

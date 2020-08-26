@@ -1,0 +1,35 @@
+
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+      <mat-icon>menu</mat-icon>
+    </button>
+    <img src="assets/logo.png" [routerLink]="['']">
+    <span class="menu-spacer"></span>
+    <div fxShow="true" fxHide.lt-md>
+
+      <span class="spacer"></span>
+      <button mat-button style="padding: 1rem" [routerLink]="['/cart']">Koszyk
+        <mat-icon matBadge="{{cartService.cartItemsCount()}}" matBadgeColor="warn">shopping_cart</mat-icon>
+          <span class="cdk-visually-hidden">
+            Koszyk
+          </span></button>
+          <app-login-logout-button></app-login-logout-button>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav>
+    <mat-nav-list>
+      
+    <app-login-logout-button></app-login-logout-button>
+      <a mat-list-item  [routerLink]="['/cart']">Koszyk
+        <mat-icon matBadge="{{cartService.cartItemsCount()}}" matBadgeColor="warn">shopping_cart</mat-icon>
+          <span class="cdk-visually-hidden">
+            Koszyk
+          </span></a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content><ng-content></ng-content></mat-sidenav-content>
+</mat-sidenav-container>

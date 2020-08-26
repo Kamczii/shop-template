@@ -1,0 +1,18 @@
+<a routerLink="{{product.id}}">
+  <div class="example-ripple-container mat-elevation-z4"
+  matRipple
+  [matRippleCentered]="centered"
+  [matRippleDisabled]="disabled"
+  [matRippleUnbounded]="unbounded"
+  [matRippleRadius]="radius"
+  [matRippleColor]="color">
+    <mat-card class="example-card" >
+        <img mat-card-image src="https://static.supersklep.pl/943699-bluza-z-kapturem-thrasher-skate-mag-hd-black-w1920w.jpg" alt="Photo of a Shiba Inu">
+        <mat-card-content>
+          
+          <mat-card-title>{{product.name}}</mat-card-title>
+          <mat-card-subtitle><app-price [price]="product.price"></app-price></mat-card-subtitle>
+        </mat-card-content>
+      </mat-card>
+    </div>
+</a>

@@ -1,0 +1,23 @@
+
+<div class="main-div" >
+    <mat-card class="example-card" >
+      <mat-card-header>
+        <mat-card-title>Zaloguj / Zarejestruj</mat-card-title>
+        <app-google-auth-button></app-google-auth-button>
+      </mat-card-header>
+      <mat-card-content>
+          <mat-tab-group mat-align-tabs="center">
+            
+            <mat-tab label="Zaloguj">
+              <div class="pt-2"><app-login-form></app-login-form></div>
+            </mat-tab>
+            <mat-tab label="Zarejestruj">
+              <app-register-form></app-register-form>
+            </mat-tab>
+            </mat-tab-group>
+      </mat-card-content>
+      <mat-card-actions>
+  
+      </mat-card-actions>
+    </mat-card>
+</div>

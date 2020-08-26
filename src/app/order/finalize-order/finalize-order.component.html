@@ -1,0 +1,47 @@
+<mat-horizontal-stepper linear #stepper>
+  <div class="steps-container">
+    <mat-step [stepControl]="addressForm" [editable]="true" >
+        <form [formGroup]="addressForm">
+          <ng-template matStepLabel>Adres</ng-template>
+          <app-address-form formControlName="address"></app-address-form>
+          
+          <button mat-flat-button color="primary" matStepperNext>Dalej</button>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="paymentForm" [editable]="true">
+        <ng-template matStepLabel>Płatność</ng-template>
+        <form [formGroup]="paymentForm">
+          <ng-template matStepLabel>Adres</ng-template>
+          <app-payment formControlName="paymentMethod"></app-payment>
+          
+          <button mat-flat-button color="primary" matStepperNext>Dalej</button>
+        </form>
+      </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Zrobione</ng-template>
+      <table>
+        <tr>
+          <th>Nazwa</th>
+          <th>Ilość</th>
+          <th>Rozmiar</th>
+          <th>Cena</th>
+        </tr>
+        <tr *ngFor="let item of cart">
+          <td>{{item.product.name}}</td>
+          <td>{{item.count}}</td>
+          <td>{{item.size}}</td>
+          <td><app-price [price]="item.product.price"></app-price></td>
+        </tr>
+      </table>
+      <div class="row">
+        <div class="col-md-6 col-sm-12">
+          <app-address *ngIf="addressForm.value" [address]="addressForm.controls.address.value"></app-address>
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <p *ngIf="paymentForm.value.paymentMethod"><b>Forma płatności: </b>{{paymentForm.value.paymentMethod.paymentMethod}}</p>
+        </div>
+      </div>
+      <app-confirm-button message="Złóż zamówienie" disabled="false" (confirmed)="order()"></app-confirm-button>
+    </mat-step>
+  </div>
+</mat-horizontal-stepper>

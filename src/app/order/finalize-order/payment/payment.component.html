@@ -1,0 +1,9 @@
+<div [formGroup]="paymentForm">
+  <label id="example-radio-group-label">Wybierz sposób w jaki chcesz zapłacić</label>
+  <mat-radio-group formControlName="paymentMethod" aria-labelledby="example-radio-group-label"
+    class="example-radio-group" color="primary">
+    <mat-radio-button class="example-radio-button" *ngFor="let method of paymentMethods" [value]="method">
+      {{method}}
+    </mat-radio-button>
+  </mat-radio-group>
+</div>
