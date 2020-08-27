@@ -28,26 +28,25 @@ export class FinalizeOrderComponent implements OnInit {
     this.paymentForm = this.fb.group({
       paymentMethod: []
     })
-    if(this.authService.user$){
+    if (this.authService.user$) {
       this.authService.user$.subscribe((user) => {
-        if(user.address){
+        if (user.address) {
           this.addressForm.controls['address'].setValue(user.address);
         }
         this.purchaserId = user.uid;
       })
     }
-    
     this.cart = this.cartService.read();
   }
 
-  order(){
-      let order = <Order>{};
-      order.items = this.cart;
-      order.address = this.addressForm.value;
-      order.paymentMethod = this.paymentForm.value.paymentMethod.paymentMethod;
-      order.purchaserId = this.purchaserId;
-      order.date = new Date();
-      order.status = OrderStatus.O;
-      this.orderService.makeOrder(order).then(data => {console.log(data);this.cartService.clearCart()});
+  order() {
+    let order = <Order>{};
+    order.items = this.cart;
+    order.address = this.addressForm.value.address;
+    order.paymentMethod = this.paymentForm.value.paymentMethod.paymentMethod;
+    order.purchaserId = this.purchaserId;
+    order.date = new Date();
+    order.status = OrderStatus.O;
+    this.orderService.makeOrder(order).then(data => { console.log(data); this.cartService.clearCart() });
   }
 }

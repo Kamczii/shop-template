@@ -9,7 +9,7 @@ export class PriceFormComponent implements OnInit {
 
   minPrice = 0;
   maxPrice = 250;
-  
+
   constructor() { }
 
   ngOnInit() {

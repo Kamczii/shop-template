@@ -1,4 +1,4 @@
-export interface AddressFormValues{
+export interface AddressFormValues {
     name: string;
     lastName: string;
     city: string;

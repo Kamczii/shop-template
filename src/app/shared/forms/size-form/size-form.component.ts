@@ -10,7 +10,7 @@ export class SizeFormComponent implements OnInit {
 
   toppings = new FormControl();
   sizeList: string[] = ['XL', 'L', 'M', 'S', 'XS'];
-  
+
   constructor() { }
 
   ngOnInit() {

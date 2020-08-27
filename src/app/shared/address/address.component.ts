@@ -9,7 +9,7 @@ import { AddressFormValues } from '../models/AddressFormValues';
 export class AddressComponent implements OnInit {
 
   @Input() address: AddressFormValues;
-  
+
   constructor() { }
 
   ngOnInit() {

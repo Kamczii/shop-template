@@ -8,9 +8,9 @@ describe('OneSizeFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ OneSizeFormComponent ]
+      declarations: [OneSizeFormComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

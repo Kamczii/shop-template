@@ -1,17 +1,19 @@
 <mat-card class="example-card" *ngIf="product">
-    <mat-card-header>
-      <mat-card-title>{{product.name}}</mat-card-title>
-      <mat-card-subtitle><app-price [price]="product.price"></app-price></mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <p *ngIf="product.description">
-        {{product.description}}
-      </p>
-      <form [formGroup]="productForm">
-        <app-one-size-form formControlName="size"></app-one-size-form>
-      </form>
-    </mat-card-content>
-    <mat-card-actions>
-      <app-shopping-cart-button (add)="addToCart()"></app-shopping-cart-button>
-    </mat-card-actions>
-  </mat-card>
+  <mat-card-header>
+    <mat-card-title>{{product.name}}</mat-card-title>
+    <mat-card-subtitle>
+      <app-price [price]="product.price"></app-price>
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p *ngIf="product.description">
+      {{product.description}}
+    </p>
+    <form [formGroup]="productForm">
+      <app-one-size-form formControlName="size"></app-one-size-form>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <app-shopping-cart-button (add)="addToCart()"></app-shopping-cart-button>
+  </mat-card-actions>
+</mat-card>

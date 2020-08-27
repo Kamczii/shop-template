@@ -3,11 +3,11 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatBadgeModule, MatButtonModule } from  '@angular/material';
+import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatBadgeModule, MatButtonModule } from '@angular/material';
 import { NavComponent } from './components/nav/nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {FlexLayoutModule} from "@angular/flex-layout";
+import { FlexLayoutModule } from "@angular/flex-layout";
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 import { OrderModule } from './order/order.module';
@@ -16,11 +16,14 @@ import { ShoppingCartService } from './core/services/shopping-cart.service';
 import { ProfileModule } from './profile/profile.module';
 import { CartModule } from './cart/cart.module';
 import { ProductsModule } from './products/products.module';
+import { FooterComponent } from './components/footer/footer.component';
+import { AdminModule } from './admin/admin.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,15 +36,16 @@ import { ProductsModule } from './products/products.module';
     MatBadgeModule,
     MatListModule,
     MatButtonModule,
-    CoreModule,
+    CoreModule.forRoot(),
     SharedModule,
     OrderModule,
     ProfileModule,
     CartModule,
-    ProductsModule
+    ProductsModule,
+    AdminModule
   ],
   providers: [],
   bootstrap: [AppComponent],
-  
+
 })
 export class AppModule { }

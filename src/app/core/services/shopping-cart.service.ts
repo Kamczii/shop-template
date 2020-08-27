@@ -1,39 +1,37 @@
 import { Injectable, OnDestroy, OnInit } from '@angular/core';
 import { CartItem } from 'src/app/shared/models/CartItem';
 import { Sizes } from 'src/app/shared/enums/sizes.enum';
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class ShoppingCartService {
-  
+
 
   cart: Array<CartItem>;
-  
-  constructor() { 
+
+  constructor() {
     this.cart = JSON.parse(localStorage.getItem('cart'));
-    if(this.cart === null) 
+    if (this.cart === null)
       this.cart = new Array<CartItem>();
   }
 
-  read(): Array<CartItem>{
+  read(): Array<CartItem> {
     return this.cart;
   }
 
 
-  add(item: CartItem){
+  add(item: CartItem) {
     const productExistInCart = this.getItemIfExist(item);
     if (!productExistInCart) {
-      this.cart.push({...item, count:1}); 
-    } else{
+      this.cart.push({ ...item, count: 1 });
+    } else {
       productExistInCart.count++;
     }
     this.updateLocalStorage();
   }
-  
-  remove(item: CartItem){
+
+  remove(item: CartItem) {
     const productExistInCart = this.getItemIfExist(item);
     let index = this.cart.indexOf(productExistInCart);
-    this.cart.splice(index,1);
+    this.cart.splice(index, 1);
     this.updateLocalStorage();
   }
 
@@ -41,25 +39,25 @@ export class ShoppingCartService {
     return this.cart.length;
   }
 
-  updateLocalStorage(){
-    localStorage.setItem('cart',JSON.stringify(this.cart));
+  updateLocalStorage() {
+    localStorage.setItem('cart', JSON.stringify(this.cart));
   }
 
-  getCartPrice(){
+  getCartPrice() {
     let sum = 0;
     this.cart.forEach((item) => {
-      sum+=item.count*item.product.price;
+      sum += item.count * item.product.price;
     })
     return sum;
   }
 
-  changeItemSize(item: CartItem, size: Sizes){
+  changeItemSize(item: CartItem, size: Sizes) {
     let productInCart = this.getItemIfExist(item);
     productInCart.size = size;
     this.updateLocalStorage();
   }
 
-  changeItemCount(item: CartItem, count: number){
+  changeItemCount(item: CartItem, count: number) {
     let productInCart = this.getItemIfExist(item);
     productInCart.count = count;
     this.updateLocalStorage();
@@ -69,7 +67,7 @@ export class ShoppingCartService {
     return this.cart.find(p => (p.product.id === item.product.id && p.size === item.size));
   }
 
-  clearCart(){
+  clearCart() {
     this.cart = [];
     this.updateLocalStorage();
   }

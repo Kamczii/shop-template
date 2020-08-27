@@ -12,7 +12,7 @@ import { AuthService } from 'src/app/core/services/auth.service';
 export class RegisterFormComponent implements OnInit {
 
   registerForm: FormGroup;
-  
+
   constructor(private fb: FormBuilder, private auth: AuthService) { }
 
   ngOnInit() {
@@ -24,7 +24,7 @@ export class RegisterFormComponent implements OnInit {
   submit() {
     const email: string = this.registerForm.controls.email.value.email;
     const password: string = this.registerForm.controls.password.value.password;
-    this.auth.register(email,password);
+    this.auth.register(email, password);
   }
 
 }

@@ -1,0 +1,29 @@
+<mat-card>
+    <app-status-form [value]="orderPanelService.getFilterStatusValue()" (onChange)="setStatusFilterValue($event)">
+    </app-status-form>
+    <div *ngIf="orderPanelService.orders$ | async as orders; else loading">
+        <mat-card-title>{{orderPanelService.getFilterStatusValue()}}</mat-card-title>
+        <mat-card-subtitle>Zostało: {{orders.length}}</mat-card-subtitle>
+        <mat-card-content>
+            <table *ngIf="orders.length>0">
+                <thead>
+                    <tr>
+                        <th>Data</th>
+                        <th>Status</th>
+                        <th>Ilość</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let order of orders" (click)="rowSelected(order);">
+                        <td>{{order.date.toDate() | date: 'dd/MM/yyyy, HH:mm'}}</td>
+                        <td>{{order.status}}</td>
+                        <td>{{order.items.length}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </mat-card-content>
+    </div>
+    <ng-template #loading>
+        <app-loading-spinner></app-loading-spinner>
+    </ng-template>
+</mat-card>

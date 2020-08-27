@@ -8,9 +8,9 @@ describe('GoogleAuthButtonComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GoogleAuthButtonComponent ]
+      declarations: [GoogleAuthButtonComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

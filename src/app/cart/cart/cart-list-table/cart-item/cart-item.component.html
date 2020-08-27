@@ -1,8 +1,6 @@
 <div class="row">
     <div class="col-4 col-md-2 col">
-        <img
-            src="https://static.supersklep.pl/943699-bluza-z-kapturem-thrasher-skate-mag-hd-black-w1920w.jpg"
-            >
+        <img src="https://static.supersklep.pl/943699-bluza-z-kapturem-thrasher-skate-mag-hd-black-w1920w.jpg">
     </div>
     <div class="col-8 col-md-10">
         <div class="row info">
@@ -15,15 +13,16 @@
             <div class="col-12 col-md-2 col">
                 <mat-form-field>
                     <mat-label>Ilość</mat-label>
-                    <input matInput type="number" min="1" value="1" [value]="item.count" (input)="changeCount($event.target.value)">
-                  </mat-form-field>
+                    <input matInput type="number" min="1" value="1" [value]="item.count"
+                        (input)="changeCount($event.target.value)">
+                </mat-form-field>
             </div>
             <div class="col-12 col-md-2 col">
                 <mat-form-field>
                     <mat-label>Rozmiar</mat-label>
                     <mat-select name="size" [(ngModel)]="item.size" (selectionChange)="changeSize($event.value)">
                         <mat-option *ngFor="let size of sizes | enumToArray" [value]="size.name">
-                        {{size.name}}
+                            {{size.name}}
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
@@ -35,9 +34,10 @@
                 </mat-form-field>
             </div>
             <div class="col-12 col-md-1 col">
-                <button mat-mini-fab color="primary" aria-label="Example icon button with a menu icon" (click)="remove()">
+                <button mat-mini-fab color="primary" aria-label="Example icon button with a menu icon"
+                    (click)="remove()">
                     <mat-icon>delete</mat-icon>
-                  </button>
+                </button>
             </div>
         </div>
-</div>
+    </div>

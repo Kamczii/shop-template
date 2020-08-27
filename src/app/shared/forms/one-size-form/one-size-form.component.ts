@@ -21,7 +21,7 @@ import { Subscription } from 'rxjs';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class OneSizeFormComponent implements ControlValueAccessor, OnDestroy{
+export class OneSizeFormComponent implements ControlValueAccessor, OnDestroy {
 
   sizeForm: FormGroup;
   subscriptions: Subscription[] = [];
@@ -40,7 +40,7 @@ export class OneSizeFormComponent implements ControlValueAccessor, OnDestroy{
 
   constructor(private fb: FormBuilder) {
     this.sizeForm = this.fb.group({
-      size: ['',Validators.required]
+      size: ['', Validators.required]
     });
     this.subscriptions.push(
       this.sizeForm.valueChanges.subscribe(value => {
@@ -48,14 +48,14 @@ export class OneSizeFormComponent implements ControlValueAccessor, OnDestroy{
         this.onTouched();
       })
     );
-   }
+  }
 
-   ngOnDestroy() {
+  ngOnDestroy() {
     this.subscriptions.forEach(s => s.unsubscribe());
   }
 
-  onChange: any = () => {};
-  onTouched: any = () => {};
+  onChange: any = () => { };
+  onTouched: any = () => { };
 
   registerOnChange(fn) {
     this.onChange = fn;
@@ -82,5 +82,5 @@ export class OneSizeFormComponent implements ControlValueAccessor, OnDestroy{
   reset() {
     this.sizeForm.reset();
   }
-  
+
 }

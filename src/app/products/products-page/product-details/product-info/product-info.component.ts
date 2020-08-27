@@ -17,16 +17,16 @@ export class ProductInfoComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private cartService: ShoppingCartService) {
     this.productForm = this.fb.group({
-    product: [],
-    size: []
-  }) 
-}
+      product: [],
+      size: []
+    })
+  }
 
   ngOnInit() {
     this.productForm.controls['product'].setValue(this.product);
   }
 
-  addToCart(){
+  addToCart() {
     let cartItem = new CartItem();
     cartItem.product = this.productForm.controls['product'].value;
     cartItem.size = this.productForm.controls['size'].value.size;

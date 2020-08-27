@@ -16,18 +16,18 @@ export class CartItemComponent implements OnInit {
   constructor(private cartService: ShoppingCartService) { }
 
   ngOnInit() {
-    
+
   }
 
-  remove(){
+  remove() {
     this.cartService.remove(this.item);
   }
 
-  changeSize(size){
+  changeSize(size) {
     this.cartService.changeItemSize(this.item, size);
   }
 
-  changeCount(count){
+  changeCount(count) {
     this.cartService.changeItemCount(this.item, count);
   }
 }

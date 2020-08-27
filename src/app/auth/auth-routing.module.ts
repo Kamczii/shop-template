@@ -6,7 +6,7 @@ import { LoginFormComponent } from './auth-container/login-form/login-form.compo
 import { RegisterFormComponent } from './auth-container/register-form/register-form.component';
 import { AuthContainerComponent } from './auth-container/auth-container.component';
 
-const routes: Routes = [{ path: '', component: AuthContainerComponent}];
+const routes: Routes = [{ path: '', component: AuthContainerComponent }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

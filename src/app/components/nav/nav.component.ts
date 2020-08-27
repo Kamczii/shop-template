@@ -12,12 +12,11 @@ import { ShoppingCartService } from 'src/app/core/services/shopping-cart.service
   styleUrls: ['./nav.component.scss']
 })
 export class NavComponent {
- 
+
   cartCount: number = 0;
-  constructor(public cartService: ShoppingCartService)
-   {
-     
-   }
-  
+  constructor(public cartService: ShoppingCartService) {
+
+  }
+
 
 }

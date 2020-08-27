@@ -1,5 +1,9 @@
-<div class="items-container">
-    <div *ngFor="let product of products" class="item" >
+<div *ngIf="(products$ | async) as products; else loading" class="items-container">
+    <div *ngFor="let product of products" class="item">
         <app-product-preview [product]="product"></app-product-preview>
     </div>
 </div>
+
+<ng-template #loading>
+    <app-loading-spinner></app-loading-spinner>
+</ng-template>

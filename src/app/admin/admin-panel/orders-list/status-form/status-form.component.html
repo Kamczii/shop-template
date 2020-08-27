@@ -1,0 +1,8 @@
+<mat-form-field appearance="fill" style="width:100%">
+  <mat-label>Zmień status</mat-label>
+  <mat-select [(value)]="value" (selectionChange)="changed($event)">
+    <mat-option *ngFor="let status of OrderStatus | enumWithValuesToArray" [value]="status.name">
+      {{status.name}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

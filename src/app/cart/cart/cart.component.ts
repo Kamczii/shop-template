@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy,  } from '@angular/core';
+import { Component, OnInit, OnDestroy, } from '@angular/core';
 import { ProductService } from 'src/app/core/services/product.service';
 import { Product } from 'src/app/shared/models/product';
 import { Observable } from 'rxjs/internal/Observable';
@@ -15,7 +15,7 @@ export class CartComponent implements OnInit {
   items: CartItem[] = new Array<CartItem>();
   price: number;
   constructor(public cartService: ShoppingCartService) {
-    
+
   }
 
 

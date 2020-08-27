@@ -12,26 +12,27 @@ import { startWith, map } from 'rxjs/operators';
 })
 export class BrandFormComponent implements OnInit {
 
-  
+
   visible = true;
   selectable = true;
   removable = true;
   separatorKeysCodes: number[] = [ENTER, COMMA];
-  fruitCtrl = new FormControl();
-  filteredFruits: Observable<string[]>;
-  fruits: string[] = [];
+  brandCtrl = new FormControl();
+  filteredBrands$: Observable<string[]>;
+  brands: string[] = [];
   allFruits: string[] = ['Vans', 'Thrasher', 'Baker', 'DGK'];
 
 
-  @ViewChild('fruitInput', {static: false}) fruitInput: ElementRef<HTMLInputElement>;
-  @ViewChild('auto', {static: false}) matAutocomplete: MatAutocomplete;
-  
-  constructor() {  this.filteredFruits = this.fruitCtrl.valueChanges.pipe(
-    startWith(null),
-    map((fruit: string | null) => fruit ? this._filter(fruit) : this.allFruits.slice()));
+  @ViewChild('brandInput', { static: false }) brandInput: ElementRef<HTMLInputElement>;
+  @ViewChild('auto', { static: false }) matAutocomplete: MatAutocomplete;
+
+  constructor() {
   }
 
   ngOnInit() {
+    this.filteredBrands$ = this.brandCtrl.valueChanges.pipe(
+      startWith(null),
+      map((fruit: string | null) => fruit ? this._filter(fruit) : this.allFruits.slice()));
   }
 
   add(event: MatChipInputEvent): void {
@@ -40,7 +41,7 @@ export class BrandFormComponent implements OnInit {
 
     // Add our fruit
     if ((value || '').trim()) {
-      this.fruits.push(value.trim());
+      this.brands.push(value.trim());
     }
 
     // Reset the input value
@@ -48,21 +49,21 @@ export class BrandFormComponent implements OnInit {
       input.value = '';
     }
 
-    this.fruitCtrl.setValue(null);
+    this.brandCtrl.setValue(null);
   }
 
   remove(fruit: string): void {
-    const index = this.fruits.indexOf(fruit);
+    const index = this.brands.indexOf(fruit);
 
     if (index >= 0) {
-      this.fruits.splice(index, 1);
+      this.brands.splice(index, 1);
     }
   }
 
   selected(event: MatAutocompleteSelectedEvent): void {
-    this.fruits.push(event.option.viewValue);
-    this.fruitInput.nativeElement.value = '';
-    this.fruitCtrl.setValue(null);
+    this.brands.push(event.option.viewValue);
+    this.brandInput.nativeElement.value = '';
+    this.brandCtrl.setValue(null);
   }
 
   private _filter(value: string): string[] {

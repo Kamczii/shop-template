@@ -10,7 +10,6 @@ import { GoogleAuthButtonComponent } from './google-auth-button/google-auth-butt
 import { MatCardModule, MatTabsModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatButtonModule, MatIconModule, MatIconRegistry, MatMenuModule, MatDividerModule, MatListModule, MatSnackBarModule } from '@angular/material';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { CoreModule } from '../core/core.module';
 import { SharedModule } from '../shared/shared.module';
 
 
@@ -37,10 +36,9 @@ import { SharedModule } from '../shared/shared.module';
     MatMenuModule,
     MatDividerModule,
     MatListModule,
-    CoreModule,
     SharedModule,
     MatSnackBarModule
   ],
-  providers:  [MatIconRegistry]
+  providers: [MatIconRegistry]
 })
 export class AuthModule { }

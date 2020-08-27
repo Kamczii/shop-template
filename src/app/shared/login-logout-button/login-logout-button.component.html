@@ -3,17 +3,17 @@
 </div>
 <ng-template #authenticated>
     <button *ngIf="auth.user$ | async as user" mat-button style="padding: 1rem;" [matMenuTriggerFor]="menu">
-        <span  *ngIf="user.displayName; else showEmail">{{ user.displayName }}</span>
+        <span *ngIf="user.displayName; else showEmail">{{ user.displayName }}</span>
         <ng-template #showEmail>{{user.email}}</ng-template>
         <img *ngIf="user.photoURL" [src]="user.photoURL">
     </button>
     <mat-menu #menu="matMenu">
         <button mat-menu-item [routerLink]="['/profile']">Profil</button>
-        <button mat-menu-item (click)="auth.signOut()" >Wyloguj się</button>
-      </mat-menu>
+        <button mat-menu-item (click)="auth.signOut()">Wyloguj się</button>
+    </mat-menu>
 </ng-template>
 <ng-template #guest>
-    <button  mat-button style="padding: 1rem;" [routerLink]="['/auth']">
+    <button mat-button style="padding: 1rem;" [routerLink]="['/auth']">
         Zaloguj się
     </button>
 </ng-template>

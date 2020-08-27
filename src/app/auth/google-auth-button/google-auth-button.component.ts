@@ -4,9 +4,9 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { AuthService } from 'src/app/core/services/auth.service';
 
 
-const googleLogoURL = 
+const googleLogoURL =
   "https://raw.githubusercontent.com/fireflysemantics/logo/master/Google.svg";
-  
+
 @Component({
   selector: 'app-google-auth-button',
   templateUrl: './google-auth-button.component.html',
@@ -14,16 +14,16 @@ const googleLogoURL =
 })
 export class GoogleAuthButtonComponent implements OnInit {
 
-  
 
-  constructor (
+
+  constructor(
     private matIconRegistry: MatIconRegistry,
     private domSanitizer: DomSanitizer,
     private auth: AuthService) {
-          this.matIconRegistry.addSvgIcon(
+    this.matIconRegistry.addSvgIcon(
       "google-logo",
       this.domSanitizer.bypassSecurityTrustResourceUrl(googleLogoURL));
-    }
+  }
 
   ngOnInit() {
   }

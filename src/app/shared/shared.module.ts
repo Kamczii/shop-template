@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ConfirmButtonComponent } from './confirm-button/confirm-button.component';
 import { LoginLogoutButtonComponent } from './login-logout-button/login-logout-button.component';
-import { MatMenuModule, MatButtonModule, MatChipsModule, MatAutocompleteModule, MatIconModule, MatFormFieldModule, MatSelectModule, MatInputModule, MatCardModule } from '@angular/material';
+import { MatMenuModule, MatButtonModule, MatChipsModule, MatAutocompleteModule, MatIconModule, MatFormFieldModule, MatSelectModule, MatInputModule, MatCardModule, MatProgressBarModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
 import { BrandFormComponent } from './forms/brand-form/brand-form.component';
 import { PriceFormComponent } from './forms/price-form/price-form.component';
@@ -18,6 +18,11 @@ import { EmailInputComponent } from './forms/email-input/email-input.component';
 import { AddressComponent } from './address/address.component';
 import { OrderComponent } from './order/order.component';
 import { SnackbarComponent } from './snackbar/snackbar.component';
+import { EnumWithValuesToArrayPipe } from '../order/pipes/EnumWithValuesToArrayPipe';
+import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner/loading-spinner.component';
+import { DropzoneDirective } from './upload-dropzone/dropzone.directive';
+import { UploaderComponent } from './upload-dropzone/uploader/uploader.component';
+import { UploadTaskComponent } from './upload-dropzone/upload-task/upload-task.component';
 
 
 
@@ -37,8 +42,13 @@ import { SnackbarComponent } from './snackbar/snackbar.component';
     EmailInputComponent,
     AddressComponent,
     OrderComponent,
-    SnackbarComponent
-],
+    SnackbarComponent,
+    EnumWithValuesToArrayPipe,
+    LoadingSpinnerComponent,
+    DropzoneDirective,
+    UploaderComponent,
+    UploadTaskComponent
+  ],
   imports: [
     CommonModule,
     MatMenuModule,
@@ -53,11 +63,12 @@ import { SnackbarComponent } from './snackbar/snackbar.component';
     FormsModule,
     MatInputModule,
     MatCardModule,
+    MatProgressBarModule,
   ],
-  exports: [LoginLogoutButtonComponent, ConfirmButtonComponent,BrandFormComponent,
+  exports: [LoginLogoutButtonComponent, ConfirmButtonComponent, BrandFormComponent,
     PriceFormComponent,
-    SizeFormComponent,OneSizeFormComponent, EnumToArrayPipe,HeaderComponent, PriceComponent, AddressFormComponent,
+    SizeFormComponent, OneSizeFormComponent, EnumToArrayPipe, HeaderComponent, PriceComponent, AddressFormComponent,
     PasswordInputComponent,
-    EmailInputComponent,AddressComponent,OrderComponent, SnackbarComponent]
+    EmailInputComponent, AddressComponent, OrderComponent, SnackbarComponent, EnumWithValuesToArrayPipe, LoadingSpinnerComponent, UploaderComponent]
 })
 export class SharedModule { }

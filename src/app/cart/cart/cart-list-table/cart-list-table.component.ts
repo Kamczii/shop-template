@@ -10,13 +10,13 @@ import { CartItem } from 'src/app/shared/models/CartItem';
   styleUrls: ['./cart-list-table.component.scss']
 })
 export class CartListTableComponent implements OnInit {
- 
+
   @Input() cartItems: CartItem[];
-  
+
   constructor() { }
 
   ngOnInit() {
-    
+
   }
 
 }

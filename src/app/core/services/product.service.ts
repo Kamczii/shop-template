@@ -3,9 +3,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Product } from 'src/app/shared/models/product';
 import { map } from 'rxjs/internal/operators/map';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ProductService {
   constructor(private firestore: AngularFirestore) { }
 
@@ -16,12 +14,12 @@ export class ProductService {
           let data = a.payload.doc.data() as Product;
           data.id = a.payload.doc.id;
           return data;
-      });
+        });
       })
     );
   }
 
-  getProductById(id: string){
+  getProductById(id: string) {
     return this.firestore.collection<Product>('products').doc(id).get().pipe(
       map(val => {
         let data = val.data() as Product;

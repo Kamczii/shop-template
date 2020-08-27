@@ -3,6 +3,9 @@
         <app-product-gallery></app-product-gallery>
     </div>
     <div class="col-12 col-md-6">
-        <app-product-info *ngIf="(product$ | async) as product" [product]="product"></app-product-info>
+        <app-product-info *ngIf="(product$ | async) as product; else loading" [product]="product"></app-product-info>
+        <ng-template #loading>
+            <app-loading-spinner></app-loading-spinner>
+        </ng-template>
     </div>
 </div>

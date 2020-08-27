@@ -21,7 +21,7 @@ import { Subscription } from 'rxjs';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AddressFormComponent implements ControlValueAccessor, OnDestroy, OnChanges  {
+export class AddressFormComponent implements ControlValueAccessor, OnDestroy, OnChanges {
 
   @Input() address: AddressFormValues;
   addressForm: FormGroup;
@@ -56,7 +56,7 @@ export class AddressFormComponent implements ControlValueAccessor, OnDestroy, On
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if(this.address){
+    if (this.address) {
       this.value = this.address;
     }
   }

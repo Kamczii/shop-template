@@ -1,8 +1,8 @@
 <div [formGroup]="sizeForm">
-    <mat-form-field>
-        <mat-label>Rozmiar</mat-label>
-        <mat-select formControlName="size">
-          <mat-option *ngFor="let size of sizeList | enumToArray" [value]="size.name">{{size.name}}</mat-option>
-        </mat-select>
-      </mat-form-field>
+  <mat-form-field>
+    <mat-label>Rozmiar</mat-label>
+    <mat-select formControlName="size">
+      <mat-option *ngFor="let size of sizeList | enumToArray" [value]="size.name">{{size.name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
 </div>

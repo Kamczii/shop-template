@@ -38,7 +38,7 @@ export function matchingInputsValidator(firstKey: string, secondKey: string) {
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PasswordInputComponent implements ControlValueAccessor{
+export class PasswordInputComponent implements ControlValueAccessor {
 
   form: FormGroup;
   subscriptions: Subscription[] = [];
@@ -66,17 +66,17 @@ export class PasswordInputComponent implements ControlValueAccessor{
 
   constructor(private formBuilder: FormBuilder) {
     this.form = this.formBuilder.group({
-      password: ['',[Validators.required,
-        Validators.minLength(this.minLength),
-        Validators.maxLength(this.maxLength),
-        // 1. Password Field is Required
-        Validators.required,
-        // 2. check whether the entered password has a number
-        PatternValidation.patternValidator(/\d/, { hasNumber: true }),
-        // 3. check whether the entered password has upper case letter
-        PatternValidation.patternValidator(/[A-Z]/, { hasCapitalCase: true }),
-        // 4. check whether the entered password has a lower-case letter
-        PatternValidation.patternValidator(/[a-z]/, { hasSmallCase: true }),]],
+      password: ['', [Validators.required,
+      Validators.minLength(this.minLength),
+      Validators.maxLength(this.maxLength),
+      // 1. Password Field is Required
+      Validators.required,
+      // 2. check whether the entered password has a number
+      PatternValidation.patternValidator(/\d/, { hasNumber: true }),
+      // 3. check whether the entered password has upper case letter
+      PatternValidation.patternValidator(/[A-Z]/, { hasCapitalCase: true }),
+      // 4. check whether the entered password has a lower-case letter
+      PatternValidation.patternValidator(/[a-z]/, { hasSmallCase: true }),]],
       confirmPassword: ['', Validators.required]
     }, { validator: matchingInputsValidator('password', 'confirmPassword') });
 
@@ -92,8 +92,8 @@ export class PasswordInputComponent implements ControlValueAccessor{
     this.subscriptions.forEach(s => s.unsubscribe());
   }
 
-  onChange: any = () => {};
-  onTouched: any = () => {};
+  onChange: any = () => { };
+  onTouched: any = () => { };
 
   registerOnChange(fn) {
     this.onChange = fn;

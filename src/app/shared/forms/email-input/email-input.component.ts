@@ -25,8 +25,8 @@ export class EmailInputComponent implements ControlValueAccessor, OnDestroy {
 
   form: FormGroup;
   subscriptions: Subscription[] = [];
-  
-  get control(){
+
+  get control() {
     return this.form.controls['email'];
   }
 
@@ -40,9 +40,9 @@ export class EmailInputComponent implements ControlValueAccessor, OnDestroy {
     this.onTouched();
   }
 
-  constructor(private fb: FormBuilder) { 
+  constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
-      email: ['',[Validators.required, Validators.email]]
+      email: ['', [Validators.required, Validators.email]]
     });
     this.subscriptions.push(
       this.form.valueChanges.subscribe(value => {
@@ -56,8 +56,8 @@ export class EmailInputComponent implements ControlValueAccessor, OnDestroy {
     this.subscriptions.forEach(s => s.unsubscribe());
   }
 
-  onChange: any = () => {};
-  onTouched: any = () => {};
+  onChange: any = () => { };
+  onTouched: any = () => { };
 
   registerOnChange(fn) {
     this.onChange = fn;

@@ -8,8 +8,7 @@ import { PaymentComponent } from './finalize-order/payment/payment.component';
 import { MatStepperModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, MatListModule, MatTableModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
-import { CoreModule } from '../core/core.module';
-import {MatRadioModule} from '@angular/material/radio';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -24,7 +23,6 @@ import {MatRadioModule} from '@angular/material/radio';
     ReactiveFormsModule,
     MatInputModule,
     SharedModule,
-    CoreModule,
     MatButtonModule,
     MatRadioModule,
     FormsModule,

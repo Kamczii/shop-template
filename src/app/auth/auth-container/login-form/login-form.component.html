@@ -1,13 +1,13 @@
 <form [formGroup]="loginForm" (submit)="login()">
-        <app-email-input formControlName="email"></app-email-input>
+  <app-email-input formControlName="email"></app-email-input>
 
-        <mat-form-field class="example-full-width">
-          <mat-label>Hasło</mat-label>
-          <input matInput type="password" formControlName="password">
-          <mat-error *ngIf="passwordControl.touched">
-            Hasło jest <strong>wymagane</strong>
-          </mat-error>
-        </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label>Hasło</mat-label>
+    <input matInput type="password" formControlName="password">
+    <mat-error *ngIf="passwordControl.touched">
+      Hasło jest <strong>wymagane</strong>
+    </mat-error>
+  </mat-form-field>
 
-        <app-confirm-button [disabled]="loginForm.invalid" message="Zaloguj się"></app-confirm-button>
+  <app-confirm-button [disabled]="loginForm.invalid" message="Zaloguj się"></app-confirm-button>
 </form>

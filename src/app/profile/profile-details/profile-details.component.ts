@@ -29,15 +29,15 @@ export class ProfileDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.profile$ = this.auth.user$;
-    
+
     this.orders$ = this.orderService.getUserOrders();
   }
 
-  updateAddress(){
+  updateAddress() {
     this.auth.updateAddress(this.addressForm.value);
   }
 
-  updateEmail(){
+  updateEmail() {
     this.auth.updateEmail(this.emailForm.value);
   }
 }

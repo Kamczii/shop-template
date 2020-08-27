@@ -4,7 +4,7 @@ import { FinalizeOrderComponent } from './finalize-order/finalize-order.componen
 
 
 const routes: Routes = [
-  { path: '', component: FinalizeOrderComponent}
+  { path: '', component: FinalizeOrderComponent }
 ];
 
 @NgModule({

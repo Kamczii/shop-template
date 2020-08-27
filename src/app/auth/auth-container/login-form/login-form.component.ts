@@ -14,35 +14,35 @@ export class LoginFormComponent implements OnInit {
 
   public loginForm: FormGroup;
   matcher = new ErrorStateMatcher();
-  
-  get passwordControl(){
+
+  get passwordControl() {
     return this.loginForm.controls['password']
   }
-  
+
   constructor(private fb: FormBuilder, private auth: AuthService, private _snackBar: MatSnackBar) {
     this.loginForm = this.fb.group({
       email: [''],
-      password: ['',Validators.required]
+      password: ['', Validators.required]
     })
-   }
-
-  ngOnInit() {
-    
   }
 
-  getEmailControl(){
+  ngOnInit() {
+
+  }
+
+  getEmailControl() {
     return this.loginForm.controls['email'];
   }
 
-  getPasswordControl(){
+  getPasswordControl() {
     return this.loginForm.controls['password'];
   }
 
-  login(){
-    console.log(this.getEmailControl().value.email)
+  login() {
     this.auth.login(this.getEmailControl().value.email, this.getPasswordControl().value).catch(err => {
-      if(err.code == "auth/user-not-found") this.openSnackBar("Nie ma takiego użytkownika", "zamknij");
-    });}
+      if (err.code == "auth/user-not-found") this.openSnackBar("Nie ma takiego użytkownika", "zamknij");
+    });
+  }
 
   openSnackBar(message, action) {
     this._snackBar.open(message, action, {

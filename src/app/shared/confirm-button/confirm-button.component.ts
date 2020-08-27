@@ -16,7 +16,7 @@ export class ConfirmButtonComponent implements OnInit {
   ngOnInit() {
   }
 
-  confirm(){
+  confirm() {
     this.confirmed.emit('');
   }
 }

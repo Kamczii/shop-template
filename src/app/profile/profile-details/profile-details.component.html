@@ -1,51 +1,58 @@
-<div *ngIf="auth.user$ | async as user">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 basic">
-                <mat-card>
-                  <img [src]="user.photoURL">
-                  
-                  <h3 align="center" class="mt-2">{{user.displayName}}</h3>
-                </mat-card>
-            </div>
-            <div class="col-md-8">
-                <mat-card>
-                  <mat-tab-group mat-align-tabs="center"  >
-                      <!-- <mat-tab label="Informacje">
-                          <div class="tab-container p-2">
-                            
-                              
-                            <p><b>E-mail:</b> {{user.email}}</p>
-                            
-                          </div>
-                      </mat-tab>
-                      <mat-tab label="Adres">
-                              <div class="tab-container p-2">
-                                <app-address [address]="user.address"></app-address>
-                                <mat-expansion-panel hideToggle fxShow="false" fxShow.gt-xs>
-                                    <mat-expansion-panel-header>
-                                      <mat-panel-title>
-                                        Edytuj
-                                      </mat-panel-title>
-                                      <mat-panel-description>
-                                        Naciśnij by rozwinąć formularz
-                                      </mat-panel-description>
-                                    </mat-expansion-panel-header>
-                                    <app-address-form [address]="user.address"></app-address-form>
-                                    <app-confirm-button (confirmed)="updateAddress()" message="Zmień" [disabled]="addressForm.invalid"></app-confirm-button>
-                                  </mat-expansion-panel>
-                              </div>
-                      </mat-tab> -->
-                      <mat-tab label="Zamówienia">
-                        <div *ngIf="orders$ | async as orders" class="tab-container p-2">
-                          <div *ngFor="let order of orders">
-                            <app-order [order]="order"></app-order>
-                          </div>
-                        </div>
-                </mat-tab>
-                  </mat-tab-group>
-                </mat-card>
-            </div>
-        </div>
+<div *ngIf="auth.user$ | async as user; else loading">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 basic">
+        <mat-card>
+          <img [src]="user.photoURL">
+
+          <h3 align="center" class="mt-2">{{user.displayName}}</h3>
+        </mat-card>
+      </div>
+      <div class="col-md-8">
+        <mat-card>
+          <mat-tab-group mat-align-tabs="center">
+            <mat-tab label="Informacje">
+              <div class="tab-container p-2">
+
+
+                <p><b>E-mail:</b> {{user.email}}</p>
+
+              </div>
+            </mat-tab>
+            <mat-tab label="Adres">
+              <div class="tab-container p-2">
+                <app-address [address]="user.address"></app-address>
+                <mat-expansion-panel hideToggle fxShow="false" fxShow.gt-xs>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      Edytuj
+                    </mat-panel-title>
+                    <mat-panel-description>
+                      Naciśnij by rozwinąć formularz
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                  <app-address-form [address]="user.address"></app-address-form>
+                  <app-confirm-button (confirmed)="updateAddress()" message="Zmień" [disabled]="addressForm.invalid">
+                  </app-confirm-button>
+                </mat-expansion-panel>
+              </div>
+            </mat-tab>
+            <mat-tab label="Zamówienia">
+              <div *ngIf="orders$ | async as orders; else loading" class="tab-container p-2">
+                <div *ngFor="let order of orders">
+                  <app-order [order]="order"></app-order>
+                </div>
+              </div>
+              <ng-template #loading>
+                <app-loading-spinner></app-loading-spinner>
+              </ng-template>
+            </mat-tab>
+          </mat-tab-group>
+        </mat-card>
+      </div>
     </div>
+  </div>
 </div>
+<ng-template #loading>
+  <app-loading-spinner></app-loading-spinner>
+</ng-template>

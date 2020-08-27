@@ -8,9 +8,9 @@ describe('LoginLogoutButtonComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LoginLogoutButtonComponent ]
+      declarations: [LoginLogoutButtonComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

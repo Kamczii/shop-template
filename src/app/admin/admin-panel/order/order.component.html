@@ -1,0 +1,37 @@
+<mat-card *ngIf="order">
+    <mat-card-title>{{order.status}}</mat-card-title>
+    <mat-card-subtitle>
+        <p>{{order.date?.toDate() | date: 'dd/MM/yyyy' }}</p>
+        <p>{{order.paymentMethod}}</p>
+    </mat-card-subtitle>
+    <mat-card-content>
+        <app-address [address]="order.address"></app-address>
+        <table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Ilość</th>
+                    <th>Rozmiar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of order.items" (click)="rowSelected(order);">
+                    <td>{{item.product.id}}</td>
+                    <td>{{item.count}}</td>
+                    <td>{{item.size}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </mat-card-content>
+    <mat-card-actions>
+        <div class="row">
+            <div class="col-md-6">
+                <app-status-form [value]="order.status" (onChange)="order.status = $event"></app-status-form>
+            </div>
+            <div class="col-md-6">
+                <app-confirm-button message="Zmień status" disabled="false" (confirmed)="changeStatus()">
+                </app-confirm-button>
+            </div>
+        </div>
+    </mat-card-actions>
+</mat-card>

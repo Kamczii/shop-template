@@ -8,7 +8,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class ShoppingCartButtonComponent implements OnInit {
 
   @Output() add = new EventEmitter();
-  
+
   constructor() { }
 
   ngOnInit() {

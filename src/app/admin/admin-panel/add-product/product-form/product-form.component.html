@@ -1,0 +1,56 @@
+<mat-vertical-stepper  [formGroup]="productForm">
+    <mat-step>
+      <ng-template matStepLabel>Podstawowe informacje</ng-template>
+      <p>
+        <mat-form-field class="full-width">
+          <mat-label>Nazwa</mat-label>
+          <input matInput formControlName="name" placeholder="np. Bluza brand&brand">
+          <mat-error *ngIf="getControls().name.hasError('required')">
+            Nazwa jest <strong>wymagana</strong>
+          </mat-error>
+        </mat-form-field>
+      </p>
+  
+      <p>
+        <mat-form-field class="full-width">
+          <mat-label>Opis</mat-label>
+          <textarea matInput formControlName="description" placeholder="np. Ciepła i miła"></textarea>
+        </mat-form-field>
+      </p>
+  
+      <p>
+        <mat-form-field class="full-width">
+          <mat-label>Cena</mat-label>
+          <input matInput type="number" formControlName="price" placeholder="np. 119">
+          <mat-error *ngIf="getControls().price.hasError('required')">
+            Cena jest <strong>wymagana</strong>
+          </mat-error>
+        </mat-form-field>
+      </p>
+  
+      <mat-form-field class="chip-list">
+        <mat-chip-list #chipList aria-label="Advantages selection">
+          <mat-chip *ngFor="let advantage of advantages.value" [selectable]="selectable" [removable]="removable"
+            (removed)="remove(advantage)">
+            {{advantage}}
+            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+          </mat-chip>
+          <input placeholder="Zalety..." [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)">
+        </mat-chip-list>
+      </mat-form-field>
+    </mat-step>
+
+
+    <mat-step>
+      <ng-template matStepLabel>Rozmiarówka</ng-template>
+      <mat-list role="list" formArrayName="sizes">
+        <mat-list-item *ngFor="let size of getControls().sizes.controls">
+          <mat-form-field [formGroup]="size">
+            <mat-label>{{size.controls.size.value}}</mat-label>
+            <input formControlName="count" matInput type="number">
+          </mat-form-field>
+        </mat-list-item>
+      </mat-list>
+    </mat-step>
+</mat-vertical-stepper>

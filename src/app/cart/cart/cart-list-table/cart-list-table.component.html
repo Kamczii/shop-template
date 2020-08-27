@@ -1,10 +1,12 @@
-
 <div class="table-wrapper">
     <div *ngFor="let item of cartItems">
-        <div class="item m-3" >
+        <div class="item m-3">
             <app-cart-item [item]="item"></app-cart-item>
         </div>
-        
+
         <mat-divider></mat-divider>
     </div>
+    <mat-card *ngIf="cartItems.length == 0">
+        <mat-card-title>Koszyk jest pusty</mat-card-title>
+    </mat-card>
 </div>

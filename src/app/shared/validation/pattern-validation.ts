@@ -1,4 +1,4 @@
-  
+
 import { ValidationErrors, ValidatorFn, AbstractControl } from '@angular/forms';
 
 export class PatternValidation {
@@ -11,7 +11,7 @@ export class PatternValidation {
 
       // test the value of the control against the regexp supplied
       const valid = regex.test(control.value);
-      
+
       // if true, return no error (no error), else return error passed in the second parameter
       return valid ? null : error;
     };
