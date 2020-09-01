@@ -1,0 +1,10 @@
+<div [formGroup]="form">
+    <mat-form-field class="example-full-width">
+      <mat-label>Telefon</mat-label>
+      <span matPrefix>+48 &nbsp;</span>
+      <input matInput type="text" formControlName="phone" phonemask maxlength="11"> 
+      <mat-error *ngIf="control.hasError('required')">
+        Telefon jest <strong>wymagany</strong>
+      </mat-error>
+    </mat-form-field>
+  </div>

@@ -1,5 +1,5 @@
 <figure>
     <div class="gallery-container">
-        <img src="https://static.supersklep.pl/952548-undefined-800w.jpg">
+        <img *ngFor="let image of imageURLs" [src]="image">
     </div>
 </figure>

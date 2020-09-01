@@ -71,4 +71,13 @@ export class ShoppingCartService {
     this.cart = [];
     this.updateLocalStorage();
   }
+
+  checkIfSizesSet(){
+    this.cart.forEach((item) => {
+      console.log(item.size);
+      if(item.size==null)
+        return false;
+    })
+    return true;
+  }
 }

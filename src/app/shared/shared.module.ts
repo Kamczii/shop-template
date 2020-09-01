@@ -23,6 +23,10 @@ import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner/loadi
 import { DropzoneDirective } from './upload-dropzone/dropzone.directive';
 import { UploaderComponent } from './upload-dropzone/uploader/uploader.component';
 import { UploadTaskComponent } from './upload-dropzone/upload-task/upload-task.component';
+import { PriceInputComponent } from './forms/price-input/price-input.component';
+import { SearchProductsInputComponent } from './search-products-input/search-products-input.component';
+import { PhoneInputComponent } from './forms/phone-input/phone-input.component';
+import { PhoneDirective } from './forms/phone-input/phone.directive';
 
 
 
@@ -47,7 +51,11 @@ import { UploadTaskComponent } from './upload-dropzone/upload-task/upload-task.c
     LoadingSpinnerComponent,
     DropzoneDirective,
     UploaderComponent,
-    UploadTaskComponent
+    UploadTaskComponent,
+    PriceInputComponent,
+    SearchProductsInputComponent,
+    PhoneInputComponent,
+    PhoneDirective
   ],
   imports: [
     CommonModule,
@@ -69,6 +77,6 @@ import { UploadTaskComponent } from './upload-dropzone/upload-task/upload-task.c
     PriceFormComponent,
     SizeFormComponent, OneSizeFormComponent, EnumToArrayPipe, HeaderComponent, PriceComponent, AddressFormComponent,
     PasswordInputComponent,
-    EmailInputComponent, AddressComponent, OrderComponent, SnackbarComponent, EnumWithValuesToArrayPipe, LoadingSpinnerComponent, UploaderComponent]
+    EmailInputComponent, AddressComponent, OrderComponent, SnackbarComponent, EnumWithValuesToArrayPipe, LoadingSpinnerComponent, UploaderComponent, PriceInputComponent, SearchProductsInputComponent,PhoneInputComponent]
 })
 export class SharedModule { }

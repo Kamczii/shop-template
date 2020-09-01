@@ -12,7 +12,7 @@ import { ProductGalleryComponent } from './products-page/product-details/product
 import { ProductInfoComponent } from './products-page/product-details/product-info/product-info.component';
 import { ShoppingCartButtonComponent } from './products-page/shopping-cart-button/shopping-cart-button.component';
 import { SharedModule } from '../shared/shared.module';
-import { MatCardModule, MatPaginatorModule, MatRippleModule, MatButtonModule } from '@angular/material';
+import { MatCardModule, MatPaginatorModule, MatRippleModule, MatButtonModule, MatChipsModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
@@ -36,7 +36,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatRippleModule,
     FormsModule,
     ReactiveFormsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatChipsModule
   ]
 })
 export class ProductsModule { }

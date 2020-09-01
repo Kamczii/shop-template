@@ -1,17 +1,17 @@
 .items-container{
     display: grid;
- 
-    grid-template-columns: repeat(1, 1fr);
-    grid-auto-rows: auto;
-     
     grid-gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(217px, 1fr));
 }
 
-// Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) { .items-container{grid-template-columns: repeat(2, 1fr);} }
+.item{
 
-// Medium devices (tablets, 768px and up)
-@media (min-width: 768px) { .items-container{grid-template-columns: repeat(2, 1fr);}  }
+}
+// // Small devices (landscape phones, 576px and up)
+// @media (min-width: 576px) { .items-container{grid-template-columns: repeat(2, 1fr);} }
 
-// Large devices (desktops, 992px and up)
-@media (min-width: 992px) { .items-container{grid-template-columns: repeat(4, 1fr);}  }
+// // Medium devices (tablets, 768px and up)
+// @media (min-width: 768px) { .items-container{grid-template-columns: repeat(2, 1fr);}  }
+
+// // Large devices (desktops, 992px and up)
+// @media (min-width: 992px) { .items-container{grid-template-columns: repeat(4, 1fr);}  }

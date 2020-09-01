@@ -8,11 +8,11 @@
     min-width: 80%;
     font-weight: 200;
     height: 300px;
-    border: 2px dashed $primary;
+    border: 2px dashed $accent;
     border-radius: 5px;
-    background-color: $accent;
-
+    background-color: $primary;
+    color: white;
     &:hover{
-        color: $warn;
+
     }
 }

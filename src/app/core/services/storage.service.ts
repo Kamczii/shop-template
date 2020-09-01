@@ -12,4 +12,8 @@ export class StorageService {
     return task.percentageChanges();
   }
 
+  getImagesByProductId(productId: string){
+    return this.storage.ref(productId+'/').listAll();
+  }
+
 }

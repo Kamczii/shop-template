@@ -8,6 +8,8 @@ import { Component, OnInit, Input } from '@angular/core';
 export class SummaryComponent implements OnInit {
 
   @Input() price;
+  @Input() disabled = false;
+  
   constructor() { }
 
   ngOnInit() {

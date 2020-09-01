@@ -1,12 +1,14 @@
 import { Component, OnInit, OnDestroy, forwardRef, ChangeDetectionStrategy } from '@angular/core';
 import { ControlValueAccessor, FormGroup, FormBuilder, Validators, NG_VALUE_ACCESSOR, NG_VALIDATORS, FormControl, FormArray } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { Subscription, Subject } from 'rxjs';
 import { AddressFormComponent } from 'src/app/shared/forms/address-form/address-form.component';
 import { Product } from 'src/app/shared/models/product';
 import { ENTER, COMMA } from '@angular/cdk/keycodes';
-import { MatChipInputEvent, MatSelectionListChange } from '@angular/material';
+import { MatChipInputEvent, MatSelectionListChange, MatSnackBar } from '@angular/material';
 import { Sizes } from 'src/app/shared/enums/sizes.enum';
 import { Size } from 'src/app/shared/models/Size';
+import { ProductService } from 'src/app/core/services/product.service';
+import { DocumentReference } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-product-form',
@@ -42,6 +44,11 @@ export class ProductFormComponent implements ControlValueAccessor, OnDestroy {
   productForm: FormGroup;
   subscriptions: Subscription[] = [];
 
+  productIdSubject: Subject<any> = new Subject<any>();
+  resetSubject: Subject<any> = new Subject<any>();
+
+  imagesCount: number = 0;
+
   get value(): Product {
     return this.productForm.value;
   }
@@ -53,15 +60,9 @@ export class ProductFormComponent implements ControlValueAccessor, OnDestroy {
   }
 
 
-  constructor(private fb: FormBuilder) {
-    this.productForm = this.fb.group({
-      name: ['', Validators.required],
-      description: ['', Validators.required],
-      price: ['', Validators.required],
-      advantages: [[], Validators.required],
-      sizes: new FormArray([])
-    });
-    this.dynamicCreateSizeInputs();
+  constructor(private fb: FormBuilder, private productService: ProductService, private snackBar: MatSnackBar) {
+    this.createForm();
+
     this.subscriptions.push(
       this.productForm.valueChanges.subscribe(value => {
         this.onChange(value);
@@ -91,7 +92,7 @@ export class ProductFormComponent implements ControlValueAccessor, OnDestroy {
   }
 
   validate(_: FormControl) {
-    return this.productForm.valid ? null : { passwords: { valid: false, }, };
+    return this.productForm.valid && this.imagesCount>0;
   }
 
   ngOnDestroy() {
@@ -141,9 +142,51 @@ export class ProductFormComponent implements ControlValueAccessor, OnDestroy {
       if (isNaN(+size))
         control.push(this.fb.group({
           size: [size, Validators.required],
-          count: ['', Validators.required]
+          count: [0, Validators.required]
         }))
     }
   }
 
+  dynamicCreateSizeInput(event) {
+    if(event.key == 'Enter'){
+      console.log(event.key)
+      let control = this.productForm.controls.sizes as FormArray;
+        control.push(this.fb.group({
+          size: [event.target.value, Validators.required],
+          count: [0, Validators.required]
+        }))
+        event.target.value =''
+    }
+  }
+
+  emitProductId(id: string){
+    this.productIdSubject.next(id);
+  }
+
+  createForm(){
+    this.productForm = this.fb.group({
+      name: ['', Validators.required],
+      description: ['', Validators.required],
+      price: ['', Validators.required],
+      advantages: [[]],
+      sizes: new FormArray([])
+    });
+
+    this.dynamicCreateSizeInputs();
+    
+    this.resetSubject.next()
+  }
+  addProduct(){
+    this.productService.addProduct(this.productForm.value).catch(err => this.openSnackBar(err,"zamknij")).then((val: DocumentReference) => {
+      this.emitProductId(val.id); 
+      this.openSnackBar(val.id+" dodano","zamknij");
+      this.createForm();
+    });
+  }
+
+    openSnackBar(message: string, action: string) {
+      this.snackBar.open(message, action, {
+        duration: 2000,
+      });
+    }
 }

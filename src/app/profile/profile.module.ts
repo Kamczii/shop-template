@@ -3,9 +3,10 @@ import { CommonModule } from '@angular/common';
 
 import { ProfileRoutingModule } from './profile-routing.module';
 import { ProfileDetailsComponent } from './profile-details/profile-details.component';
-import { MatCardModule, MatTabsModule, MatExpansionModule, MatDividerModule, MatButtonModule } from '@angular/material';
+import { MatCardModule, MatTabsModule, MatExpansionModule, MatDividerModule, MatButtonModule, MatInputModule, MatIconModule } from '@angular/material';
 import { SharedModule } from '../shared/shared.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -19,7 +20,11 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatExpansionModule,
     MatDividerModule,
     MatButtonModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatIconModule
   ],
   providers: []
 })

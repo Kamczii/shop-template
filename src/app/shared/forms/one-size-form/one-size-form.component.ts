@@ -1,7 +1,8 @@
-import { Component, OnInit, Pipe, PipeTransform, forwardRef, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
+import { Component, OnInit, Pipe, PipeTransform, forwardRef, ChangeDetectionStrategy, OnDestroy, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl, NG_VALUE_ACCESSOR, NG_VALIDATORS, ControlValueAccessor } from '@angular/forms';
 import { Sizes } from '../../enums/sizes.enum';
 import { Subscription } from 'rxjs';
+import { Size } from '../../models/Size';
 
 @Component({
   selector: 'app-one-size-form',
@@ -26,7 +27,7 @@ export class OneSizeFormComponent implements ControlValueAccessor, OnDestroy {
   sizeForm: FormGroup;
   subscriptions: Subscription[] = [];
 
-  sizeList = Sizes;
+  @Input()sizeList: Size[];
 
   get value(): String {
     return this.sizeForm.value;
@@ -42,6 +43,7 @@ export class OneSizeFormComponent implements ControlValueAccessor, OnDestroy {
     this.sizeForm = this.fb.group({
       size: ['', Validators.required]
     });
+    
     this.subscriptions.push(
       this.sizeForm.valueChanges.subscribe(value => {
         this.onChange(value);

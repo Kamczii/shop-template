@@ -1,3 +1,20 @@
 .example-ripple-container:hover{
     cursor: pointer;
 }
+.card{
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+.card img{
+    height: 70%;
+    object-fit:cover
+}
+
+mat-card-content{
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

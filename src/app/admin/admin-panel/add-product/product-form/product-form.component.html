@@ -19,13 +19,14 @@
       </p>
   
       <p>
-        <mat-form-field class="full-width">
+        <!-- <mat-form-field class="full-width">
           <mat-label>Cena</mat-label>
           <input matInput type="number" formControlName="price" placeholder="np. 119">
           <mat-error *ngIf="getControls().price.hasError('required')">
             Cena jest <strong>wymagana</strong>
           </mat-error>
-        </mat-form-field>
+        </mat-form-field> -->
+        <app-price-input formControlName="price"></app-price-input>
       </p>
   
       <mat-form-field class="chip-list">
@@ -48,9 +49,23 @@
         <mat-list-item *ngFor="let size of getControls().sizes.controls">
           <mat-form-field [formGroup]="size">
             <mat-label>{{size.controls.size.value}}</mat-label>
-            <input formControlName="count" matInput type="number">
+            <input formControlName="count" matInput type="number" min="0">
           </mat-form-field>
         </mat-list-item>
       </mat-list>
+      <mat-form-field>
+        <mat-label>Dodaj rozmiar</mat-label>
+        <input matInput type="text" (keypress)="dynamicCreateSizeInput($event)">
+      </mat-form-field>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Zdjęcia</ng-template>
+      <app-uploader [productIdEvent]="productIdSubject.asObservable()" [resetEvent]="resetSubject.asObservable()" (onChange)="imagesCount = $event"></app-uploader>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Potwierdź</ng-template>
+      <app-confirm-button message="Dodaj produkt" [disabled]="!validate()" (confirmed)="addProduct()"></app-confirm-button>
     </mat-step>
 </mat-vertical-stepper>

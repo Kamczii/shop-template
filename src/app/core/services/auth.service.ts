@@ -3,21 +3,16 @@ import { Observable } from 'rxjs/internal/Observable';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, take } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { auth } from 'firebase';
 import { User } from 'src/app/shared/models/user';
 import { FormGroup } from '@angular/forms';
+import { AddressFormValues } from 'src/app/shared/models/AddressFormValues';
 
 @Injectable()
 export class AuthService {
-  updateEmail(value: any) {
-    throw new Error("Method not implemented.");
-  }
 
-  updateAddress(addressForm: FormGroup) {
-    throw new Error("Method not implemented.");
-  }
 
   user$: Observable<User>;
 
@@ -51,6 +46,37 @@ export class AuthService {
 
   }
 
+
+  updateEmail(email: string) {
+    return this.user$.pipe(
+      switchMap((value, index) => {
+       const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${value.uid}`);
+         const data: User = value;
+         data.email = email;
+       return userRef.set(data, { merge: true })
+      }));
+  }
+
+  updatePhone(phone: any) {
+    return this.user$.pipe(
+      switchMap((value, index) => {
+       const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${value.uid}`);
+         const data: User = value;
+         data.phone = phone;
+       return userRef.set(data, { merge: true })
+      }));
+  }
+
+  updateAddress(address: AddressFormValues) {
+     return this.user$.pipe(
+     switchMap((value, index) => {
+      const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${value.uid}`);
+
+        const data: User = value;
+        data.address = address;
+      return userRef.set(data, { merge: true })
+     }));
+  }
 
   async login(email: string, password: string) {
     var result = await this.afAuth.signInWithEmailAndPassword(email, password);
@@ -91,7 +117,8 @@ export class AuthService {
       roles: {
         basic: true,
         admin: false
-      }
+      },
+      phone: user.phone
     }
 
     return userRef.set(data, { merge: true })

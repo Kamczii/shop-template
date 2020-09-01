@@ -1,12 +1,13 @@
-<a routerLink="{{product.id}}">
-  <div class="example-ripple-container mat-elevation-z4" matRipple [matRippleCentered]="centered"
-    [matRippleDisabled]="disabled" [matRippleUnbounded]="unbounded" [matRippleRadius]="radius" [matRippleColor]="color">
-    <mat-card class="example-card">
-      <img mat-card-image
-        src="https://static.supersklep.pl/943699-bluza-z-kapturem-thrasher-skate-mag-hd-black-w1920w.jpg"
-        alt="Photo of a Shiba Inu">
-      <mat-card-content>
 
+  <div class="example-ripple-container mat-elevation-z4" matRipple [matRippleCentered]="centered"
+    [matRippleDisabled]="disabled" [matRippleUnbounded]="unbounded" [matRippleRadius]="radius" [matRippleColor]="color" routerLink="{{product.id}}">
+    <mat-card class="card">
+      <img *ngIf="images[0]; else loading" mat-card-image (mouseover)="over($event)" (mouseout)="out($event)"
+      [src]="images[0]">
+      <ng-template #loading>
+        <app-loading-spinner></app-loading-spinner>
+      </ng-template>
+      <mat-card-content>
         <mat-card-title>{{product.name}}</mat-card-title>
         <mat-card-subtitle>
           <app-price [price]="product.price"></app-price>
@@ -14,4 +15,3 @@
       </mat-card-content>
     </mat-card>
   </div>
-</a>

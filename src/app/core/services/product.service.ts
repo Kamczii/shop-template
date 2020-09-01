@@ -2,10 +2,12 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Product } from 'src/app/shared/models/product';
 import { map } from 'rxjs/internal/operators/map';
+import { StorageService } from './storage.service';
+import { switchMap } from 'rxjs/operators';
 
 @Injectable()
 export class ProductService {
-  constructor(private firestore: AngularFirestore) { }
+  constructor(private firestore: AngularFirestore, private storageService: StorageService) { }
 
   getAllProducts() {
     return this.firestore.collection<Product>('products').snapshotChanges().pipe(
@@ -27,5 +29,10 @@ export class ProductService {
         return data;
       })
     )
+  }
+
+  
+  addProduct(value: Product) {
+    return this.firestore.collection<Product>('products').add(value);
   }
 }

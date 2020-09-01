@@ -1,6 +1,6 @@
 <mat-card class="home-card">
   <p>
     Razem do zapłaty: <app-price [price]="price"></app-price> &nbsp;
-    <app-confirm-button message="Zapłać" disabled="false" [routerLink]="['/finalize']"></app-confirm-button>
+    <app-confirm-button message="Zapłać" [disabled]="disabled" [routerLink]="['/finalize']"></app-confirm-button>
   </p>
 </mat-card>

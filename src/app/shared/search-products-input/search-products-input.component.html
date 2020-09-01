@@ -1,0 +1,15 @@
+<form class="example-form">
+    <mat-form-field class="example-full-width">
+      <input type="text"
+             placeholder="Szukaj"
+             aria-label="Number"
+             matInput
+             [formControl]="myControl"
+             [matAutocomplete]="auto" (keyup)="search()">
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option.name">
+          <a [routerLink]="['products',option.id]">{{option.name}}</a>
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>

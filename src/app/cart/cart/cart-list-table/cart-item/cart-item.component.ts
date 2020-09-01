@@ -3,6 +3,7 @@ import { Sizes } from 'src/app/shared/enums/sizes.enum';
 import { Product } from 'src/app/shared/models/product';
 import { ShoppingCartService } from 'src/app/core/services/shopping-cart.service';
 import { CartItem } from 'src/app/shared/models/CartItem';
+import { StorageService } from 'src/app/core/services/storage.service';
 
 @Component({
   selector: 'app-cart-item',
@@ -11,12 +12,21 @@ import { CartItem } from 'src/app/shared/models/CartItem';
 })
 export class CartItemComponent implements OnInit {
 
-  sizes = Sizes;
+  sizes: Sizes[] = [];
   @Input() item: CartItem;
-  constructor(private cartService: ShoppingCartService) { }
+  images: string[] = [];
+  constructor(private cartService: ShoppingCartService, private storageService: StorageService) { }
 
   ngOnInit() {
+    let that = this;
+    this.storageService.getImagesByProductId(this.item.product.id).subscribe(data=>data.items.forEach(item => item.getDownloadURL().then(function(url){
+      that.images.push(url);
+    })));
 
+    this.item.product.sizes.forEach(size => {
+      if(size.count>0) 
+        this.sizes.push(size.size)
+    })
   }
 
   remove() {

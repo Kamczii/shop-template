@@ -9,11 +9,15 @@
     <p *ngIf="product.description">
       {{product.description}}
     </p>
+
+    <mat-chip-list aria-label="Cechy">
+      <mat-chip *ngFor="let advantage of product.advantages" color="accent">{{advantage}}</mat-chip>
+    </mat-chip-list>
     <form [formGroup]="productForm">
-      <app-one-size-form formControlName="size"></app-one-size-form>
+      <app-one-size-form [sizeList]="availableSizes" formControlName="size"></app-one-size-form>
     </form>
   </mat-card-content>
   <mat-card-actions>
-    <app-shopping-cart-button (add)="addToCart()"></app-shopping-cart-button>
+    <app-shopping-cart-button (add)="addToCart()" [disabled]="productForm.invalid"></app-shopping-cart-button>
   </mat-card-actions>
 </mat-card>
