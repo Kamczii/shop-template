@@ -4,7 +4,7 @@ import { Roles } from './Roles';
 export interface User {
   uid: string;
   email: string;
-  phone?: number;
+  phone?: string;
   roles: Roles;
   address?: AddressFormValues;
   photoURL?: string;

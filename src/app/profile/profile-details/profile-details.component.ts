@@ -6,13 +6,14 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { OrderService } from 'src/app/core/services/order.service';
 import { Order } from 'src/app/shared/models/Order';
 import { AddressFormValues } from 'src/app/shared/models/AddressFormValues';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-profile-details',
   templateUrl: './profile-details.component.html',
   styleUrls: ['./profile-details.component.scss']
 })
-export class ProfileDetailsComponent implements OnInit, OnDestroy{
+export class ProfileDetailsComponent implements OnInit {
 
   profile$: Observable<User>;
   orders$: Observable<Order[]>;
@@ -20,7 +21,6 @@ export class ProfileDetailsComponent implements OnInit, OnDestroy{
   addressForm: FormGroup;
   phoneForm: FormGroup;
   address: AddressFormValues;
-  subscriptions: Subscription[] = [];
   
   editEmail: boolean = false;
   editPhone: boolean = false;
@@ -41,27 +41,20 @@ export class ProfileDetailsComponent implements OnInit, OnDestroy{
     this.profile$ = this.auth.user$;
 
     this.orders$ = this.orderService.getUserOrders();
-
-    this.subscriptions.push(this.phoneForm.valueChanges.subscribe(() => {console.log(this.phoneForm.value)}));
   }
 
-  ngOnDestroy() {
-    this.subscriptions.forEach(subscription => subscription.unsubscribe());
-  }
 
   updateAddress() {
-    this.subscriptions.push(this.auth.updateAddress(this.addressForm.value.address).subscribe(res => console.log(res)));
+    this.auth.updateAddress(this.addressForm.value.address).pipe(take(1)).subscribe(res => console.log(res));
   }
 
   updateEmail() {
-    this.subscriptions.push(this.auth.updateEmail(this.emailForm.value.email.email).subscribe(data => {
+    this.auth.updateEmail(this.emailForm.value.email.email).pipe(take(1)).subscribe(data => {
       this.editEmail = false;
-    },error => console.log(error)));
+    },error => console.log(error));
   }
 
   updatePhone() {
-    this.subscriptions.push(this.auth.updatePhone(this.phoneForm.value.phone.phone).subscribe(data => {
-      this.editPhone = false;
-    },error => console.log(error)));
+    this.auth.updatePhone(this.phoneForm.value.phone.phone).pipe(take(1)).subscribe(data => {}, error => console.log(error), () => this.editPhone = false);
   }
 }

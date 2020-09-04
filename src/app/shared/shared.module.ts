@@ -27,6 +27,8 @@ import { PriceInputComponent } from './forms/price-input/price-input.component';
 import { SearchProductsInputComponent } from './search-products-input/search-products-input.component';
 import { PhoneInputComponent } from './forms/phone-input/phone-input.component';
 import { PhoneDirective } from './forms/phone-input/phone.directive';
+import { OrderSummaryComponent } from './order-summary/order-summary.component';
+import { AddBrandComponent } from './forms/add-brand/add-brand.component';
 
 
 
@@ -55,7 +57,9 @@ import { PhoneDirective } from './forms/phone-input/phone.directive';
     PriceInputComponent,
     SearchProductsInputComponent,
     PhoneInputComponent,
-    PhoneDirective
+    PhoneDirective,
+    OrderSummaryComponent,
+    AddBrandComponent
   ],
   imports: [
     CommonModule,
@@ -77,6 +81,6 @@ import { PhoneDirective } from './forms/phone-input/phone.directive';
     PriceFormComponent,
     SizeFormComponent, OneSizeFormComponent, EnumToArrayPipe, HeaderComponent, PriceComponent, AddressFormComponent,
     PasswordInputComponent,
-    EmailInputComponent, AddressComponent, OrderComponent, SnackbarComponent, EnumWithValuesToArrayPipe, LoadingSpinnerComponent, UploaderComponent, PriceInputComponent, SearchProductsInputComponent,PhoneInputComponent]
+    EmailInputComponent, AddressComponent, OrderComponent, SnackbarComponent, EnumWithValuesToArrayPipe, LoadingSpinnerComponent, AddBrandComponent, OrderSummaryComponent, UploaderComponent, PriceInputComponent, SearchProductsInputComponent,PhoneInputComponent]
 })
 export class SharedModule { }

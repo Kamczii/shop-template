@@ -4,11 +4,10 @@
     </div>
     <div class="row">
         <div class="filters col-md-3 col-lg-2 pr-2 mb-2">
-            <app-filters></app-filters>
+            <app-filters (onChangeFilter)="changeFilter($event)"></app-filters>
         </div>
-        <div class="products-list col-md-9 col-lg-10 ">
-            <app-product-list></app-product-list>
-            <app-pagination [length]="5"></app-pagination>
+        <div class="products-list col-md-9 col-lg-10">
+            <app-product-list [products]="products"></app-product-list>
         </div>
     </div>
 

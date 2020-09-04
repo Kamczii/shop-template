@@ -32,9 +32,9 @@ export class ProductDetailsComponent implements OnInit {
     );
 
     let that = this;
-    this.images$.subscribe(data=>data.items.forEach(item => console.log(item.getDownloadURL().then(function(url){
-      that.images.push(url);
-    }))));
+    this.images$.subscribe(data=>data.items.forEach(item => {
+      item.getDownloadURL().then(data => this.images.push(data))
+    }));
   }
 
 }

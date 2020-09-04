@@ -1,9 +1,9 @@
 <mat-card-title>Filtry</mat-card-title>
-<app-brand-form></app-brand-form>
+<app-brand-form (filterChanged)="changeFilter($event)"></app-brand-form>
 
-<app-price-form></app-price-form>
+<app-price-form (filterChanged)="changeFilter($event)"></app-price-form>
 
-<app-size-form></app-size-form>
+<!-- <app-size-form (filterChanged)="changeFilter($event)"></app-size-form> -->
 
 <br>
 <button mat-raised-button color="primary">Filtruj</button>

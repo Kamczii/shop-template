@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { FilterSymbol } from '../../enums/filter-symbol.enum';
+import { BaseFilter } from '../../models/BaseFilter';
 
 @Component({
   selector: 'app-price-form',
@@ -7,12 +9,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PriceFormComponent implements OnInit {
 
-  minPrice = 0;
-  maxPrice = 250;
+  @Output() filterChanged = new EventEmitter<BaseFilter>();
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  changeMinPrice($event){
+    let filter: BaseFilter = {
+      field: 'price',
+      symbol: FilterSymbol.gt,
+      value: +$event.target.value
+    } 
+    this.filterChanged.emit(filter);
+  }
+
+  changeMaxPrice($event){
+    let filter: BaseFilter = {
+      field: 'price',
+      symbol: FilterSymbol.lt,
+      value: +$event.target.value
+    } 
+    this.filterChanged.emit(filter);
+  }
 }

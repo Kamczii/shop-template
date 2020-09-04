@@ -107,9 +107,10 @@ export class AuthService {
 
   private updateUserData(user) {
     // Sets user data to firestore on login
-    const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${user.uid}`);
+    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
 
-    const data = {
+    let data = <User>{};
+    data = {
       uid: user.uid,
       email: user.email,
       displayName: user.displayName,
@@ -117,8 +118,7 @@ export class AuthService {
       roles: {
         basic: true,
         admin: false
-      },
-      phone: user.phone
+      }
     }
 
     return userRef.set(data, { merge: true })
@@ -127,7 +127,7 @@ export class AuthService {
 
   async signOut() {
     await this.afAuth.signOut();
-    this.user$ = of(null);
+    this.user$ = null;
   }
 
   get isLoggedIn(): boolean {
@@ -136,4 +136,16 @@ export class AuthService {
     else return false;
   }
 
+  hasAdmin(user: User): boolean {
+    return this.checkAuthorization(user, ['admin'])
+  }
+  private checkAuthorization(user: User, allowedRoles: string[]): boolean {
+    if (!user) return false
+    for (const role of allowedRoles) {
+      if ( user.roles[role] ) {
+        return true
+      }
+    }
+    return false
+  }
 }

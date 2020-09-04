@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, forwardRef, ChangeDetectionStrategy } from '@angular/core';
 import { ControlValueAccessor, FormGroup, FormBuilder, Validators, NG_VALUE_ACCESSOR, NG_VALIDATORS, FormControl, FormArray } from '@angular/forms';
-import { Subscription, Subject } from 'rxjs';
+import { Subscription, Subject, Observable } from 'rxjs';
 import { AddressFormComponent } from 'src/app/shared/forms/address-form/address-form.component';
 import { Product } from 'src/app/shared/models/product';
 import { ENTER, COMMA } from '@angular/cdk/keycodes';
@@ -9,6 +9,7 @@ import { Sizes } from 'src/app/shared/enums/sizes.enum';
 import { Size } from 'src/app/shared/models/Size';
 import { ProductService } from 'src/app/core/services/product.service';
 import { DocumentReference } from '@angular/fire/firestore';
+import { startWith, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-product-form',
@@ -28,7 +29,7 @@ import { DocumentReference } from '@angular/fire/firestore';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ProductFormComponent implements ControlValueAccessor, OnDestroy {
+export class ProductFormComponent implements ControlValueAccessor, OnDestroy, OnInit {
 
   //chipList
   visible = true;
@@ -49,6 +50,9 @@ export class ProductFormComponent implements ControlValueAccessor, OnDestroy {
 
   imagesCount: number = 0;
 
+  options: string[] = [];
+  filteredOptions: Observable<string[]>;
+  
   get value(): Product {
     return this.productForm.value;
   }
@@ -69,6 +73,11 @@ export class ProductFormComponent implements ControlValueAccessor, OnDestroy {
         this.onTouched();
       })
     );
+  }
+  
+  ngOnInit(): void {
+    this.productService.getAllBrands().subscribe(data => this.options = data);
+   
   }
 
   onChange: any = () => { };
@@ -166,6 +175,7 @@ export class ProductFormComponent implements ControlValueAccessor, OnDestroy {
   createForm(){
     this.productForm = this.fb.group({
       name: ['', Validators.required],
+      brand: [''],
       description: ['', Validators.required],
       price: ['', Validators.required],
       advantages: [[]],
@@ -174,8 +184,9 @@ export class ProductFormComponent implements ControlValueAccessor, OnDestroy {
 
     this.dynamicCreateSizeInputs();
     
-    this.resetSubject.next()
+    this.resetSubject.next();
   }
+
   addProduct(){
     this.productService.addProduct(this.productForm.value).catch(err => this.openSnackBar(err,"zamknij")).then((val: DocumentReference) => {
       this.emitProductId(val.id); 

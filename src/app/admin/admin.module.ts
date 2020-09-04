@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { AdminRoutingModule } from './admin-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
-import { MatListModule, MatButtonModule, MatSelectModule, MatSidenavModule, MatCardModule, MatBadgeModule, MatInputModule, MatChipsModule, MatIconModule, MatStepperModule, MatSnackBarModule } from '@angular/material';
+import { MatListModule, MatButtonModule, MatSelectModule, MatSidenavModule, MatCardModule, MatBadgeModule, MatInputModule, MatChipsModule, MatIconModule, MatStepperModule, MatSnackBarModule, MatTableModule, MatAutocompleteModule } from '@angular/material';
 import { OrdersListComponent } from './admin-panel/orders-list/orders-list.component';
 import { OrderComponent } from './admin-panel/order/order.component';
 import { StatusFormComponent } from './admin-panel/orders-list/status-form/status-form.component';
@@ -31,7 +31,9 @@ import { SizesCountFormComponent } from './admin-panel/add-product/sizes-count-f
     MatChipsModule,
     MatIconModule,
     MatStepperModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatTableModule,
+    MatAutocompleteModule,
   ]
 })
 export class AdminModule { }

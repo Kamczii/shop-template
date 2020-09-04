@@ -12,4 +12,5 @@ export interface Order {
     address: AddressFormValues;
     paymentMethod: string;
     status: OrderStatus;
+    mainPhotoURL: string;
 }

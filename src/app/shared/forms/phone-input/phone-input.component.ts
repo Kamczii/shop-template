@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy, forwardRef, ChangeDetectionStrategy } from '@angular/core';
 import { NG_VALUE_ACCESSOR, NG_VALIDATORS, FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { isObject } from 'util';
 
 @Component({
   selector: 'app-phone-input',
@@ -34,7 +35,7 @@ export class PhoneInputComponent implements OnDestroy, OnDestroy {
   }
 
   set value(value: String) {
-    this.form.controls.phone.setValue(value);
+    this.form.controls['phone'].setValue(value);
     this.onChange(value);
     this.onTouched();
   }
@@ -67,7 +68,7 @@ export class PhoneInputComponent implements OnDestroy, OnDestroy {
       this.value = value;
     }
 
-    if (value === null) {
+    if (value === null || isObject(value)) {
       this.form.reset();
     }
   }

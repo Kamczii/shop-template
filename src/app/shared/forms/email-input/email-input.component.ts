@@ -1,6 +1,7 @@
 import { Component, OnInit, forwardRef, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
 import { FormGroup, Validators, FormBuilder, NG_VALUE_ACCESSOR, NG_VALIDATORS, ControlValueAccessor, FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs/internal/Subscription';
+import { isObject } from 'util';
 
 @Component({
   selector: 'app-email-input',
@@ -68,7 +69,7 @@ export class EmailInputComponent implements ControlValueAccessor, OnDestroy {
       this.value = value;
     }
 
-    if (value === null) {
+    if (value == null || isObject(value)) {
       this.form.reset();
     }
   }

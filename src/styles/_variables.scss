@@ -2,9 +2,11 @@
 @import './palette';
 
 $app-primary: mat-palette($md-primary);
-$app-accent:  mat-palette($md-accent, A700, A100, A400);
+$app-accent:  mat-palette($md-accent, A700, A200, A400);
+$app-lighter-accent: mat-palette($md-accent, A200);
 $app-warn:    mat-palette($mat-red);
 
 $primary: mat-color($app-primary);
 $accent: mat-color($app-accent);
+$accent-lighter: mat-color($app-accent, A100);
 $warn: mat-color($app-warn);

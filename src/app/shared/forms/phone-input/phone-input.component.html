@@ -6,5 +6,8 @@
       <mat-error *ngIf="control.hasError('required')">
         Telefon jest <strong>wymagany</strong>
       </mat-error>
+      <mat-error *ngIf="control.hasError('pattern')">
+        Wpisz poprawny <strong>telefon</strong>
+      </mat-error>
     </mat-form-field>
   </div>

@@ -1,16 +1,26 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Product } from 'src/app/shared/models/product';
 import { map } from 'rxjs/internal/operators/map';
 import { StorageService } from './storage.service';
 import { switchMap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { BaseFilter } from 'src/app/shared/models/BaseFilter';
 
 @Injectable()
 export class ProductService {
   constructor(private firestore: AngularFirestore, private storageService: StorageService) { }
 
-  getAllProducts() {
-    return this.firestore.collection<Product>('products').snapshotChanges().pipe(
+  getAllProducts(limit: number, filters?: BaseFilter []): Observable<Product[]> {
+
+    return this.firestore.collection<Product>('products', ref => {
+      let query: firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
+      if(filters){for (let filter of filters){
+        query = query.where(filter.field,filter.symbol,filter.value);
+      }}
+      if(limit) query = query.limit(limit);
+      return query;
+    }).snapshotChanges().pipe(
       map(changes => {
         return changes.map(a => {
           let data = a.payload.doc.data() as Product;
@@ -34,5 +44,12 @@ export class ProductService {
   
   addProduct(value: Product) {
     return this.firestore.collection<Product>('products').add(value);
+  }
+
+  addBrand(value: string){
+    return this.firestore.collection<{name: string}>('brands').add({name: value});
+  }
+  getAllBrands() {
+    return this.firestore.collection<{name: string}>('brands').valueChanges().pipe(map((value) => value.map((brand) => brand.name)));
   }
 }

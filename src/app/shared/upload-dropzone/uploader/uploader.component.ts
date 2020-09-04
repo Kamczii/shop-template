@@ -2,6 +2,7 @@ import { Component, OnInit, Input, OnDestroy, Output, EventEmitter } from '@angu
 import { Observable, Subscription } from 'rxjs';
 import { StorageService } from 'src/app/core/services/storage.service';
 import { AngularFireUploadTask } from '@angular/fire/storage';
+import { ProductService } from 'src/app/core/services/product.service';
 
 @Component({
   selector: 'app-uploader',
@@ -18,31 +19,33 @@ export class UploaderComponent implements OnInit, OnDestroy {
   isHovering: boolean;
 
   files: File[] = [];
-  urls: [] = [];
+  urls = [];
 
   task: AngularFireUploadTask;
 
-  constructor(private storageService: StorageService) { }
+  constructor(private storageService: StorageService, private productService: ProductService) { }
   
   toggleHover(event: boolean) {
     this.isHovering = event;
   }
-
   onDrop(files: FileList) {
     for (let i = 0; i < files.length; i++) {
       this.files.push(files.item(i));
       this.onChange.emit(this.files.length)
+      var reader = new FileReader();
+
+      reader.readAsDataURL(files.item(i)); // read file as data url
+
+      reader.onload = (event) => { // called once readAsDataURL is completed=
+        this.urls.push(reader.result);
+      }
     }
   }
 
   uploadFiles(productId){
     let id = 0;
     for(let file of this.files){
-      this.storageService.uploadFile(file,productId + "/" + new Date().getTime()+(++id))
-      let reader = new FileReader();
-      reader.onload = event => {
-        
-      }
+      this.storageService.uploadFile(file,productId + "/"+(++id))
     }
   }
 

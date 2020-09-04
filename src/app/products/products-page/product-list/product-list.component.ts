@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ProductService } from 'src/app/core/services/product.service';
 import { Product } from 'src/app/shared/models/product';
 import { map } from 'rxjs/operators';
@@ -9,17 +9,15 @@ import { Observable } from 'rxjs';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss']
 })
-export class ProductListComponent implements OnInit {
+export class ProductListComponent implements OnInit{
 
-  products$: Observable<Product[]>;
+  @Input() products: Product[];
 
-  constructor(private productService: ProductService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.getProducts()
+
   }
 
-  getProducts() {
-    this.products$ = this.productService.getAllProducts();
-  }
+  
 }

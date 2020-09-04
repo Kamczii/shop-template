@@ -5,23 +5,7 @@
         <p>{{order.paymentMethod}}</p>
     </mat-card-subtitle>
     <mat-card-content>
-        <app-address [address]="order.address"></app-address>
-        <table>
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Ilość</th>
-                    <th>Rozmiar</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let item of order.items" (click)="rowSelected(order);">
-                    <td>{{item.product.id}}</td>
-                    <td>{{item.count}}</td>
-                    <td>{{item.size}}</td>
-                </tr>
-            </tbody>
-        </table>
+        <app-order-summary [order]="order" [items]="order.items"></app-order-summary>
     </mat-card-content>
     <mat-card-actions>
         <div class="row">

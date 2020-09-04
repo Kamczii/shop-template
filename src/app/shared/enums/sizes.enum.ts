@@ -1,3 +1,3 @@
 export enum Sizes {
-    XL, L, M, S, XS
+    XL, L, M, S, XS, ONESIZE
 }

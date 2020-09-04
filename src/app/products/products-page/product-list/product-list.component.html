@@ -1,4 +1,4 @@
-<div *ngIf="(products$ | async) as products; else loading" class="items-container">
+<div *ngIf="products; else loading" class="items-container">
     <div *ngFor="let product of products" class="item">
         <app-product-preview [product]="product"></app-product-preview>
     </div>

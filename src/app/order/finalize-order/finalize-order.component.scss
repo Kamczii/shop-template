@@ -2,3 +2,10 @@
 td, th{
     padding-right: .2em;
 }
+
+
+.mat-form-field-flex, 
+.mat-form-field-infix{
+    box-sizing: content-box !important;
+    width: 220px !important;
+}

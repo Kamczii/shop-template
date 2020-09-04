@@ -1,4 +1,5 @@
 <div class="dropzone" dropzone (hovered)="toggleHover($event)" (dropped)="onDrop($event)" [class.hovering]="isHovering">
     <h3>Strefa zrzutu</h3>
 </div>
+<div><img *ngFor="let url of urls" [src]="url"></div>
 <div>{{files.length}} zdjęcia</div>
