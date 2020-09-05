@@ -3,7 +3,7 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firest
 import { Product } from 'src/app/shared/models/product';
 import { map } from 'rxjs/internal/operators/map';
 import { StorageService } from './storage.service';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, take } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { BaseFilter } from 'src/app/shared/models/BaseFilter';
 
@@ -31,7 +31,7 @@ export class ProductService {
     );
   }
 
-  getProductById(id: string) {
+  getProductById(id: string): Observable<Product> {
     return this.firestore.collection<Product>('products').doc(id).get().pipe(
       map(val => {
         let data = val.data() as Product;
@@ -44,6 +44,11 @@ export class ProductService {
   
   addProduct(value: Product) {
     return this.firestore.collection<Product>('products').add(value);
+  }
+
+  
+  addImageToProduct(productId: string, imageId: number, downloadURL: string) {
+      this.firestore.collection('products').doc(productId).update({imageURLs: downloadURL});
   }
 
   addBrand(value: string){

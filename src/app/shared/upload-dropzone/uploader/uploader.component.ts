@@ -43,9 +43,12 @@ export class UploaderComponent implements OnInit, OnDestroy {
   }
 
   uploadFiles(productId){
-    let id = 0;
+    let id = 1;
     for(let file of this.files){
-      this.storageService.uploadFile(file,productId + "/"+(++id))
+      console.log(file);
+      this.storageService.uploadFile(file,"productId" + "/"+(id++)).then((data) => {
+        data.ref.getDownloadURL().then(url => {console.log(url);this.productService.addImageToProduct(productId, id,url)});
+      });
     }
   }
 

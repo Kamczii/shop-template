@@ -15,12 +15,11 @@ export class UploadTaskComponent implements OnInit {
 
   task: AngularFireUploadTask;
 
-  percentage: Observable<number>;
 
   constructor(private storageService: StorageService) { }
 
   ngOnInit() {
-    this.percentage = this.storageService.uploadFile(this.file, this.productId + "/" + new Date() + this.file.name);
+    this.storageService.uploadFile(this.file, this.productId + "/" + new Date() + this.file.name);
   }
 
 }
