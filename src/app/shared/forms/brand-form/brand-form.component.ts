@@ -28,7 +28,6 @@ export class BrandFormComponent implements OnInit {
   }
 
   selectionChange($event){
-    console.log($event);
     let filter: BaseFilter;
       filter = {
       field: 'brand',

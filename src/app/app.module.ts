@@ -18,12 +18,14 @@ import { CartModule } from './cart/cart.module';
 import { ProductsModule } from './products/products.module';
 import { FooterComponent } from './components/footer/footer.component';
 import { AdminModule } from './admin/admin.module';
+import { TestingComponent } from './components/testing/testing.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
     FooterComponent,
+    TestingComponent,
   ],
   imports: [
     BrowserModule,

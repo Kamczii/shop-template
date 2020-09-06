@@ -158,7 +158,6 @@ export class ProductFormComponent implements ControlValueAccessor, OnDestroy, On
 
   dynamicCreateSizeInput(event) {
     if(event.key == 'Enter'){
-      console.log(event.key)
       let control = this.productForm.controls.sizes as FormArray;
         control.push(this.fb.group({
           size: [event.target.value, Validators.required],

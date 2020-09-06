@@ -7,7 +7,8 @@ import { ProductService } from 'src/app/core/services/product.service';
 @Component({
   selector: 'app-uploader',
   templateUrl: './uploader.component.html',
-  styleUrls: ['./uploader.component.scss']
+  styleUrls: ['./uploader.component.scss'],
+  
 })
 export class UploaderComponent implements OnInit, OnDestroy {
 
@@ -32,12 +33,13 @@ export class UploaderComponent implements OnInit, OnDestroy {
     for (let i = 0; i < files.length; i++) {
       this.files.push(files.item(i));
       this.onChange.emit(this.files.length)
+
       var reader = new FileReader();
 
       reader.readAsDataURL(files.item(i)); // read file as data url
 
       reader.onload = (event) => { // called once readAsDataURL is completed=
-        this.urls.push(reader.result);
+        this.urls.push({name: files.item(i).name, url: reader.result});
       }
     }
   }
@@ -56,5 +58,16 @@ export class UploaderComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.eventSubscriptions.forEach(subscription => subscription.unsubscribe());
+  }
+
+  delete(image): void {
+    let index = this.urls.findIndex((current) => {
+      return current === image
+    });
+    this.urls.splice(index, 1);
+    let index2 = this.files.findIndex((current) => {
+      return current.name === image.name
+    })
+    this.files.splice(index2, 1);
   }
 }

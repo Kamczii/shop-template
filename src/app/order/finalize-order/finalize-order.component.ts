@@ -57,6 +57,6 @@ export class FinalizeOrderComponent implements OnInit {
     order.status = OrderStatus.O;
     order.email = this.dataForm.get('contactForm.email').value;
     order.phone = this.dataForm.get('contactForm.phone').value;
-    this.orderService.makeOrder(order).then(data => { console.log(data); this.cartService.clearCart() });
+    this.orderService.makeOrder(order).then(data => { this.cartService.clearCart() });
   }
 }

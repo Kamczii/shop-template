@@ -31,8 +31,6 @@ export class ProductsPageComponent implements OnInit {
   }
 
   changeFilter(filters: BaseFilter[]){
-    console.log(Array.from(filters));
-    console.log(filters)
     this.getProducts(filters)
   }
 

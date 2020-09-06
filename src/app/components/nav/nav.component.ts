@@ -18,7 +18,7 @@ export class NavComponent implements OnInit {
   user: User;
   cartCount: number = 0;
   constructor(public cartService: ShoppingCartService, private authService: AuthService) {
-    this.authService.user$.subscribe(data => {console.log(data);this.user = data})
+    this.authService.user$.subscribe(data => {this.user = data})
   }
 
   ngOnInit(): void {

@@ -22,13 +22,13 @@ import { EnumWithValuesToArrayPipe } from '../order/pipes/EnumWithValuesToArrayP
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner/loading-spinner.component';
 import { DropzoneDirective } from './upload-dropzone/dropzone.directive';
 import { UploaderComponent } from './upload-dropzone/uploader/uploader.component';
-import { UploadTaskComponent } from './upload-dropzone/upload-task/upload-task.component';
 import { PriceInputComponent } from './forms/price-input/price-input.component';
 import { SearchProductsInputComponent } from './search-products-input/search-products-input.component';
 import { PhoneInputComponent } from './forms/phone-input/phone-input.component';
 import { PhoneDirective } from './forms/phone-input/phone.directive';
 import { OrderSummaryComponent } from './order-summary/order-summary.component';
 import { AddBrandComponent } from './forms/add-brand/add-brand.component';
+import { FileToUploadComponent } from './upload-dropzone/uploader/file-to-upload/file-to-upload.component';
 
 
 
@@ -53,13 +53,13 @@ import { AddBrandComponent } from './forms/add-brand/add-brand.component';
     LoadingSpinnerComponent,
     DropzoneDirective,
     UploaderComponent,
-    UploadTaskComponent,
     PriceInputComponent,
     SearchProductsInputComponent,
     PhoneInputComponent,
     PhoneDirective,
     OrderSummaryComponent,
-    AddBrandComponent
+    AddBrandComponent,
+    FileToUploadComponent
   ],
   imports: [
     CommonModule,

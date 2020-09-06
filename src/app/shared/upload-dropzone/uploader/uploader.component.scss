@@ -5,9 +5,9 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    min-width: 80%;
+    max-width: 100%;
     font-weight: 200;
-    height: 300px;
+    height: 250px;
     border: 2px dashed $accent;
     border-radius: 5px;
     background-color: $primary;
@@ -15,4 +15,15 @@
     &:hover{
 
     }
+}
+
+.gallery{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.wrapper{
+    background-color:$primary;
+    padding: 1rem;
+    border-radius: 1rem;
 }

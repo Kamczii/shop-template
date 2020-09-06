@@ -74,7 +74,6 @@ export class ShoppingCartService {
 
   checkIfSizesSet(){
     this.cart.forEach((item) => {
-      console.log(item.size);
       if(item.size==null)
         return false;
     })
