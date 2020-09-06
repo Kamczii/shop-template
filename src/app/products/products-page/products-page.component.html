@@ -2,11 +2,11 @@
     <div class="header ">
         <app-header message="Meble"></app-header>
     </div>
-    <div class="row">
-        <div class="filters col-md-3 col-lg-2 pr-2 mb-2">
+    <div class="products-list">
+        <div class="p-2">
             <app-filters (onChangeFilter)="changeFilter($event)"></app-filters>
         </div>
-        <div class="products-list col-md-9 col-lg-10">
+        <div>
             <app-product-list [products]="products"></app-product-list>
         </div>
     </div>
