@@ -26,8 +26,7 @@ import { startWith, map } from 'rxjs/operators';
       useExisting: forwardRef(() => AddressFormComponent),
       multi: true,
     }
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  ]
 })
 export class ProductFormComponent implements ControlValueAccessor, OnDestroy, OnInit {
 
