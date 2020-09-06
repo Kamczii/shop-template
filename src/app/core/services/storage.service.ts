@@ -9,7 +9,7 @@ export class StorageService {
 
   uploadFile(file: File, path: string) {
     let task = this.storage.upload(path, file);
-    return task.percentageChanges();
+    return task;
   }
 
   getImagesByProductId(productId: string){

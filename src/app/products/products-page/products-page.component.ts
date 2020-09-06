@@ -13,7 +13,7 @@ import { FilterSymbol } from 'src/app/shared/enums/filter-symbol.enum';
 export class ProductsPageComponent implements OnInit {
 
   products: Product[];
-  limit: number = 8;
+  limit: number = 15;
   startAt: Product;
   endBefore: Product;
   filter: BaseFilter[];
