@@ -58,4 +58,11 @@ export class ProductService {
   getAllBrands() {
     return this.firestore.collection<{name: string}>('brands').valueChanges().pipe(map((value) => value.map((brand) => brand.name)));
   }
+
+  addCategory(value: string){
+    return this.firestore.collection<{name: string}>('categories').add({name: value});
+  }
+  getAllCategories() {
+    return this.firestore.collection<{name: string}>('categories').valueChanges().pipe(map((value) => value.map((category) => category.name)));
+  }
 }

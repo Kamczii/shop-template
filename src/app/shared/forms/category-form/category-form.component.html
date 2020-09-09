@@ -1,0 +1,21 @@
+<mat-form-field>
+    <mat-label>Kategoria</mat-label>
+    <mat-select [formControl]="categories"  *ngIf="!multiple" (selectionChange)="selectionChange($event.value)">
+      <mat-select-trigger>
+        {{categories.value}}
+      </mat-select-trigger>
+      <mat-option *ngFor="let category of categoryList$ | async" [value]="category">{{category}}</mat-option>
+    </mat-select>
+    <mat-select [formControl]="categories" *ngIf="multiple" multiple (selectionChange)="selectionChange($event.value)">
+      <mat-select-trigger>
+        {{categories.value ? categories.value[0] : ''}}
+        <span *ngIf="categories.value?.length > 1" class="example-additional-selection">
+          (+{{categories.value.length - 1}} {{categories.value?.length >= 2 ? 'inny' : 'inne'}})
+        </span>
+      </mat-select-trigger>
+      <mat-option *ngFor="let category of categoryList$ | async" [value]="category">{{category}}</mat-option>
+    </mat-select>
+    <mat-error *ngIf="categories.hasError('required')">
+      Wymagane
+    </mat-error>
+  </mat-form-field>

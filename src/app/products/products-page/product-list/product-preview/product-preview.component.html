@@ -1,6 +1,6 @@
 
   <div class="example-ripple-container mat-elevation-z4" matRipple [matRippleCentered]="centered"
-    [matRippleDisabled]="disabled" [matRippleUnbounded]="unbounded" [matRippleRadius]="radius" [matRippleColor]="color" routerLink="{{product.id}}">
+    [matRippleDisabled]="disabled" [matRippleUnbounded]="unbounded" [matRippleRadius]="radius" [matRippleColor]="color" routerLink="/products/{{product.id}}">
     <mat-card class="card">
       <img *ngIf="images.get(1); else loading" mat-card-image (mouseover)="over($event)" (mouseout)="out($event)"
       [src]="images.get(1)">

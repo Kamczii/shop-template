@@ -173,7 +173,8 @@ export class ProductFormComponent implements ControlValueAccessor, OnDestroy, On
   createForm(){
     this.productForm = this.fb.group({
       name: ['', Validators.required],
-      brand: [''],
+      brand: ['',Validators.required],
+      category: ['', Validators.required],
       description: ['', Validators.required],
       price: ['', Validators.required],
       advantages: [[]],

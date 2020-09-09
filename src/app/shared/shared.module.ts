@@ -29,6 +29,7 @@ import { PhoneDirective } from './forms/phone-input/phone.directive';
 import { OrderSummaryComponent } from './order-summary/order-summary.component';
 import { AddBrandComponent } from './forms/add-brand/add-brand.component';
 import { FileToUploadComponent } from './upload-dropzone/uploader/file-to-upload/file-to-upload.component';
+import { CategoryFormComponent } from './forms/category-form/category-form.component';
 
 
 
@@ -59,7 +60,8 @@ import { FileToUploadComponent } from './upload-dropzone/uploader/file-to-upload
     PhoneDirective,
     OrderSummaryComponent,
     AddBrandComponent,
-    FileToUploadComponent
+    FileToUploadComponent,
+    CategoryFormComponent
   ],
   imports: [
     CommonModule,
@@ -80,7 +82,7 @@ import { FileToUploadComponent } from './upload-dropzone/uploader/file-to-upload
   exports: [LoginLogoutButtonComponent, ConfirmButtonComponent, BrandFormComponent,
     PriceFormComponent,
     SizeFormComponent, OneSizeFormComponent, EnumToArrayPipe, HeaderComponent, PriceComponent, AddressFormComponent,
-    PasswordInputComponent,
+    PasswordInputComponent,CategoryFormComponent,
     EmailInputComponent, AddressComponent, OrderComponent, SnackbarComponent, EnumWithValuesToArrayPipe, LoadingSpinnerComponent, AddBrandComponent, OrderSummaryComponent, UploaderComponent, PriceInputComponent, SearchProductsInputComponent,PhoneInputComponent]
 })
 export class SharedModule { }

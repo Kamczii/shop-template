@@ -10,7 +10,6 @@
           </mat-error>
         </mat-form-field>
       </p>
-      <app-brand-form [multiple]="false" (selectionChanged)="getControls().brand.setValue($event)"></app-brand-form>
       <p>
         <mat-form-field class="full-width">
           <mat-label>Opis</mat-label>
@@ -32,6 +31,9 @@
         <app-price-input formControlName="price"></app-price-input>
       </p>
   
+      <div><app-brand-form [multiple]="false" (selectionChanged)="getControls().brand.setValue($event)"></app-brand-form></div>
+      <div><app-category-form [multiple]="false" (selectionChanged)="getControls().category.setValue($event)"></app-category-form></div>
+      
       <mat-form-field class="chip-list">
         <mat-chip-list #chipList aria-label="Advantages selection">
           <mat-chip *ngFor="let advantage of advantages.value" [selectable]="selectable" [removable]="removable"

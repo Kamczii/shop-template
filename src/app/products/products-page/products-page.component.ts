@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from 'src/app/shared/models/product';
 import { ProductService } from 'src/app/core/services/product.service';
 import { BaseFilter } from 'src/app/shared/models/BaseFilter';
 import { FilterSymbol } from 'src/app/shared/enums/filter-symbol.enum';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-products-page',
@@ -16,12 +17,50 @@ export class ProductsPageComponent implements OnInit {
   limit: number = 15;
   startAt: Product;
   endBefore: Product;
-  filter: BaseFilter[];
+  filter: BaseFilter[] = [];
+  category: string;
+
   
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService, private route: ActivatedRoute) {
+
+    this.route.params.subscribe((params) => {
+      let index = this.filter.findIndex(value => {
+        return (value.field == 'category')
+      })
+
+      if(params.category){
+        if(index==-1){
+        this.category = params.category;
+        this.filter.push({
+          field: 'category',
+          symbol: FilterSymbol.eq,
+          value: params.category
+        } )
+      }
+      else{
+        this.filter[index] = {
+          field: 'category',
+          symbol: FilterSymbol.eq,
+          value: params.category
+        }
+      }}
+      else{
+        this.filter.slice(index,1);
+        this.category = 'Wszystko'
+      }
+
+
+      this.getProducts(this.filter);
+    })
+
+   }
 
   ngOnInit() {
-    this.getProducts();
+    this.getProducts(this.filter);
+  }
+
+  ngOnDestroy(){
+
   }
 
   getProducts(filters?) {

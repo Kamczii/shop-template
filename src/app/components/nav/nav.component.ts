@@ -8,6 +8,7 @@ import { ShoppingCartService } from 'src/app/core/services/shopping-cart.service
 import { AuthService } from 'src/app/core/services/auth.service';
 import { User } from 'src/app/shared/models/user';
 import { AdminGuard } from 'src/app/core/guards/admin.guard';
+import { ProductService } from 'src/app/core/services/product.service';
 
 @Component({
   selector: 'app-nav',
@@ -17,8 +18,11 @@ import { AdminGuard } from 'src/app/core/guards/admin.guard';
 export class NavComponent implements OnInit {
   user: User;
   cartCount: number = 0;
-  constructor(public cartService: ShoppingCartService, private authService: AuthService) {
+  categories: string[];
+
+  constructor(public cartService: ShoppingCartService, private authService: AuthService, private productService: ProductService) {
     this.authService.user$.subscribe(data => {this.user = data})
+    this.productService.getAllCategories().subscribe(data => {this.categories = data});
   }
 
   ngOnInit(): void {

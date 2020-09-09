@@ -1,10 +1,10 @@
 <div>
-    <div class="header ">
-        <app-header message="Meble"></app-header>
+    <div *ngIf="category" class="header ">
+        <app-header [message]="category"></app-header>
     </div>
     <div class="products-list">
         <div class="pr-md-2 pb-2">
-            <mat-expansion-panel hideToggle (opened)="panelOpenState = true"
+            <mat-expansion-panel hideToggle [expanded]="true" (opened)="panelOpenState = true"
             (closed)="panelOpenState = false">
                 <mat-expansion-panel-header>
                   <mat-panel-title>
