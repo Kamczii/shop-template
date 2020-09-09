@@ -11,6 +11,6 @@
         </mat-form-field>
       </form>
         
-      <app-confirm-button message="Dodaj" (confirmed)="addBrand()"></app-confirm-button>
+      <app-confirm-button message="Dodaj" (confirmed)="addBrand()" [disabled]="brandVal==null || brandVal.length==0"></app-confirm-button>
   </div>
 </mat-card>
