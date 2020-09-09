@@ -1,5 +1,5 @@
 <figure>
     <div class="gallery-container">
-        <img *ngFor="let image of imageURLs" [src]="image">
+        <img *ngFor="let image of imageURLs | keyvalue" [src]="image.value">
     </div>
 </figure>

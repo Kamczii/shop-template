@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-4 col-md-2 col">
-        <img *ngIf="images[0]; else loading" [src]="images[0]">
+        <img *ngIf="images.get(1); else loading" [src]="images.get(1)">
         <ng-template #loading>
             <app-loading-spinner></app-loading-spinner>
           </ng-template>

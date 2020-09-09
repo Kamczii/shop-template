@@ -6,6 +6,7 @@ import { StorageService } from './storage.service';
 import { switchMap, take } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { BaseFilter } from 'src/app/shared/models/BaseFilter';
+import { firestore } from 'firebase';
 
 @Injectable()
 export class ProductService {
@@ -48,7 +49,7 @@ export class ProductService {
 
   
   addImageToProduct(productId: string, imageId: number, downloadURL: string) {
-      this.firestore.collection('products').doc(productId).update({imageURLs: downloadURL});
+      this.firestore.collection('products').doc(productId).update({imageURLs: firestore.FieldValue.arrayUnion({key: imageId, value: downloadURL})}).catch(error => console.log(error));
   }
 
   addBrand(value: string){

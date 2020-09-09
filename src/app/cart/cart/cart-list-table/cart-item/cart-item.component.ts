@@ -14,13 +14,13 @@ export class CartItemComponent implements OnInit {
 
   sizes: Sizes[] = [];
   @Input() item: CartItem;
-  images: string[] = [];
+  images: Map<number,string> = new Map<number,string>();
   constructor(private cartService: ShoppingCartService, private storageService: StorageService) { }
 
   ngOnInit() {
     let that = this;
     this.storageService.getImagesByProductId(this.item.product.id).subscribe(data=>data.items.forEach(item => item.getDownloadURL().then(function(url){
-      that.images.push(url);
+      that.images.set(+item.name, url);
     })));
 
     this.item.product.sizes.forEach(size => {

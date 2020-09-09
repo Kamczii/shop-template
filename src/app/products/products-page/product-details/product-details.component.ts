@@ -16,7 +16,7 @@ export class ProductDetailsComponent implements OnInit {
   product$: Observable<Product>;
   images$: Observable<any>;
 
-  images: string[] = [];
+  images: Map<number,string> = new Map<number,string>();
 
   constructor(private activatedRoute: ActivatedRoute, private productService: ProductService, private storageService: StorageService) {
 
@@ -32,9 +32,9 @@ export class ProductDetailsComponent implements OnInit {
     );
 
     let that = this;
-    this.images$.subscribe(data=>data.items.forEach(item => {
-      item.getDownloadURL().then(data => this.images.push(data))
-    }));
+    this.images$.subscribe(data=>data.items.forEach(item => item.getDownloadURL().then(function(url){
+      that.images.set(+item.name, url);
+    })));
   }
 
 }

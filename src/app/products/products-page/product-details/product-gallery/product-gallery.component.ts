@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ProductGalleryComponent implements OnInit {
 
-  @Input() imageURLs: string[] = [];
+  @Input() imageURLs: Map<number,string> = new Map<number,string>();
   constructor() { }
 
   ngOnInit() {
