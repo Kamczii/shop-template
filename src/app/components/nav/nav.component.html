@@ -5,6 +5,9 @@
     </button>
     <img src="assets/logo.png" [routerLink]="['']">
     <div fxShow="true" fxHide.lt-md>
+      <button mat-button style="padding: 1rem" [routerLink]="['/products']">
+        Wszystko
+      </button>
       <button *ngFor="let category of categories" mat-button style="padding: 1rem" [routerLink]="['/products/categories',category]">
         {{category}}
       </button>
@@ -40,7 +43,9 @@
         <span class="cdk-visually-hidden">
           Koszyk
         </span></a>
-
+        <a mat-list-item *ngFor="let category of categories" [routerLink]="['/products']">
+          Wszystko
+        </a>
         <a mat-list-item *ngFor="let category of categories" [routerLink]="['/products/categories',category]">
           {{category}}
         </a>

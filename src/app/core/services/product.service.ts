@@ -20,6 +20,7 @@ export class ProductService {
         query = query.where(filter.field,filter.symbol,filter.value);
       }}
       if(limit) query = query.limit(limit);
+      query = query.orderBy('date');
       return query;
     }).snapshotChanges().pipe(
       map(changes => {
@@ -44,6 +45,7 @@ export class ProductService {
 
   
   addProduct(value: Product) {
+    value.date = new Date();
     return this.firestore.collection<Product>('products').add(value);
   }
 
