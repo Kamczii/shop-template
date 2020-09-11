@@ -18,9 +18,6 @@ import { ControlValueAccessorConnectorFalse } from '../control-value-accessor-co
 })
 export class CategoryFormComponent  extends ControlValueAccessorConnectorFalse implements OnInit{
 
-  @Input() multiple: boolean = true;
-  @Output() filterChanged = new EventEmitter<BaseFilter>();
-  @Output() selectionChanged = new EventEmitter<string>();
 
   categoryList$: Observable<string[]>;
 
@@ -36,16 +33,5 @@ export class CategoryFormComponent  extends ControlValueAccessorConnectorFalse i
   
   clearInput() {
     this.control.setValue('');
-  }
-
-  selectionChange($event){
-    let filter: BaseFilter;
-      filter = {
-      field: 'category',
-      symbol: FilterSymbol.eq,
-      value: $event
-    } 
-    this.filterChanged.emit(filter);
-    this.selectionChanged.emit($event)
   }
 }

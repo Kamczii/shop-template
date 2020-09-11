@@ -31,8 +31,8 @@
         <app-price-input formControlName="price"></app-price-input>
       </p>
   
-      <div><app-brand-form [multiple]="false" (selectionChanged)="getControls().brand.setValue($event)"></app-brand-form></div>
-      <div><app-category-form [multiple]="false" [formControlName]="'category'"></app-category-form></div>
+      <div><app-brand-select [formControlName]="'brand'"></app-brand-select></div>
+      <div><app-category-form [formControlName]="'category'"></app-category-form></div>
       
       {{productForm.value | json}}
       <mat-form-field class="chip-list">

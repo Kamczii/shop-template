@@ -4,7 +4,6 @@ import { ConfirmButtonComponent } from './confirm-button/confirm-button.componen
 import { LoginLogoutButtonComponent } from './login-logout-button/login-logout-button.component';
 import { MatMenuModule, MatButtonModule, MatChipsModule, MatAutocompleteModule, MatIconModule, MatFormFieldModule, MatSelectModule, MatInputModule, MatCardModule, MatProgressBarModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
-import { BrandFormComponent } from './forms/brand-form/brand-form.component';
 import { PriceFormComponent } from './forms/price-form/price-form.component';
 import { SizeFormComponent } from './forms/size-form/size-form.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -30,6 +29,8 @@ import { OrderSummaryComponent } from './order-summary/order-summary.component';
 import { AddBrandComponent } from './forms/add-brand/add-brand.component';
 import { FileToUploadComponent } from './upload-dropzone/uploader/file-to-upload/file-to-upload.component';
 import { CategoryFormComponent } from './forms/category-input/category-form.component';
+import { BrandFormComponent } from './forms/brand-select/brand-select.component';
+import { BrandFilterComponent } from './forms/brand-filter/brand-filter.component';
 
 
 
@@ -61,7 +62,8 @@ import { CategoryFormComponent } from './forms/category-input/category-form.comp
     OrderSummaryComponent,
     AddBrandComponent,
     FileToUploadComponent,
-    CategoryFormComponent
+    CategoryFormComponent,
+    BrandFilterComponent
   ],
   imports: [
     CommonModule,
@@ -83,6 +85,6 @@ import { CategoryFormComponent } from './forms/category-input/category-form.comp
     PriceFormComponent,
     SizeFormComponent, OneSizeFormComponent, EnumToArrayPipe, HeaderComponent, PriceComponent, AddressFormComponent,
     PasswordInputComponent,CategoryFormComponent,
-    EmailInputComponent, AddressComponent, OrderComponent, SnackbarComponent, EnumWithValuesToArrayPipe, LoadingSpinnerComponent, AddBrandComponent, OrderSummaryComponent, UploaderComponent, PriceInputComponent, SearchProductsInputComponent,PhoneInputComponent]
+    EmailInputComponent, AddressComponent, OrderComponent, SnackbarComponent, BrandFilterComponent, EnumWithValuesToArrayPipe, LoadingSpinnerComponent, AddBrandComponent, OrderSummaryComponent, UploaderComponent, PriceInputComponent, SearchProductsInputComponent,PhoneInputComponent]
 })
 export class SharedModule { }

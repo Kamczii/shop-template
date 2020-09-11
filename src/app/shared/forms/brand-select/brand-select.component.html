@@ -1,0 +1,12 @@
+<mat-form-field>
+  <mat-label>Marka</mat-label>
+  <mat-select [formControl]="control" (selectionChange)="selectionChange($event.value)">
+    <mat-select-trigger>
+      {{control.value}}
+    </mat-select-trigger>
+    <mat-option *ngFor="let brand of brandList$ | async" [value]="brand">{{brand}}</mat-option>
+  </mat-select>
+  <mat-error *ngIf="control.hasError('required')">
+    Marka wymagana
+  </mat-error>
+</mat-form-field>
