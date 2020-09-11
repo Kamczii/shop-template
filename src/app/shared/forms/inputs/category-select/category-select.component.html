@@ -7,6 +7,6 @@
       <mat-option *ngFor="let category of categoryList$ | async" [value]="category">{{category}}</mat-option>
     </mat-select>
     <mat-error *ngIf="control.hasError('required')">
-      Kategoria wymagana
+      Kategoria jest <b>wymagana</b>
     </mat-error>
 </mat-form-field>

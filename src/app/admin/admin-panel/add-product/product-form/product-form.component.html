@@ -21,14 +21,7 @@
       </p>
   
       <p>
-        <!-- <mat-form-field class="full-width">
-          <mat-label>Cena</mat-label>
-          <input matInput type="number" formControlName="price" placeholder="np. 119">
-          <mat-error *ngIf="getControls().price.hasError('required')">
-            Cena jest <strong>wymagana</strong>
-          </mat-error>
-        </mat-form-field> -->
-        <app-price-input formControlName="price"></app-price-input>
+        <app-price-input [formControlName]="'price'"></app-price-input>
       </p>
   
       <div><app-brand-select [formControlName]="'brand'"></app-brand-select></div>

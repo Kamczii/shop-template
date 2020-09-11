@@ -7,6 +7,6 @@
     <mat-option *ngFor="let brand of brandList$ | async" [value]="brand">{{brand}}</mat-option>
   </mat-select>
   <mat-error *ngIf="control.hasError('required')">
-    Marka wymagana
+    Marka jest <b>wymagana</b>
   </mat-error>
 </mat-form-field>
