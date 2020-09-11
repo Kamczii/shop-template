@@ -1,5 +1,5 @@
 <form [formGroup]="registerForm" (ngSubmit)="submit()">
-  <app-email-input formControlName="email"></app-email-input>
+  <app-email-input [formControlName]="'email'"></app-email-input>
   <app-password-input formControlName="password"></app-password-input>
   <app-confirm-button [disabled]="registerForm.invalid" message="Zarejestruj się"></app-confirm-button>
 </form>

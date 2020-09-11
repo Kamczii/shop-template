@@ -28,7 +28,7 @@ export class FinalizeOrderComponent implements OnInit {
     this.dataForm = this.fb.group({
       address: [],
       contactForm: this.fb.group({
-        email: [],
+        email: ['',[Validators.required, Validators.email]],
         phone: [],
       })
     });

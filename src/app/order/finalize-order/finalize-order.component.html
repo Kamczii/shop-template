@@ -7,8 +7,8 @@
         
         <div class="contact-form" formGroupName="contactForm">
           
-          <div><app-phone-input formControlName="phone"></app-phone-input></div>
-          <div><app-email-input formControlName="email"></app-email-input></div>
+          <div><app-phone-input [formControlName]="'phone'"></app-phone-input></div>
+          <div><app-email-input [formControlName]="'email'"></app-email-input></div>
         </div>
       </form>
       

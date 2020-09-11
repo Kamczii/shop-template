@@ -21,7 +21,7 @@ export class LoginFormComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private auth: AuthService, private _snackBar: MatSnackBar) {
     this.loginForm = this.fb.group({
-      email: [''],
+      email: ['', [Validators.email, Validators.required]],
       password: ['', Validators.required]
     })
   }
@@ -39,7 +39,7 @@ export class LoginFormComponent implements OnInit {
   }
 
   login() {
-    this.auth.login(this.getEmailControl().value.email, this.getPasswordControl().value).catch(err => {
+    this.auth.login(this.getEmailControl().value, this.getPasswordControl().value).catch(err => {
       if (err.code == "auth/user-not-found") this.openSnackBar("Nie ma takiego użytkownika", "zamknij");
     });
   }

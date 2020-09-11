@@ -16,13 +16,13 @@
                 <p><b>E-mail:</b> {{user.email}}<button mat-icon-button color="primary" (click)="editEmail=!editEmail" aria-label="edit"><mat-icon>edit</mat-icon></button>
                 </p>
                 <form *ngIf="editEmail" class="example-form" [formGroup]="emailForm" (submit)="updateEmail()">
-                  <app-email-input   formControlName="email"></app-email-input><button  [disabled]="emailForm.invalid" mat-icon-button color="primary" aria-label="Example icon button with a menu icon" type="submit">
+                  <app-email-input   [formControlName]="'email'"></app-email-input><button  [disabled]="emailForm.invalid" mat-icon-button color="primary" aria-label="Example icon button with a menu icon" type="submit">
                     <mat-icon>check</mat-icon>
                   </button>
                 </form>
                 <p><b>Telefon:</b> {{user.phone}}<button mat-icon-button color="primary" aria-label="edit" (click)="editPhone=!editPhone"><mat-icon>edit</mat-icon></button></p>
                 <form *ngIf="editPhone" class="example-form" [formGroup]="phoneForm" (submit)="updatePhone()">
-                  <app-phone-input  formControlName="phone"></app-phone-input><button mat-icon-button color="primary"  [disabled]="phoneForm.invalid" aria-label="Example icon button with a menu icon" type="submit">
+                  <app-phone-input  [formControlName]="'phone'"></app-phone-input><button mat-icon-button color="primary"  [disabled]="phoneForm.invalid" aria-label="Example icon button with a menu icon" type="submit">
                     <mat-icon>check</mat-icon>
                   </button>
                 </form>
