@@ -1,13 +1,12 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { FilterSymbol } from '../../enums/filter-symbol.enum';
-import { BaseFilter } from '../../models/BaseFilter';
-
+import { FilterSymbol } from 'src/app/shared/enums/filter-symbol.enum';
+import { BaseFilter } from 'src/app/shared/models/BaseFilter';
 @Component({
-  selector: 'app-price-form',
-  templateUrl: './price-form.component.html',
-  styleUrls: ['./price-form.component.scss']
+  selector: 'app-price-filter',
+  templateUrl: './price-filter.component.html',
+  styleUrls: ['./price-filter.component.scss']
 })
-export class PriceFormComponent implements OnInit {
+export class PriceFilterComponent implements OnInit {
 
   @Output() filterChanged = new EventEmitter<BaseFilter>();
 

@@ -9,7 +9,8 @@ import { AddressComponent } from './address/address.component';
 import { ConfirmButtonComponent } from './confirm-button/confirm-button.component';
 import { AddBrandComponent } from './forms/add-brand/add-brand.component';
 import { AddressFormComponent } from './forms/address-form/address-form.component';
-import { BrandFilterComponent } from './forms/brand-filter/brand-filter.component';
+import { BrandFilterComponent } from './forms/filters/brand-filter/brand-filter.component';
+import { PriceFilterComponent } from './forms/filters/price-filter/price-filter.component';
 import { BrandFormComponent } from './forms/inputs/brand-select/brand-select.component';
 import { CategorySelectComponent } from './forms/inputs/category-select/category-select.component';
 import { EmailInputComponent } from './forms/inputs/email-input/email-input.component';
@@ -18,7 +19,6 @@ import { PhoneInputComponent } from './forms/inputs/phone-input/phone-input.comp
 import { PhoneDirective } from './forms/inputs/phone-input/phone.directive';
 import { PriceInputComponent } from './forms/inputs/price-input/price-input.component';
 import { OneSizeFormComponent } from './forms/one-size-form/one-size-form.component';
-import { PriceFormComponent } from './forms/price-form/price-form.component';
 import { SizeFormComponent } from './forms/size-form/size-form.component';
 import { HeaderComponent } from './header/header.component';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner/loading-spinner.component';
@@ -39,7 +39,7 @@ import { UploaderComponent } from './upload-dropzone/uploader/uploader.component
     ConfirmButtonComponent,
     LoginLogoutButtonComponent,
     BrandFormComponent,
-    PriceFormComponent,
+    PriceFilterComponent,
     SizeFormComponent,
     OneSizeFormComponent,
     EnumToArrayPipe,
@@ -82,7 +82,7 @@ import { UploaderComponent } from './upload-dropzone/uploader/uploader.component
     MatProgressBarModule,
   ],
   exports: [LoginLogoutButtonComponent, ConfirmButtonComponent, BrandFormComponent,
-    PriceFormComponent,
+    PriceFilterComponent,
     SizeFormComponent, OneSizeFormComponent, EnumToArrayPipe, HeaderComponent, PriceComponent, AddressFormComponent,
     PasswordInputComponent,CategorySelectComponent,
     EmailInputComponent, AddressComponent, OrderComponent, SnackbarComponent, BrandFilterComponent, EnumWithValuesToArrayPipe, LoadingSpinnerComponent, AddBrandComponent, OrderSummaryComponent, UploaderComponent, PriceInputComponent, SearchProductsInputComponent,PhoneInputComponent]

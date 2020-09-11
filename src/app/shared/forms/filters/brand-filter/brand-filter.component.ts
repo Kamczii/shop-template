@@ -2,9 +2,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { ProductService } from 'src/app/core/services/product.service';
-import { FilterSymbol } from '../../enums/filter-symbol.enum';
-import { BaseFilter } from '../../models/BaseFilter';
-
+import { FilterSymbol } from 'src/app/shared/enums/filter-symbol.enum';
+import { BaseFilter } from 'src/app/shared/models/BaseFilter';
 @Component({
   selector: 'app-brand-filter',
   templateUrl: './brand-filter.component.html',
