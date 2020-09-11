@@ -29,7 +29,7 @@ import { PhoneDirective } from './forms/phone-input/phone.directive';
 import { OrderSummaryComponent } from './order-summary/order-summary.component';
 import { AddBrandComponent } from './forms/add-brand/add-brand.component';
 import { FileToUploadComponent } from './upload-dropzone/uploader/file-to-upload/file-to-upload.component';
-import { CategoryFormComponent } from './forms/category-form/category-form.component';
+import { CategoryFormComponent } from './forms/category-input/category-form.component';
 
 
 

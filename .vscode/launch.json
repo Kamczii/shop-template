@@ -5,10 +5,28 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "pwa-chrome",
+            "name": "Launch Chrome against localhost, with sourcemaps",
+            "type": "chrome",
             "request": "launch",
-            "name": "Launch Chrome against localhost",
-            "webRoot": "${workspaceFolder}"
+            "url": "http://localhost:4200/",
+            "runtimeArgs": [
+               "--user-data-dir",
+               "--remote-debugging-port=9222"
+            ],
+            "sourceMaps": true,
+            "trace": true,
+            "webRoot": "${workspaceRoot}",
+            "userDataDir": "${workspaceRoot}/.vscode/chrome"
+        },
+        {
+            "name": "Attach to Chrome, with sourcemaps",
+            "type": "chrome",
+            "request": "attach",
+            "url": "http://localhost:4200/",
+            "port": 9222,
+            "sourceMaps": true,
+            "trace": true,
+            "webRoot": "${workspaceRoot}"
         }
     ]
 }

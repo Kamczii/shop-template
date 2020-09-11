@@ -1,0 +1,21 @@
+<mat-form-field>
+    <mat-label>Kategoria</mat-label>
+    <mat-select [formControl]="control"  *ngIf="!multiple">
+      <mat-select-trigger>
+        {{control.value}}
+      </mat-select-trigger>
+      <mat-option *ngFor="let category of categoryList$ | async" [value]="category">{{category}}</mat-option>
+    </mat-select>
+    <mat-select [formControl]="control" *ngIf="multiple" multiple>
+      <mat-select-trigger>
+        {{control.value ? control.value[0] : ''}}
+        <span *ngIf="control.value?.length > 1" class="example-additional-selection">
+          (+{{control.value.length - 1}} {{control.value?.length >= 2 ? 'inny' : 'inne'}})
+        </span>
+      </mat-select-trigger>
+      <mat-option *ngFor="let category of categoryList$ | async" [value]="category">{{category}}</mat-option>
+    </mat-select>
+    <mat-error *ngIf="control.hasError('required')">
+      Kategoria wymagana
+    </mat-error>
+</mat-form-field>

@@ -26,10 +26,10 @@ export class FinalizeOrderComponent implements OnInit {
     this.cart = this.cartService.read();
 
     this.dataForm = this.fb.group({
-      address: [],
+      address: ['', Validators.required],
       contactForm: this.fb.group({
         email: ['',[Validators.required, Validators.email]],
-        phone: [],
+        phone: ['', Validators.required],
       })
     });
     this.paymentForm = this.fb.group({

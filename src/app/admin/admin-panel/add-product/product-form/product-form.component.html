@@ -1,4 +1,4 @@
-<mat-vertical-stepper  [formGroup]="productForm">
+<mat-vertical-stepper [formGroup]="productForm">
     <mat-step>
       <ng-template matStepLabel>Podstawowe informacje</ng-template>
       <p>
@@ -32,8 +32,9 @@
       </p>
   
       <div><app-brand-form [multiple]="false" (selectionChanged)="getControls().brand.setValue($event)"></app-brand-form></div>
-      <div><app-category-form [multiple]="false" (selectionChanged)="getControls().category.setValue($event)"></app-category-form></div>
+      <div><app-category-form [multiple]="false" [formControlName]="'category'"></app-category-form></div>
       
+      {{productForm.value | json}}
       <mat-form-field class="chip-list">
         <mat-chip-list #chipList aria-label="Advantages selection">
           <mat-chip *ngFor="let advantage of advantages.value" [selectable]="selectable" [removable]="removable"
