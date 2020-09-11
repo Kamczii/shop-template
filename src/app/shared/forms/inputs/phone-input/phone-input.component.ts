@@ -1,9 +1,7 @@
 
 import { Component, OnInit, OnDestroy, forwardRef, ChangeDetectionStrategy,Injector } from '@angular/core';
 import { NG_VALUE_ACCESSOR, NG_VALIDATORS, FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
-import { Subscription } from 'rxjs';
-import { isObject } from 'util';
-import { ControlValueAccessorConnectorTrue } from '../control-value-accessor-connector-true';
+import { ControlValueAccessorConnectorStaticTrue } from '../../control-value-accessor-connector-true';
 
 @Component({
   selector: 'app-phone-input',
@@ -17,7 +15,7 @@ import { ControlValueAccessorConnectorTrue } from '../control-value-accessor-con
     }
   ]
 })
-export class PhoneInputComponent extends ControlValueAccessorConnectorTrue {
+export class PhoneInputComponent extends ControlValueAccessorConnectorStaticTrue {
 
   constructor(injector: Injector) {
     super(injector);

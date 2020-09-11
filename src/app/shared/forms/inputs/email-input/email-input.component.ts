@@ -2,7 +2,7 @@ import { Component, OnInit, forwardRef, ChangeDetectionStrategy, OnDestroy, Inje
 import { FormGroup, Validators, FormBuilder, NG_VALUE_ACCESSOR, NG_VALIDATORS, ControlValueAccessor, FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { isObject } from 'util';
-import { ControlValueAccessorConnectorTrue } from '../control-value-accessor-connector-true';
+import { ControlValueAccessorConnectorStaticTrue } from '../../control-value-accessor-connector-true';
 
 @Component({
   selector: 'app-email-input',
@@ -16,7 +16,7 @@ import { ControlValueAccessorConnectorTrue } from '../control-value-accessor-con
     }]
 })
 
-export class EmailInputComponent extends ControlValueAccessorConnectorTrue {
+export class EmailInputComponent extends ControlValueAccessorConnectorStaticTrue {
 
   constructor(injector: Injector) {
     super(injector);

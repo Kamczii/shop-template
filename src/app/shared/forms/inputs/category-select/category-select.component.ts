@@ -1,22 +1,19 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { BaseFilter } from '../../models/BaseFilter';
 import { FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { ProductService } from 'src/app/core/services/product.service';
-import { FilterSymbol } from '../../enums/filter-symbol.enum';
-import { ControlValueAccessorConnectorTrue } from '../control-value-accessor-connector-true';
 import { Injector } from '@angular/core';
-import { ControlValueAccessorConnectorFalse } from '../control-value-accessor-connector-false';
+import { ControlValueAccessorConnectorStaticFalse } from '../../control-value-accessor-connector-false';
 
 @Component({
-  selector: 'app-category-form',
-  templateUrl: './category-form.component.html',
-  styleUrls: ['./category-form.component.scss'],
+  selector: 'app-category-select',
+  templateUrl: './category-select.component.html',
+  styleUrls: ['./category-select.component.scss'],
   providers: [{
-    provide: NG_VALUE_ACCESSOR, useExisting: CategoryFormComponent, multi: true
+    provide: NG_VALUE_ACCESSOR, useExisting: CategorySelectComponent, multi: true
   }]
 })
-export class CategoryFormComponent  extends ControlValueAccessorConnectorFalse implements OnInit{
+export class CategorySelectComponent  extends ControlValueAccessorConnectorStaticFalse implements OnInit{
 
 
   categoryList$: Observable<string[]>;

@@ -4,10 +4,8 @@ import { Observable } from 'rxjs';
 import { ENTER, COMMA } from '@angular/cdk/keycodes';
 import { MatAutocomplete, MatAutocompleteSelectedEvent, MatChipInputEvent } from '@angular/material';
 import { startWith, map } from 'rxjs/operators';
-import { BaseFilter } from '../../models/BaseFilter';
-import { FilterSymbol } from '../../enums/filter-symbol.enum';
 import { ProductService } from 'src/app/core/services/product.service';
-import { ControlValueAccessorConnectorFalse } from '../control-value-accessor-connector-false';
+import { ControlValueAccessorConnectorStaticFalse } from '../../control-value-accessor-connector-false';
 
 @Component({
   selector: 'app-brand-select',
@@ -17,7 +15,7 @@ import { ControlValueAccessorConnectorFalse } from '../control-value-accessor-co
     provide: NG_VALUE_ACCESSOR, useExisting: BrandFormComponent, multi: true
   }]
 })
-export class BrandFormComponent  extends ControlValueAccessorConnectorFalse implements OnInit {
+export class BrandFormComponent  extends ControlValueAccessorConnectorStaticFalse implements OnInit {
 
   brandList$: Observable<string[]>;
 

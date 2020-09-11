@@ -1,7 +1,7 @@
 import {ControlContainer, ControlValueAccessor, FormControl, FormControlDirective} from '@angular/forms';
 import {Injector, Input, ViewChild} from '@angular/core';
 
-export class ControlValueAccessorConnectorFalse implements ControlValueAccessor {
+export class ControlValueAccessorConnectorStaticFalse implements ControlValueAccessor {
   
   @ViewChild(FormControlDirective, {static: false})
   formControlDirective: FormControlDirective;
