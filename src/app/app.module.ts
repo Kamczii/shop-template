@@ -44,7 +44,8 @@ import { TestingComponent } from './components/testing/testing.component';
     ProfileModule,
     CartModule,
     ProductsModule,
-    AdminModule
+    AdminModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

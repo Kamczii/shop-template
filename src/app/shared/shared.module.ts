@@ -31,6 +31,7 @@ import { SnackbarComponent } from './snackbar/snackbar.component';
 import { DropzoneDirective } from './upload-dropzone/dropzone.directive';
 import { FileToUploadComponent } from './upload-dropzone/uploader/file-to-upload/file-to-upload.component';
 import { UploaderComponent } from './upload-dropzone/uploader/uploader.component';
+import { PriceDirective } from './directives/price.directive';
 
 
 
@@ -63,7 +64,8 @@ import { UploaderComponent } from './upload-dropzone/uploader/uploader.component
     AddBrandComponent,
     FileToUploadComponent,
     CategorySelectComponent,
-    BrandFilterComponent
+    BrandFilterComponent,
+    PriceDirective
   ],
   imports: [
     CommonModule,
