@@ -18,7 +18,6 @@ import { PasswordInputComponent } from './forms/inputs/password-input/password-i
 import { PhoneInputComponent } from './forms/inputs/phone-input/phone-input.component';
 import { PhoneDirective } from './forms/inputs/phone-input/phone.directive';
 import { PriceInputComponent } from './forms/inputs/price-input/price-input.component';
-import { OneSizeFormComponent } from './forms/one-size-form/one-size-form.component';
 import { SizeFormComponent } from './forms/size-form/size-form.component';
 import { HeaderComponent } from './header/header.component';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner/loading-spinner.component';
@@ -33,6 +32,7 @@ import { FileToUploadComponent } from './upload-dropzone/uploader/file-to-upload
 import { UploaderComponent } from './upload-dropzone/uploader/uploader.component';
 import { PriceDirective } from './directives/price.directive';
 import { IntergerDirective } from './directives/interger.directive';
+import { SizeSelect } from './forms/inputs/size-select/size-select.component';
 
 
 
@@ -43,7 +43,7 @@ import { IntergerDirective } from './directives/interger.directive';
     BrandFormComponent,
     PriceFilterComponent,
     SizeFormComponent,
-    OneSizeFormComponent,
+    SizeSelect,
     EnumToArrayPipe,
     HeaderComponent,
     PriceComponent,
@@ -87,7 +87,7 @@ import { IntergerDirective } from './directives/interger.directive';
   ],
   exports: [LoginLogoutButtonComponent, ConfirmButtonComponent, BrandFormComponent,
     PriceFilterComponent,
-    SizeFormComponent, OneSizeFormComponent, EnumToArrayPipe, HeaderComponent, PriceComponent, AddressFormComponent,
+    SizeFormComponent, SizeSelect, EnumToArrayPipe, HeaderComponent, PriceComponent, AddressFormComponent,
     PasswordInputComponent,CategorySelectComponent,
     EmailInputComponent, AddressComponent, OrderComponent, IntergerDirective, SnackbarComponent, BrandFilterComponent, EnumWithValuesToArrayPipe, LoadingSpinnerComponent, AddBrandComponent, OrderSummaryComponent, UploaderComponent, PriceInputComponent, SearchProductsInputComponent,PhoneInputComponent]
 })

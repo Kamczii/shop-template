@@ -42,7 +42,7 @@
         <span class="cdk-visually-hidden">
           Koszyk
         </span></a>
-        <a mat-list-item *ngFor="let category of categories" [routerLink]="['/products']">
+        <a mat-list-item [routerLink]="['/products']">
           Wszystko
         </a>
         <a mat-list-item *ngFor="let category of categories" [routerLink]="['/products/categories',category]">

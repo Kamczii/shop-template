@@ -36,7 +36,7 @@ export class ProductInfoComponent implements OnInit {
     if(this.productForm.invalid) return;
     let cartItem = new CartItem();
     cartItem.product = this.productForm.controls['product'].value;
-    cartItem.size = this.productForm.controls['size'].value.size;
+    cartItem.size = this.productForm.controls['size'].value;
     this.cartService.add(cartItem);
   }
 

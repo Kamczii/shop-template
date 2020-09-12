@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OneSizeFormComponent } from './one-size-form.component';
+import { SizeSelect } from './size-select.component';
 
-describe('OneSizeFormComponent', () => {
-  let component: OneSizeFormComponent;
-  let fixture: ComponentFixture<OneSizeFormComponent>;
+describe('SizeSelect', () => {
+  let component: SizeSelect;
+  let fixture: ComponentFixture<SizeSelect>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [OneSizeFormComponent]
+      declarations: [SizeSelect]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(OneSizeFormComponent);
+    fixture = TestBed.createComponent(SizeSelect);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
