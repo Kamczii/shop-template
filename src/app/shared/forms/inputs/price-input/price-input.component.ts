@@ -1,4 +1,4 @@
-import { Injector } from '@angular/core';
+import { EventEmitter, Injector, Input, Output } from '@angular/core';
 import { Component, OnInit, forwardRef, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
 import { DefaultValueAccessor, ControlValueAccessor, NG_VALUE_ACCESSOR, Validators, FormBuilder, FormGroup, NG_VALIDATORS, FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
@@ -14,11 +14,18 @@ import { ControlValueAccessorConnectorStaticTrue } from '../../control-value-acc
 })
 export class PriceInputComponent extends ControlValueAccessorConnectorStaticTrue {
 
+  @Output() priceChanged = new EventEmitter();
+  @Input() label = 'Cena';
+  
   constructor(injector: Injector) {
     super(injector);
   }
 
   clearInput() {
     this.control.setValue('');
+  }
+
+  changePrice(event){
+    this.priceChanged.emit(event);
   }
 }

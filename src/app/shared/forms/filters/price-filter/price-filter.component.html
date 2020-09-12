@@ -1,18 +1,8 @@
-<div>
-  <mat-form-field class="example-form-field">
-    <mat-label>Cena od:</mat-label>
-    <input matInput type="number"  (change)="changeMinPrice($event)">
-    <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
-      <mat-icon>close</mat-icon>
-    </button>
-  </mat-form-field>
-</div>
-<div>
-  <mat-form-field class="example-form-field">
-    <mat-label>Cena do:</mat-label>
-    <input matInput type="number" (change)="changeMaxPrice($event)">
-    <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
-      <mat-icon>close</mat-icon>
-    </button>
-  </mat-form-field>
-</div>
+<form [formGroup]="form">
+  <div>
+      <app-price-input label="Cena od" [formControlName]="'minPrice'" (priceChanged)="changeMinPrice($event)"></app-price-input>
+  </div>
+  <div>
+      <app-price-input label="Cena do" [formControlName]="'maxPrice'" (priceChanged)="changeMaxPrice($event)"></app-price-input>
+  </div>
+</form>

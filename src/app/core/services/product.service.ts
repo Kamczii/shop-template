@@ -20,6 +20,8 @@ export class ProductService {
         query = query.where(filter.field,filter.symbol,filter.value);
       }}
       if(limit) query = query.limit(limit);
+      
+      query = query.orderBy('price');
       query = query.orderBy('date');
       return query;
     }).snapshotChanges().pipe(

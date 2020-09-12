@@ -1,8 +1,8 @@
 
     <mat-form-field class="full-width">
-        <mat-label>Cena</mat-label>
-        <input matInput type="text" priceMask [formControl]="control" minValue="0">
-        <span matSuffix>&nbsp; zł &nbsp;</span>
+        <mat-label>{{label}}</mat-label>
+        <input matInput type="text" priceMask [formControl]="control" minValue="0"  (change)="changePrice($event)">
+        <span matSuffix>&nbsp; PLN &nbsp;</span>
         <mat-error *ngIf="control.hasError('required')">
           Cena jest <strong>wymagana</strong>
         </mat-error>

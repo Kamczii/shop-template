@@ -7,7 +7,7 @@ import { NgControl } from '@angular/forms';
 })
 export class PriceDirective {
 
-  constructor(public ngControl: NgControl, private elRef: ElementRef) { }
+  constructor(public ngControl: NgControl) { }
 
   ngOnInit(): void {
      const initialOnChange = (this.ngControl.valueAccessor as any).onChange;
