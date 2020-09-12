@@ -150,7 +150,7 @@ export class ProductFormComponent implements ControlValueAccessor, OnDestroy, On
       if (isNaN(+size))
         control.push(this.fb.group({
           size: [size, Validators.required],
-          count: [0, Validators.required]
+          count: ['']
         }))
     }
   }
@@ -160,7 +160,7 @@ export class ProductFormComponent implements ControlValueAccessor, OnDestroy, On
       let control = this.productForm.controls.sizes as FormArray;
         control.push(this.fb.group({
           size: [event.target.value, Validators.required],
-          count: [0, Validators.required]
+          count: ['']
         }))
         event.target.value =''
     }

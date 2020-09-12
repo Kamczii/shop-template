@@ -60,7 +60,7 @@
 
     <mat-step>
       <ng-template matStepLabel>Zdjęcia</ng-template>
-      <app-uploader [productIdEvent]="productIdSubject.asObservable()" [resetEvent]="resetSubject.asObservable()" (onChange)="imagesCount = $event"></app-uploader>
+      <div class="uploader-container"><app-uploader [productIdEvent]="productIdSubject.asObservable()" [resetEvent]="resetSubject.asObservable()" (onChange)="imagesCount = $event"></app-uploader></div>
     </mat-step>
 
     <mat-step>
