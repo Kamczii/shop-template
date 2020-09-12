@@ -11,7 +11,7 @@
       {{product.description}}
     </p>
 
-    <mat-chip-list  aria-label="Cechy">
+    <mat-chip-list aria-label="Cechy">
       <mat-chip *ngFor="let advantage of product.advantages" color="accent">{{advantage}}</mat-chip>
     </mat-chip-list>
     <form [formGroup]="productForm">

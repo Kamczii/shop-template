@@ -1,70 +1,78 @@
 <mat-vertical-stepper [formGroup]="productForm">
-    <mat-step>
-      <ng-template matStepLabel>Podstawowe informacje</ng-template>
-      <p>
-        <mat-form-field class="full-width">
-          <mat-label>Nazwa</mat-label>
-          <input matInput formControlName="name" placeholder="np. Bluza brand&brand">
-          <mat-error *ngIf="getControls().name.hasError('required')">
-            Nazwa jest <strong>wymagana</strong>
-          </mat-error>
-        </mat-form-field>
-      </p>
-      <p>
-        <mat-form-field class="full-width">
-          <mat-label>Opis</mat-label>
-          <textarea matInput formControlName="description" placeholder="np. Ciepła i miła"></textarea>
-          <mat-error *ngIf="getControls().description.hasError('required')">
-            Opis jest <strong>wymagany</strong>
-          </mat-error>
-        </mat-form-field>
-      </p>
-  
-      <p>
-        <app-price-input [formControlName]="'price'"></app-price-input>
-      </p>
-  
-      <div><app-brand-select [formControlName]="'brand'"></app-brand-select></div>
-      <div><app-category-select [formControlName]="'category'"></app-category-select></div>
-      
-      {{productForm.value | json}}
-      <mat-form-field class="chip-list">
-        <mat-chip-list #chipList aria-label="Advantages selection">
-          <mat-chip *ngFor="let advantage of advantages.value" [selectable]="selectable" [removable]="removable"
-            (removed)="remove(advantage)">
-            {{advantage}}
-            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-          </mat-chip>
-          <input placeholder="Zalety..." [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-            [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)">
-        </mat-chip-list>
+  <mat-step>
+    <ng-template matStepLabel>Podstawowe informacje</ng-template>
+    <p>
+      <mat-form-field class="full-width">
+        <mat-label>Nazwa</mat-label>
+        <input matInput formControlName="name" placeholder="np. Bluza brand&brand">
+        <mat-error *ngIf="getControls().name.hasError('required')">
+          Nazwa jest <strong>wymagana</strong>
+        </mat-error>
       </mat-form-field>
-    </mat-step>
-
-
-    <mat-step>
-      <ng-template matStepLabel>Rozmiarówka</ng-template>
-      <mat-list role="list" formArrayName="sizes">
-        <mat-list-item *ngFor="let size of getControls().sizes.controls">
-          <mat-form-field [formGroup]="size">
-            <mat-label>{{size.controls.size.value}}</mat-label>
-            <input formControlName="count" matInput type="number" min="0">
-          </mat-form-field>
-        </mat-list-item>
-      </mat-list>
-      <mat-form-field>
-        <mat-label>Dodaj rozmiar</mat-label>
-        <input matInput type="text" (keypress)="dynamicCreateSizeInput($event)">
+    </p>
+    <p>
+      <mat-form-field class="full-width">
+        <mat-label>Opis</mat-label>
+        <textarea matInput formControlName="description" placeholder="np. Ciepła i miła"></textarea>
+        <mat-error *ngIf="getControls().description.hasError('required')">
+          Opis jest <strong>wymagany</strong>
+        </mat-error>
       </mat-form-field>
-    </mat-step>
+    </p>
 
-    <mat-step>
-      <ng-template matStepLabel>Zdjęcia</ng-template>
-      <div class="uploader-container"><app-uploader [productIdEvent]="productIdSubject.asObservable()" [resetEvent]="resetSubject.asObservable()" (onChange)="imagesCount = $event"></app-uploader></div>
-    </mat-step>
+    <p>
+      <app-price-input [formControlName]="'price'"></app-price-input>
+    </p>
 
-    <mat-step>
-      <ng-template matStepLabel>Potwierdź</ng-template>
-      <app-confirm-button message="Dodaj produkt" [disabled]="!validate()" (confirmed)="addProduct()"></app-confirm-button>
-    </mat-step>
+    <div>
+      <app-brand-select [formControlName]="'brand'"></app-brand-select>
+    </div>
+    <div>
+      <app-category-select [formControlName]="'category'"></app-category-select>
+    </div>
+
+    {{productForm.value | json}}
+    <mat-form-field class="chip-list">
+      <mat-chip-list #chipList aria-label="Advantages selection">
+        <mat-chip *ngFor="let advantage of advantages.value" [selectable]="selectable" [removable]="removable"
+          (removed)="remove(advantage)">
+          {{advantage}}
+          <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+        </mat-chip>
+        <input placeholder="Zalety..." [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+          [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)">
+      </mat-chip-list>
+    </mat-form-field>
+  </mat-step>
+
+
+  <mat-step>
+    <ng-template matStepLabel>Rozmiarówka</ng-template>
+    <mat-list role="list" formArrayName="sizes">
+      <mat-list-item *ngFor="let size of getControls().sizes.controls">
+        <mat-form-field [formGroup]="size">
+          <mat-label>{{size.controls.size.value}}</mat-label>
+          <input formControlName="count" matInput type="number" min="0">
+        </mat-form-field>
+      </mat-list-item>
+    </mat-list>
+    <mat-form-field>
+      <mat-label>Dodaj rozmiar</mat-label>
+      <input matInput type="text" (keypress)="dynamicCreateSizeInput($event)">
+    </mat-form-field>
+  </mat-step>
+
+  <mat-step>
+    <ng-template matStepLabel>Zdjęcia</ng-template>
+    <div class="uploader-container">
+      <app-uploader [productIdEvent]="productIdSubject.asObservable()" [resetEvent]="resetSubject.asObservable()"
+        (onChange)="imagesCount = $event"></app-uploader>
+    </div>
+  </mat-step>
+
+  <mat-step>
+    <ng-template matStepLabel>Potwierdź</ng-template>
+    <app-confirm-button message="Dodaj produkt" [disabled]="!validate()" (confirmed)="addProduct()">
+    </app-confirm-button>
+  </mat-step>
 </mat-vertical-stepper>

@@ -12,15 +12,17 @@ import { firestore } from 'firebase';
 export class ProductService {
   constructor(private firestore: AngularFirestore, private storageService: StorageService) { }
 
-  getAllProducts(limit: number, filters?: BaseFilter []): Observable<Product[]> {
+  getAllProducts(limit: number, filters?: BaseFilter[]): Observable<Product[]> {
 
     return this.firestore.collection<Product>('products', ref => {
       let query: firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
-      if(filters){for (let filter of filters){
-        query = query.where(filter.field,filter.symbol,filter.value);
-      }}
-      if(limit) query = query.limit(limit);
-      
+      if (filters) {
+        for (let filter of filters) {
+          query = query.where(filter.field, filter.symbol, filter.value);
+        }
+      }
+      if (limit) query = query.limit(limit);
+
       query = query.orderBy('price');
       query = query.orderBy('date');
       return query;
@@ -48,7 +50,7 @@ export class ProductService {
   getProductsByName(name: string): Observable<Product[]> {
     return this.firestore.collection<Product>('products', ref => {
       let query: firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
-      query = query.where('name','==',name);
+      query = query.where('name', '==', name);
       return query;
     }).snapshotChanges().pipe(
       map(changes => {
@@ -60,29 +62,29 @@ export class ProductService {
       })
     );
   }
-  
+
   addProduct(value: Product) {
     value.date = new Date();
     value.nameLowerCase = value.name.toLowerCase();
     return this.firestore.collection<Product>('products').add(value);
   }
 
-  
+
   addImageToProduct(productId: string, imageId: number, downloadURL: string) {
-      this.firestore.collection('products').doc(productId).update({imageURLs: firestore.FieldValue.arrayUnion({key: imageId, value: downloadURL})}).catch(error => console.log(error));
+    this.firestore.collection('products').doc(productId).update({ imageURLs: firestore.FieldValue.arrayUnion({ key: imageId, value: downloadURL }) }).catch(error => console.log(error));
   }
 
-  addBrand(value: string){
-    return this.firestore.collection<{name: string}>('brands').add({name: value});
+  addBrand(value: string) {
+    return this.firestore.collection<{ name: string }>('brands').add({ name: value });
   }
   getAllBrands() {
-    return this.firestore.collection<{name: string}>('brands').valueChanges().pipe(map((value) => value.map((brand) => brand.name)));
+    return this.firestore.collection<{ name: string }>('brands').valueChanges().pipe(map((value) => value.map((brand) => brand.name)));
   }
 
-  addCategory(value: string){
-    return this.firestore.collection<{name: string}>('categories').add({name: value});
+  addCategory(value: string) {
+    return this.firestore.collection<{ name: string }>('categories').add({ name: value });
   }
   getAllCategories() {
-    return this.firestore.collection<{name: string}>('categories').valueChanges().pipe(map((value) => value.map((category) => category.name)));
+    return this.firestore.collection<{ name: string }>('categories').valueChanges().pipe(map((value) => value.map((category) => category.name)));
   }
 }

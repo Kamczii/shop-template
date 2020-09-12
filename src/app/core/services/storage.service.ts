@@ -13,8 +13,8 @@ export class StorageService {
     return task;
   }
 
-  getImagesByProductId(productId: string){
-    return this.storage.ref(productId+'/').listAll();
+  getImagesByProductId(productId: string) {
+    return this.storage.ref(productId + '/').listAll();
   }
 
 }

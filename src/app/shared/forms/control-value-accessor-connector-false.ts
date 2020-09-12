@@ -1,9 +1,9 @@
-import {ControlContainer, ControlValueAccessor, FormControl, FormControlDirective} from '@angular/forms';
-import {Injector, Input, ViewChild} from '@angular/core';
+import { ControlContainer, ControlValueAccessor, FormControl, FormControlDirective } from '@angular/forms';
+import { Injector, Input, ViewChild } from '@angular/core';
 
 export class ControlValueAccessorConnectorStaticFalse implements ControlValueAccessor {
-  
-  @ViewChild(FormControlDirective, {static: false})
+
+  @ViewChild(FormControlDirective, { static: false })
   formControlDirective: FormControlDirective;
 
   @Input()
@@ -24,15 +24,15 @@ export class ControlValueAccessorConnectorStaticFalse implements ControlValueAcc
   }
 
   registerOnTouched(fn: any): void {
-    if(this.formControlDirective){this.formControlDirective.valueAccessor.registerOnTouched(fn)};
+    if (this.formControlDirective) { this.formControlDirective.valueAccessor.registerOnTouched(fn) };
   }
 
   registerOnChange(fn: any): void {
-    if(this.formControlDirective){this.formControlDirective.valueAccessor.registerOnChange(fn);}
+    if (this.formControlDirective) { this.formControlDirective.valueAccessor.registerOnChange(fn); }
   }
 
   writeValue(obj: any): void {
-    if(this.formControlDirective){this.formControlDirective.valueAccessor.writeValue(obj)};
+    if (this.formControlDirective) { this.formControlDirective.valueAccessor.writeValue(obj) };
   }
 
   setDisabledState(isDisabled: boolean): void {

@@ -8,9 +8,9 @@ describe('SearchProductsInputComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SearchProductsInputComponent ]
+      declarations: [SearchProductsInputComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

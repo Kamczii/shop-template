@@ -31,7 +31,7 @@ import { DropzoneDirective } from './upload-dropzone/dropzone.directive';
 import { FileToUploadComponent } from './upload-dropzone/uploader/file-to-upload/file-to-upload.component';
 import { UploaderComponent } from './upload-dropzone/uploader/uploader.component';
 import { PriceDirective } from './directives/price.directive';
-import { IntergerDirective } from './directives/interger.directive';
+import { IntegerDirective } from './directives/interger.directive';
 import { SizeSelect } from './forms/inputs/size-select/size-select.component';
 
 
@@ -67,7 +67,7 @@ import { SizeSelect } from './forms/inputs/size-select/size-select.component';
     CategorySelectComponent,
     BrandFilterComponent,
     PriceDirective,
-    IntergerDirective
+    IntegerDirective
   ],
   imports: [
     CommonModule,
@@ -85,10 +85,31 @@ import { SizeSelect } from './forms/inputs/size-select/size-select.component';
     MatCardModule,
     MatProgressBarModule,
   ],
-  exports: [LoginLogoutButtonComponent, ConfirmButtonComponent, BrandFormComponent,
+  exports: [LoginLogoutButtonComponent, 
+    ConfirmButtonComponent, 
+    BrandFormComponent,
     PriceFilterComponent,
-    SizeFormComponent, SizeSelect, EnumToArrayPipe, HeaderComponent, PriceComponent, AddressFormComponent,
-    PasswordInputComponent,CategorySelectComponent,
-    EmailInputComponent, AddressComponent, OrderComponent, IntergerDirective, SnackbarComponent, BrandFilterComponent, EnumWithValuesToArrayPipe, LoadingSpinnerComponent, AddBrandComponent, OrderSummaryComponent, UploaderComponent, PriceInputComponent, SearchProductsInputComponent,PhoneInputComponent]
+    SizeFormComponent, 
+    SizeSelect, 
+    EnumToArrayPipe, 
+    HeaderComponent, 
+    PriceComponent, 
+    AddressFormComponent,
+    PasswordInputComponent, 
+    CategorySelectComponent,
+    EmailInputComponent, 
+    AddressComponent, 
+    OrderComponent, 
+    IntegerDirective, 
+    SnackbarComponent, 
+    BrandFilterComponent, 
+    EnumWithValuesToArrayPipe, 
+    LoadingSpinnerComponent, 
+    AddBrandComponent, 
+    OrderSummaryComponent, 
+    UploaderComponent, 
+    PriceInputComponent, 
+    SearchProductsInputComponent, 
+    PhoneInputComponent]
 })
 export class SharedModule { }

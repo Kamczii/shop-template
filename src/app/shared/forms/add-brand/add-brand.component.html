@@ -4,13 +4,15 @@
   </mat-card-title>
   <div class="grid">
     <form class="example-form" (submit)="addBrand()">
-        <mat-form-field class="example-full-width">
-          <mat-label>Dodaj markę</mat-label>
-          <input matInput #brand="ngModel" minLength="2" maxlength="256" placeholder="Np. H&m" name="brand" type="text"[(ngModel)]="brandVal">
-          <mat-hint align="start"><strong>Dodaj nazwę marki</strong> </mat-hint>
-        </mat-form-field>
-      </form>
-        
-      <app-confirm-button message="Dodaj" (confirmed)="addBrand()" [disabled]="brandVal==null || brandVal.length==0"></app-confirm-button>
+      <mat-form-field class="example-full-width">
+        <mat-label>Dodaj markę</mat-label>
+        <input matInput #brand="ngModel" minLength="2" maxlength="256" placeholder="Np. H&m" name="brand" type="text"
+          [(ngModel)]="brandVal">
+        <mat-hint align="start"><strong>Dodaj nazwę marki</strong> </mat-hint>
+      </mat-form-field>
+    </form>
+
+    <app-confirm-button message="Dodaj" (confirmed)="addBrand()" [disabled]="brandVal==null || brandVal.length==0">
+    </app-confirm-button>
   </div>
 </mat-card>

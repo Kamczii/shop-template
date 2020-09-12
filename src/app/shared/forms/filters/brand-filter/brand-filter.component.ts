@@ -17,20 +17,20 @@ export class BrandFilterComponent implements OnInit {
 
   brands = new FormControl();
   brandList$: Observable<string[]>;
-  
+
   constructor(private productService: ProductService) { }
 
   ngOnInit() {
     this.brandList$ = this.productService.getAllBrands();
   }
 
-  selectionChange($event){
+  selectionChange($event) {
     let filter: BaseFilter;
-      filter = {
+    filter = {
       field: 'brand',
       symbol: FilterSymbol.in,
       value: $event
-    } 
+    }
     this.filterChanged.emit(filter);
     this.selectionChanged.emit($event)
   }

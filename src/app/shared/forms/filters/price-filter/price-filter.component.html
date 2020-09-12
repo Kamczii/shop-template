@@ -1,8 +1,10 @@
 <form [formGroup]="form">
   <div>
-      <app-price-input label="Cena od" [formControlName]="'minPrice'" (priceChanged)="changeMinPrice($event)"></app-price-input>
+    <app-price-input label="Cena od" [formControlName]="'minPrice'" (priceChanged)="changeMinPrice($event)">
+    </app-price-input>
   </div>
   <div>
-      <app-price-input label="Cena do" [formControlName]="'maxPrice'" (priceChanged)="changeMaxPrice($event)"></app-price-input>
+    <app-price-input label="Cena do" [formControlName]="'maxPrice'" (priceChanged)="changeMaxPrice($event)">
+    </app-price-input>
   </div>
 </form>

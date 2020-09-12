@@ -21,7 +21,7 @@ export class ProfileDetailsComponent implements OnInit {
   addressForm: FormGroup;
   phoneForm: FormGroup;
   address: AddressFormValues;
-  
+
   editEmail: boolean = false;
   editPhone: boolean = false;
 
@@ -30,7 +30,7 @@ export class ProfileDetailsComponent implements OnInit {
       address: []
     });
     this.emailForm = this.fb.group({
-      email: ['',[Validators.required, Validators.email]]
+      email: ['', [Validators.required, Validators.email]]
     });
     this.phoneForm = this.fb.group({
       phone: []
@@ -51,10 +51,10 @@ export class ProfileDetailsComponent implements OnInit {
   updateEmail() {
     this.auth.updateEmail(this.emailForm.value.email).pipe(take(1)).subscribe(data => {
       this.editEmail = false;
-    },error => console.log(error));
+    }, error => console.log(error));
   }
 
   updatePhone() {
-    this.auth.updatePhone(this.phoneForm.value.phone).pipe(take(1)).subscribe(data => {}, error => console.log(error), () => this.editPhone = false);
+    this.auth.updatePhone(this.phoneForm.value.phone).pipe(take(1)).subscribe(data => { }, error => console.log(error), () => this.editPhone = false);
   }
 }

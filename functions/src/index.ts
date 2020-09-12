@@ -5,14 +5,14 @@ import * as functions from 'firebase-functions';
 //
 export const helloWorld = functions.firestore.document('products/{productID}').onWrite((change, response) => {
     const productData = change.after.data();
-    if(productData){
+    if (productData) {
         const productName = productData.name;
         const updatedName = productName.toLowerCase();
-        if(productName == updatedName){
+        if (productName == updatedName) {
             return null;
-        }else{
-            return change.after.ref.update({nameLowerCase: updatedName})
+        } else {
+            return change.after.ref.update({ nameLowerCase: updatedName })
         }
-    }else
+    } else
         return null;
 });

@@ -20,17 +20,17 @@ export class SizeFormComponent implements OnInit {
   ngOnInit() {
   }
 
-  selectionChange($event){
+  selectionChange($event) {
     let array = [];
-    for(let el of $event){
-      array.push({size: el})
+    for (let el of $event) {
+      array.push({ size: el })
     }
     let filter: BaseFilter;
-      filter = {
+    filter = {
       field: 'sizes',
       symbol: FilterSymbol.arany,
       value: array
-    } 
+    }
     console.log(filter)
     this.filterChanged.emit(filter);
   }

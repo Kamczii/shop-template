@@ -1,12 +1,11 @@
-
-    <mat-form-field class="example-full-width">
-      <mat-label>Telefon</mat-label>
-      <span matPrefix>+48 &nbsp;</span>
-      <input matInput type="text" [formControl]="control" phonemask maxlength="11"> 
-      <mat-error *ngIf="control.hasError('required')">
-        Telefon jest <strong>wymagany</strong>
-      </mat-error>
-      <mat-error *ngIf="control.hasError('pattern')">
-        Wpisz poprawny <strong>telefon</strong>
-      </mat-error>
-    </mat-form-field>
+<mat-form-field class="example-full-width">
+  <mat-label>Telefon</mat-label>
+  <span matPrefix>+48 &nbsp;</span>
+  <input matInput type="text" [formControl]="control" phonemask maxlength="11">
+  <mat-error *ngIf="control.hasError('required')">
+    Telefon jest <strong>wymagany</strong>
+  </mat-error>
+  <mat-error *ngIf="control.hasError('pattern')">
+    Wpisz poprawny <strong>telefon</strong>
+  </mat-error>
+</mat-form-field>

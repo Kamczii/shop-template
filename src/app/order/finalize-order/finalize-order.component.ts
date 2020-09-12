@@ -22,13 +22,13 @@ export class FinalizeOrderComponent implements OnInit {
   constructor(private fb: FormBuilder, private authService: AuthService, private cartService: ShoppingCartService, private orderService: OrderService) { }
 
   ngOnInit() {
-    
+
     this.cart = this.cartService.read();
 
     this.dataForm = this.fb.group({
       address: ['', Validators.required],
       contactForm: this.fb.group({
-        email: ['',[Validators.required, Validators.email]],
+        email: ['', [Validators.required, Validators.email]],
         phone: ['', Validators.required],
       })
     });

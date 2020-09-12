@@ -72,9 +72,9 @@ export class ShoppingCartService {
     this.updateLocalStorage();
   }
 
-  checkIfSizesSet(){
+  checkIfSizesSet() {
     this.cart.forEach((item) => {
-      if(item.size==null)
+      if (item.size == null)
         return false;
     })
     return true;

@@ -12,32 +12,32 @@ export class PriceFilterComponent implements OnInit {
   @Output() filterChanged = new EventEmitter<BaseFilter>();
 
   form: FormGroup;
-  
+
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
       minPrice: '',
       maxPrice: ''
     })
-   }
+  }
 
   ngOnInit() {
   }
 
-  changeMinPrice($event){
+  changeMinPrice($event) {
     let filter: BaseFilter = {
       field: 'price',
       symbol: FilterSymbol.gt,
       value: +$event.target.value
-    } 
+    }
     this.filterChanged.emit(filter);
   }
 
-  changeMaxPrice($event){
+  changeMaxPrice($event) {
     let filter: BaseFilter = {
       field: 'price',
       symbol: FilterSymbol.lt,
       value: +$event.target.value
-    } 
+    }
     this.filterChanged.emit(filter);
   }
 }

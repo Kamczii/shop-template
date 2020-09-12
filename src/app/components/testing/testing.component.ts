@@ -1,4 +1,4 @@
-import {FormGroup} from '@angular/forms/forms';
+import { FormGroup } from '@angular/forms/forms';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 
@@ -8,19 +8,19 @@ import { FormBuilder } from '@angular/forms';
   styleUrls: ['./testing.component.scss']
 })
 export class TestingComponent implements OnInit {
-  
+
   form: FormGroup;
 
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
       price: ['']
     })
-   }
+  }
 
   ngOnInit() {
   }
 
-  submit(){
+  submit() {
     console.log(this.form.value)
   }
 }

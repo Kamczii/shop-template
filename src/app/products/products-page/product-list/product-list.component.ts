@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss']
 })
-export class ProductListComponent implements OnInit{
+export class ProductListComponent implements OnInit {
 
   @Input() products: Product[];
 
@@ -19,5 +19,5 @@ export class ProductListComponent implements OnInit{
 
   }
 
-  
+
 }

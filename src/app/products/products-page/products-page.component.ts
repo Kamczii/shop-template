@@ -20,7 +20,7 @@ export class ProductsPageComponent implements OnInit {
   filter: BaseFilter[] = [];
   category: string;
 
-  
+
   constructor(private productService: ProductService, private route: ActivatedRoute) {
 
     this.route.params.subscribe((params) => {
@@ -28,24 +28,25 @@ export class ProductsPageComponent implements OnInit {
         return (value.field == 'category')
       })
 
-      if(params.category){
-        if(index==-1){
-        this.category = params.category;
-        this.filter.push({
-          field: 'category',
-          symbol: FilterSymbol.eq,
-          value: params.category
-        } )
-      }
-      else{
-        this.filter[index] = {
-          field: 'category',
-          symbol: FilterSymbol.eq,
-          value: params.category
+      if (params.category) {
+        if (index == -1) {
+          this.category = params.category;
+          this.filter.push({
+            field: 'category',
+            symbol: FilterSymbol.eq,
+            value: params.category
+          })
         }
-      }}
-      else{
-        this.filter.slice(index,1);
+        else {
+          this.filter[index] = {
+            field: 'category',
+            symbol: FilterSymbol.eq,
+            value: params.category
+          }
+        }
+      }
+      else {
+        this.filter.slice(index, 1);
         this.category = 'Wszystko'
       }
 
@@ -53,13 +54,13 @@ export class ProductsPageComponent implements OnInit {
       this.getProducts(this.filter);
     })
 
-   }
+  }
 
   ngOnInit() {
     this.getProducts(this.filter);
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
 
   }
 
@@ -69,10 +70,10 @@ export class ProductsPageComponent implements OnInit {
     });
   }
 
-  changeFilter(filters: BaseFilter[]){
+  changeFilter(filters: BaseFilter[]) {
     this.getProducts(filters)
   }
 
-  
+
 
 }

@@ -9,7 +9,7 @@ export class ShoppingCartButtonComponent implements OnInit {
 
   @Output() add = new EventEmitter();
   @Input() disabled;
-  
+
   constructor() { }
 
   ngOnInit() {

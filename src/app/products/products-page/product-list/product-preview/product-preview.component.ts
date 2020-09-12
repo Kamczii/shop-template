@@ -11,23 +11,23 @@ import { StorageService } from 'src/app/core/services/storage.service';
 export class ProductPreviewComponent implements OnInit {
 
   @Input() product: Product;
-  images: Map<number,string> = new Map<number,string>();
+  images: Map<number, string> = new Map<number, string>();
 
   constructor(private storageService: StorageService) { }
   ngOnInit() {
-    
-  let that = this;
-    this.storageService.getImagesByProductId(this.product.id).subscribe(data=>data.items.forEach(item => item.getDownloadURL().then(function(url){
+
+    let that = this;
+    this.storageService.getImagesByProductId(this.product.id).subscribe(data => data.items.forEach(item => item.getDownloadURL().then(function (url) {
       that.images.set(+item.name, url);
     })));
   }
 
-  over(el){
-    if(this.images.get(2))
-    el.target.src = this.images.get(2);
+  over(el) {
+    if (this.images.get(2))
+      el.target.src = this.images.get(2);
   }
 
-  out(el){
+  out(el) {
     el.target.src = this.images.get(1);
   }
 }

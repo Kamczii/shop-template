@@ -17,7 +17,7 @@ export class SearchProductsInputComponent implements OnInit {
   options: string[] = [];
   filteredOptions: Observable<Product[]>;
 
-  constructor(private firestore: AngularFirestore, private productService: ProductService, private router: Router){}
+  constructor(private firestore: AngularFirestore, private productService: ProductService, private router: Router) { }
 
   ngOnInit() {
     // this.filteredOptions = this.myControl.valueChanges.pipe(
@@ -39,30 +39,30 @@ export class SearchProductsInputComponent implements OnInit {
     return this.options.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
   }
 
-  search(){
+  search() {
     let value = this.myControl.value.toLowerCase();
-    if(value.length>1){
+    if (value.length > 1) {
 
       this.filteredOptions = this.firestore.collection<Product>('products', ref => ref
-      .orderBy("nameLowerCase")
-      .startAt(value)
-      .endAt(value+"\uf8ff")
-      .limit(10)).snapshotChanges().pipe(
-        map(changes => {
-          return changes.map(a => {
-            let data = a.payload.doc.data() as Product;
-            data.id = a.payload.doc.id;
-            return data;
-          });
-        })
-      );
+        .orderBy("nameLowerCase")
+        .startAt(value)
+        .endAt(value + "\uf8ff")
+        .limit(10)).snapshotChanges().pipe(
+          map(changes => {
+            return changes.map(a => {
+              let data = a.payload.doc.data() as Product;
+              data.id = a.payload.doc.id;
+              return data;
+            });
+          })
+        );
     }
-    
+
   }
 
-  submit(){
+  submit() {
     this.productService.getProductsByName(this.myControl.value).subscribe(data => {
-      this.router.navigateByUrl('/products/'+data[0].id).then(()=>this.myControl.setValue(''))
+      this.router.navigateByUrl('/products/' + data[0].id).then(() => this.myControl.setValue(''))
     });
   }
 }

@@ -1,26 +1,26 @@
 <div>
-    <div *ngIf="category" class="header ">
-        <app-header [message]="category"></app-header>
+  <div *ngIf="category" class="header ">
+    <app-header [message]="category"></app-header>
+  </div>
+  <div class="products-list">
+    <div class="pr-md-2 pb-2">
+      <mat-expansion-panel hideToggle [expanded]="true" (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Filtry
+          </mat-panel-title>
+          <mat-panel-description>
+            {{panelOpenState ? 'Zwiń' : 'Rozwiń'}}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <app-filters (onChangeFilter)="changeFilter($event)"></app-filters>
+      </mat-expansion-panel>
     </div>
-    <div class="products-list">
-        <div class="pr-md-2 pb-2">
-            <mat-expansion-panel hideToggle [expanded]="true" (opened)="panelOpenState = true"
-            (closed)="panelOpenState = false">
-                <mat-expansion-panel-header>
-                  <mat-panel-title>
-                    Filtry
-                  </mat-panel-title>
-                  <mat-panel-description>
-                    {{panelOpenState ? 'Zwiń' : 'Rozwiń'}}
-                  </mat-panel-description>
-                </mat-expansion-panel-header>
-                
-                <app-filters (onChangeFilter)="changeFilter($event)"></app-filters>
-              </mat-expansion-panel>
-        </div>
-        <div>
-            <app-product-list [products]="products"></app-product-list>
-        </div>
+    <div>
+      <app-product-list [products]="products"></app-product-list>
     </div>
+  </div>
 
 </div>

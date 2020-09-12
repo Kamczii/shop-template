@@ -27,13 +27,13 @@ export class ProductInfoComponent implements OnInit {
   ngOnInit() {
     this.productForm.controls['product'].setValue(this.product);
     this.product.sizes.forEach(size => {
-      if(size.count>0) 
+      if (size.count > 0)
         this.availableSizes.push(size.size)
     })
   }
 
   addToCart() {
-    if(this.productForm.invalid) return;
+    if (this.productForm.invalid) return;
     let cartItem = new CartItem();
     cartItem.product = this.productForm.controls['product'].value;
     cartItem.size = this.productForm.controls['size'].value;

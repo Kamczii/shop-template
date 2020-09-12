@@ -26,28 +26,28 @@ export class FiltersComponent {
 
   }
 
-  changeFilter($event: BaseFilter){
+  changeFilter($event: BaseFilter) {
     this.addFilter($event)
     this.onChangeFilter.emit(this.filters);
   }
 
-  addFilter(filter: BaseFilter){
+  addFilter(filter: BaseFilter) {
     let index = this.filters.findIndex((currentValue, index) => {
       return (filter.field == currentValue.field && filter.symbol == currentValue.symbol)
     })
 
-    if(index>=0)
+    if (index >= 0)
       this.filters[index] = filter;
     else
       this.filters.push(filter);
 
     //delete empty array
     let index2 = this.filters.findIndex((currentValue) => {
-        return (currentValue.value.length === 0)
-      })
-    if(index2>=0)
-      this.filters.splice(index2,1)
-      
+      return (currentValue.value.length === 0)
+    })
+    if (index2 >= 0)
+      this.filters.splice(index2, 1)
+
   }
 
 }

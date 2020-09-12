@@ -17,15 +17,15 @@ import { ControlValueAccessorConnectorStaticFalse } from '../../control-value-ac
     }
   ]
 })
-export class SizeSelect  extends ControlValueAccessorConnectorStaticFalse {
+export class SizeSelect extends ControlValueAccessorConnectorStaticFalse {
 
 
-  @Input()sizeList: Size[];
+  @Input() sizeList: Size[];
 
   constructor(injector: Injector) {
     super(injector);
   }
-  
+
   clearInput() {
     this.control.setValue('');
   }

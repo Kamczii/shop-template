@@ -13,13 +13,13 @@ import { ControlValueAccessorConnectorStaticFalse } from '../../control-value-ac
     provide: NG_VALUE_ACCESSOR, useExisting: CategorySelectComponent, multi: true
   }]
 })
-export class CategorySelectComponent  extends ControlValueAccessorConnectorStaticFalse implements OnInit{
+export class CategorySelectComponent extends ControlValueAccessorConnectorStaticFalse implements OnInit {
 
 
   categoryList$: Observable<string[]>;
 
 
-  constructor(injector: Injector,private productService: ProductService ) {
+  constructor(injector: Injector, private productService: ProductService) {
     super(injector);
   }
 
@@ -27,7 +27,7 @@ export class CategorySelectComponent  extends ControlValueAccessorConnectorStati
   ngOnInit() {
     this.categoryList$ = this.productService.getAllCategories();
   }
-  
+
   clearInput() {
     this.control.setValue('');
   }

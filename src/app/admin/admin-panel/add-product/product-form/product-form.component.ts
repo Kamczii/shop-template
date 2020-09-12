@@ -51,7 +51,7 @@ export class ProductFormComponent implements ControlValueAccessor, OnDestroy, On
 
   options: string[] = [];
   filteredOptions: Observable<string[]>;
-  
+
   get value(): Product {
     return this.productForm.value;
   }
@@ -73,10 +73,10 @@ export class ProductFormComponent implements ControlValueAccessor, OnDestroy, On
       })
     );
   }
-  
+
   ngOnInit(): void {
     this.productService.getAllBrands().subscribe(data => this.options = data);
-   
+
   }
 
   onChange: any = () => { };
@@ -100,7 +100,7 @@ export class ProductFormComponent implements ControlValueAccessor, OnDestroy, On
   }
 
   validate(_: FormControl) {
-    return this.productForm.valid && this.imagesCount>0;
+    return this.productForm.valid && this.imagesCount > 0;
   }
 
   ngOnDestroy() {
@@ -156,24 +156,24 @@ export class ProductFormComponent implements ControlValueAccessor, OnDestroy, On
   }
 
   dynamicCreateSizeInput(event) {
-    if(event.key == 'Enter'){
+    if (event.key == 'Enter') {
       let control = this.productForm.controls.sizes as FormArray;
-        control.push(this.fb.group({
-          size: [event.target.value, Validators.required],
-          count: ['']
-        }))
-        event.target.value =''
+      control.push(this.fb.group({
+        size: [event.target.value, Validators.required],
+        count: ['']
+      }))
+      event.target.value = ''
     }
   }
 
-  emitProductId(id: string){
+  emitProductId(id: string) {
     this.productIdSubject.next(id);
   }
 
-  createForm(){
+  createForm() {
     this.productForm = this.fb.group({
       name: ['', Validators.required],
-      brand: ['',Validators.required],
+      brand: ['', Validators.required],
       category: ['', Validators.required],
       description: ['', Validators.required],
       price: ['', Validators.required],
@@ -182,21 +182,21 @@ export class ProductFormComponent implements ControlValueAccessor, OnDestroy, On
     });
 
     this.dynamicCreateSizeInputs();
-    
+
     this.resetSubject.next();
   }
 
-  addProduct(){
-    this.productService.addProduct(this.productForm.value).catch(err => this.openSnackBar(err,"zamknij")).then((val: DocumentReference) => {
-      this.emitProductId(val.id); 
-      this.openSnackBar(val.id+" dodano","zamknij");
+  addProduct() {
+    this.productService.addProduct(this.productForm.value).catch(err => this.openSnackBar(err, "zamknij")).then((val: DocumentReference) => {
+      this.emitProductId(val.id);
+      this.openSnackBar(val.id + " dodano", "zamknij");
       this.createForm();
     });
   }
 
-    openSnackBar(message: string, action: string) {
-      this.snackBar.open(message, action, {
-        duration: 2000,
-      });
-    }
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 2000,
+    });
+  }
 }

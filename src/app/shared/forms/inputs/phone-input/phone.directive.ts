@@ -4,28 +4,28 @@ import { NgControl } from '@angular/forms';
 @Directive({
   selector: '[phonemask]'
 })
-export class PhoneDirective implements OnInit{
+export class PhoneDirective implements OnInit {
 
   constructor(public ngControl: NgControl) { }
 
   ngOnInit(): void {
-     const initialOnChange = (this.ngControl.valueAccessor as any).onChange;
+    const initialOnChange = (this.ngControl.valueAccessor as any).onChange;
 
     (this.ngControl.valueAccessor as any).onChange = (value) => initialOnChange(this.makeChangesToInput(value, false));
   }
 
-  
+
   @HostListener('ngModelChange', ['$event'])
-  onModelChange(event){
+  onModelChange(event) {
     this.ngControl.valueAccessor.writeValue(this.makeChangesToInput(event, false));
   }
 
   @HostListener('keydown.backspace', ['$event'])
-  keydownBackspace(event){
+  keydownBackspace(event) {
     this.ngControl.control.setValue(this.makeChangesToInput(event, true));
   }
 
-  makeChangesToInput(event, backspace){
+  makeChangesToInput(event, backspace) {
     let newVal = event.replace(/\D/g, '');
     if (backspace && newVal.length <= 6) {
       newVal = newVal.substring(0, newVal.length - 1);

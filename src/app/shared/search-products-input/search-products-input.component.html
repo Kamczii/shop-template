@@ -1,17 +1,13 @@
 <form (submit)="submit()">
-    <mat-form-field>
-      <input type="text"
-             placeholder="Szukaj"
-             aria-label="Number"
-             matInput
-             [formControl]="myControl"
-             [matAutocomplete]="auto" (keyup)="search()">
-      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-        <a  *ngFor="let option of filteredOptions | async" [routerLink]="['products',option.id]">
-          <mat-option [value]="option.name">
-            {{option.name}}
-          </mat-option>
-        </a>
-      </mat-autocomplete>
-    </mat-form-field>
-  </form>
+  <mat-form-field>
+    <input type="text" placeholder="Szukaj" aria-label="Number" matInput [formControl]="myControl"
+      [matAutocomplete]="auto" (keyup)="search()">
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+      <a *ngFor="let option of filteredOptions | async" [routerLink]="['products',option.id]">
+        <mat-option [value]="option.name">
+          {{option.name}}
+        </mat-option>
+      </a>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>

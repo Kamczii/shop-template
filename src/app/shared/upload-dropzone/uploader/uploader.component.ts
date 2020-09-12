@@ -8,7 +8,7 @@ import { ProductService } from 'src/app/core/services/product.service';
   selector: 'app-uploader',
   templateUrl: './uploader.component.html',
   styleUrls: ['./uploader.component.scss'],
-  
+
 })
 export class UploaderComponent implements OnInit, OnDestroy {
 
@@ -25,7 +25,7 @@ export class UploaderComponent implements OnInit, OnDestroy {
   task: AngularFireUploadTask;
 
   constructor(private storageService: StorageService, private productService: ProductService) { }
-  
+
   toggleHover(event: boolean) {
     this.isHovering = event;
   }
@@ -39,17 +39,17 @@ export class UploaderComponent implements OnInit, OnDestroy {
       reader.readAsDataURL(files.item(i)); // read file as data url
 
       reader.onload = (event) => { // called once readAsDataURL is completed=
-        this.urls.push({name: files.item(i).name, url: reader.result});
+        this.urls.push({ name: files.item(i).name, url: reader.result });
       }
     }
   }
 
-  uploadFiles(productId){
+  uploadFiles(productId) {
     let id = 1;
-    for(let file of this.files){
+    for (let file of this.files) {
       console.log(file);
-      this.storageService.uploadFile(file,productId + "/"+(id++)).then((data) => {
-        data.ref.getDownloadURL().then(url => {console.log(url);this.productService.addImageToProduct(productId, id,url)});
+      this.storageService.uploadFile(file, productId + "/" + (id++)).then((data) => {
+        data.ref.getDownloadURL().then(url => { console.log(url); this.productService.addImageToProduct(productId, id, url) });
       });
     }
   }

@@ -8,13 +8,16 @@
       <button mat-button style="padding: 1rem" [routerLink]="['/products']">
         Wszystko
       </button>
-      <button *ngFor="let category of categories" mat-button style="padding: 1rem" [routerLink]="['/products/categories',category]">
+      <button *ngFor="let category of categories" mat-button style="padding: 1rem"
+        [routerLink]="['/products/categories',category]">
         {{category}}
       </button>
-      </div>
+    </div>
     <span class="menu-spacer"></span>
-    
-    <div class="search-box"><app-search-products-input></app-search-products-input></div>
+
+    <div class="search-box">
+      <app-search-products-input></app-search-products-input>
+    </div>
     <div fxShow="true" fxHide.lt-md>
       <button mat-button style="padding: 1rem" [routerLink]="['/admin']" *ngIf="hasAdmin()&&user">
         Panel administratora
@@ -42,12 +45,12 @@
         <span class="cdk-visually-hidden">
           Koszyk
         </span></a>
-        <a mat-list-item [routerLink]="['/products']">
-          Wszystko
-        </a>
-        <a mat-list-item *ngFor="let category of categories" [routerLink]="['/products/categories',category]">
-          {{category}}
-        </a>
+      <a mat-list-item [routerLink]="['/products']">
+        Wszystko
+      </a>
+      <a mat-list-item *ngFor="let category of categories" [routerLink]="['/products/categories',category]">
+        {{category}}
+      </a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

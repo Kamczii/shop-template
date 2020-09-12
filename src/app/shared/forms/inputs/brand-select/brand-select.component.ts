@@ -15,7 +15,7 @@ import { ControlValueAccessorConnectorStaticFalse } from '../../control-value-ac
     provide: NG_VALUE_ACCESSOR, useExisting: BrandFormComponent, multi: true
   }]
 })
-export class BrandFormComponent  extends ControlValueAccessorConnectorStaticFalse implements OnInit {
+export class BrandFormComponent extends ControlValueAccessorConnectorStaticFalse implements OnInit {
 
   brandList$: Observable<string[]>;
 

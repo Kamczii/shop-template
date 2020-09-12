@@ -4,18 +4,22 @@
       <form [formGroup]="dataForm">
         <ng-template matStepLabel>Adres</ng-template>
         <app-address-form formControlName="address"></app-address-form>
-        
+
         <div class="contact-form" formGroupName="contactForm">
-          
-          <div><app-phone-input [formControlName]="'phone'"></app-phone-input></div>
-          <div><app-email-input [formControlName]="'email'"></app-email-input></div>
+
+          <div>
+            <app-phone-input [formControlName]="'phone'"></app-phone-input>
+          </div>
+          <div>
+            <app-email-input [formControlName]="'email'"></app-email-input>
+          </div>
         </div>
       </form>
-      
+
 
       <button mat-flat-button color="primary" matStepperNext>Dalej</button>
     </mat-step>
-    
+
     <mat-step [stepControl]="paymentForm" [editable]="true">
       <ng-template matStepLabel>Płatność</ng-template>
       <form [formGroup]="paymentForm">

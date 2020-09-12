@@ -1,8 +1,9 @@
 <div class="wrapper">
-    <div class="dropzone" dropzone (hovered)="toggleHover($event)" (dropped)="onDrop($event)" [class.hovering]="isHovering">
+    <div class="dropzone" dropzone (hovered)="toggleHover($event)" (dropped)="onDrop($event)"
+        [class.hovering]="isHovering">
         <h3>Strefa zrzutu</h3>
     </div>
-        <div class="gallery"> 
-            <app-file-to-upload *ngFor="let url of urls" [image]="url" (deleted)="delete($event)"></app-file-to-upload>
-        </div>
+    <div class="gallery">
+        <app-file-to-upload *ngFor="let url of urls" [image]="url" (deleted)="delete($event)"></app-file-to-upload>
+    </div>
 </div>

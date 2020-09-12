@@ -1,11 +1,10 @@
-
-  <mat-form-field>
-    <mat-label *ngIf="sizeList.length>0">Rozmiar</mat-label>
-    <mat-label *ngIf="sizeList.length==0">Brak rozmiarów</mat-label>
-    <mat-select [formControl]="control">
-      <mat-option *ngFor="let size of sizeList | enumToArray" [value]="size.name">{{size.name}}</mat-option>
-    </mat-select>
-    <mat-error *ngIf="control.hasError('required')">
-      Rozmiar jest <b>wymagany</b>
-    </mat-error>
-  </mat-form-field>
+<mat-form-field>
+  <mat-label *ngIf="sizeList.length>0">Rozmiar</mat-label>
+  <mat-label *ngIf="sizeList.length==0">Brak rozmiarów</mat-label>
+  <mat-select [formControl]="control">
+    <mat-option *ngFor="let size of sizeList | enumToArray" [value]="size.name">{{size.name}}</mat-option>
+  </mat-select>
+  <mat-error *ngIf="control.hasError('required')">
+    Rozmiar jest <b>wymagany</b>
+  </mat-error>
+</mat-form-field>

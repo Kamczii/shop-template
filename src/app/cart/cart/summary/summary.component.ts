@@ -9,7 +9,7 @@ export class SummaryComponent implements OnInit {
 
   @Input() price;
   @Input() disabled = false;
-  
+
   constructor() { }
 
   ngOnInit() {

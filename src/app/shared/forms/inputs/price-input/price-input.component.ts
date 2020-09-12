@@ -16,7 +16,7 @@ export class PriceInputComponent extends ControlValueAccessorConnectorStaticTrue
 
   @Output() priceChanged = new EventEmitter();
   @Input() label = 'Cena';
-  
+
   constructor(injector: Injector) {
     super(injector);
   }
@@ -25,7 +25,7 @@ export class PriceInputComponent extends ControlValueAccessorConnectorStaticTrue
     this.control.setValue('');
   }
 
-  changePrice(event){
+  changePrice(event) {
     this.priceChanged.emit(event);
   }
 }

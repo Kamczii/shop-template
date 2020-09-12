@@ -21,15 +21,15 @@ export class NavComponent implements OnInit {
   categories: string[];
 
   constructor(public cartService: ShoppingCartService, private authService: AuthService, private productService: ProductService) {
-    this.authService.user$.subscribe(data => {this.user = data})
-    this.productService.getAllCategories().subscribe(data => {this.categories = data});
+    this.authService.user$.subscribe(data => { this.user = data })
+    this.productService.getAllCategories().subscribe(data => { this.categories = data });
   }
 
   ngOnInit(): void {
 
   }
 
-  hasAdmin(){
+  hasAdmin() {
     return this.authService.hasAdmin(this.user);
   }
 }

@@ -5,22 +5,22 @@ import { Directive } from '@angular/core';
 @Directive({
   selector: '[integerMask]'
 })
-export class IntergerDirective {
+export class IntegerDirective {
 
   constructor(private el: ElementRef) {
 
   }
 
-  @HostListener('keyup', ['$event']) 
+  @HostListener('keyup', ['$event'])
   onKeyupHandler(event) {
     let newVal: String;
     if (event.key === 'backspace') {
       newVal = event.target.value.substring(0, event.target.value.length);
 
     }
-    else{
+    else {
       newVal = event.target.value;
-      newVal =  newVal.replace(/[^0-9]/,'');
+      newVal = newVal.replace(/[^0-9]/, '');
     }
     this.el.nativeElement.value = newVal;
   }

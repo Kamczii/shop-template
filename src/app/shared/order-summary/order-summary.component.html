@@ -1,31 +1,30 @@
-
-  <div class="row">
-    <div class="col-md-6 col-sm-12">
-      <p><b>E-mail: </b>{{order.email}}</p>
-      <p><b>Telefon: </b>{{order.phone}}</p>
-    </div>
-    <div class="col-md-6 col-sm-12">
-      <p *ngIf="order.paymentMethod"><b>Forma płatności:
-        </b>{{order.paymentMethod}}</p>
-    </div>
-    <div class="col-sm-12">
-      <app-address  [address]="order.address"></app-address>
-    </div>
+<div class="row">
+  <div class="col-md-6 col-sm-12">
+    <p><b>E-mail: </b>{{order.email}}</p>
+    <p><b>Telefon: </b>{{order.phone}}</p>
   </div>
+  <div class="col-md-6 col-sm-12">
+    <p *ngIf="order.paymentMethod"><b>Forma płatności:
+      </b>{{order.paymentMethod}}</p>
+  </div>
+  <div class="col-sm-12">
+    <app-address [address]="order.address"></app-address>
+  </div>
+</div>
 
-  <table>
-    <tr>
-      <th>Nazwa</th>
-      <th>Ilość</th>
-      <th>Rozmiar</th>
-      <th>Cena</th>
-    </tr>
-    <tr *ngFor="let item of items">
-      <td>{{item.product.name}}</td>
-      <td>{{item.count}}</td>
-      <td>{{item.size}}</td>
-      <td>
-        <app-price [price]="item.product.price"></app-price>
-      </td>
-    </tr>
-  </table>
+<table>
+  <tr>
+    <th>Nazwa</th>
+    <th>Ilość</th>
+    <th>Rozmiar</th>
+    <th>Cena</th>
+  </tr>
+  <tr *ngFor="let item of items">
+    <td>{{item.product.name}}</td>
+    <td>{{item.count}}</td>
+    <td>{{item.size}}</td>
+    <td>
+      <app-price [price]="item.product.price"></app-price>
+    </td>
+  </tr>
+</table>

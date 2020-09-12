@@ -15,11 +15,11 @@ export class AddBrandComponent implements OnInit {
     this.productService.getAllBrands().subscribe(data => this.availableBrands = data);
   }
 
-  addBrand(){
-    let index = this.availableBrands.findIndex(brand =>{
+  addBrand() {
+    let index = this.availableBrands.findIndex(brand => {
       return brand == this.brandVal
     })
-    if(index<0)
+    if (index < 0)
       this.productService.addBrand(this.brandVal);
     this.brandVal = '';
   }

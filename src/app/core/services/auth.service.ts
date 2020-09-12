@@ -50,32 +50,32 @@ export class AuthService {
   updateEmail(email: string) {
     return this.user$.pipe(
       switchMap((value, index) => {
-       const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${value.uid}`);
-         const data: User = value;
-         data.email = email;
-       return userRef.set(data, { merge: true })
+        const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${value.uid}`);
+        const data: User = value;
+        data.email = email;
+        return userRef.set(data, { merge: true })
       }));
   }
 
   updatePhone(phone: any) {
     return this.user$.pipe(
       switchMap((value, index) => {
-       const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${value.uid}`);
-         const data: User = value;
-         data.phone = phone;
-       return userRef.set(data, { merge: true })
+        const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${value.uid}`);
+        const data: User = value;
+        data.phone = phone;
+        return userRef.set(data, { merge: true })
       }));
   }
 
   updateAddress(address: AddressFormValues) {
-     return this.user$.pipe(
-     switchMap((value, index) => {
-      const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${value.uid}`);
+    return this.user$.pipe(
+      switchMap((value, index) => {
+        const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${value.uid}`);
 
         const data: User = value;
         data.address = address;
-      return userRef.set(data, { merge: true })
-     }));
+        return userRef.set(data, { merge: true })
+      }));
   }
 
   async login(email: string, password: string) {
@@ -142,7 +142,7 @@ export class AuthService {
   private checkAuthorization(user: User, allowedRoles: string[]): boolean {
     if (!user) return false
     for (const role of allowedRoles) {
-      if ( user.roles[role] ) {
+      if (user.roles[role]) {
         return true
       }
     }

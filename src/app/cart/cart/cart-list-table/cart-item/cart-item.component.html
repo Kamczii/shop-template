@@ -3,7 +3,7 @@
         <img *ngIf="images.get(1); else loading" [src]="images.get(1)">
         <ng-template #loading>
             <app-loading-spinner></app-loading-spinner>
-          </ng-template>
+        </ng-template>
     </div>
     <div class="col-8 col-md-10">
         <div class="row info">
@@ -16,14 +16,14 @@
             <div class="col-12 col-md-2 col">
                 <mat-form-field>
                     <mat-label>Ilość</mat-label>
-                    <input matInput type="number" min="1" value="1" [value]="item.count"
+                    <input matInput type="number" min="1" value="1" [value]="item.count" integerMask
                         (input)="changeCount($event.target.value)">
                 </mat-form-field>
             </div>
             <div class="col-12 col-md-2 col">
                 <mat-form-field>
                     <mat-label *ngIf="sizes.length>0">Rozmiar</mat-label>
-    <mat-label *ngIf="sizes.length==0">Brak rozmiarów</mat-label>
+                    <mat-label *ngIf="sizes.length==0">Brak rozmiarów</mat-label>
                     <mat-select name="size" [(ngModel)]="item.size" (selectionChange)="changeSize($event.value)">
                         <mat-option *ngFor="let size of sizes | enumToArray" [value]="size.name">
                             {{size.name}}
