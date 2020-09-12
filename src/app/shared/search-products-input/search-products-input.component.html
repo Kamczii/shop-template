@@ -7,9 +7,11 @@
              [formControl]="myControl"
              [matAutocomplete]="auto" (keyup)="search()">
       <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-        <mat-option *ngFor="let option of filteredOptions | async" [value]="option.name">
-          <a [routerLink]="['products',option.id]">{{option.name}}</a>
-        </mat-option>
+        <a  *ngFor="let option of filteredOptions | async" [routerLink]="['products',option.id]">
+          <mat-option [value]="option.name">
+            {{option.name}}
+          </mat-option>
+        </a>
       </mat-autocomplete>
     </mat-form-field>
   </form>
