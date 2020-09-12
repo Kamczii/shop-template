@@ -45,9 +45,25 @@ export class ProductService {
     )
   }
 
+  getProductsByName(name: string): Observable<Product[]> {
+    return this.firestore.collection<Product>('products', ref => {
+      let query: firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
+      query = query.where('name','==',name);
+      return query;
+    }).snapshotChanges().pipe(
+      map(changes => {
+        return changes.map(a => {
+          let data = a.payload.doc.data() as Product;
+          data.id = a.payload.doc.id;
+          return data;
+        });
+      })
+    );
+  }
   
   addProduct(value: Product) {
     value.date = new Date();
+    value.nameLowerCase = value.name.toLowerCase();
     return this.firestore.collection<Product>('products').add(value);
   }
 

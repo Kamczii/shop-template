@@ -14,7 +14,7 @@
       </div>
     <span class="menu-spacer"></span>
     
-    <!-- <app-search-products-input></app-search-products-input> -->
+    <div class="search-box"><app-search-products-input></app-search-products-input></div>
     <div fxShow="true" fxHide.lt-md>
       <button mat-button style="padding: 1rem" [routerLink]="['/admin']" *ngIf="hasAdmin()&&user">
         Panel administratora
