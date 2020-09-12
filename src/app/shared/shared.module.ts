@@ -32,6 +32,7 @@ import { DropzoneDirective } from './upload-dropzone/dropzone.directive';
 import { FileToUploadComponent } from './upload-dropzone/uploader/file-to-upload/file-to-upload.component';
 import { UploaderComponent } from './upload-dropzone/uploader/uploader.component';
 import { PriceDirective } from './directives/price.directive';
+import { IntergerDirective } from './directives/interger.directive';
 
 
 
@@ -65,7 +66,8 @@ import { PriceDirective } from './directives/price.directive';
     FileToUploadComponent,
     CategorySelectComponent,
     BrandFilterComponent,
-    PriceDirective
+    PriceDirective,
+    IntergerDirective
   ],
   imports: [
     CommonModule,
@@ -87,6 +89,6 @@ import { PriceDirective } from './directives/price.directive';
     PriceFilterComponent,
     SizeFormComponent, OneSizeFormComponent, EnumToArrayPipe, HeaderComponent, PriceComponent, AddressFormComponent,
     PasswordInputComponent,CategorySelectComponent,
-    EmailInputComponent, AddressComponent, OrderComponent, SnackbarComponent, BrandFilterComponent, EnumWithValuesToArrayPipe, LoadingSpinnerComponent, AddBrandComponent, OrderSummaryComponent, UploaderComponent, PriceInputComponent, SearchProductsInputComponent,PhoneInputComponent]
+    EmailInputComponent, AddressComponent, OrderComponent, IntergerDirective, SnackbarComponent, BrandFilterComponent, EnumWithValuesToArrayPipe, LoadingSpinnerComponent, AddBrandComponent, OrderSummaryComponent, UploaderComponent, PriceInputComponent, SearchProductsInputComponent,PhoneInputComponent]
 })
 export class SharedModule { }
