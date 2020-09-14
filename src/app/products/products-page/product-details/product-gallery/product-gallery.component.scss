@@ -1,7 +1,64 @@
 .gallery-container{
-
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(217px, 1fr));
+        grid-gap: 1rem;
 }
 
-img{
+ a { 
+    border-radius: 3px;
+    display: block;
+    overflow: hidden;
+    position: relative;
+    float: left;
+  }
+ a > img {
+    -webkit-transition: -webkit-transform 0.15s ease 0s;
+    -moz-transition: -moz-transform 0.15s ease 0s;
+    -o-transition: -o-transform 0.15s ease 0s;
+    transition: transform 0.15s ease 0s;
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+    object-fit: cover;
+    width: 100%;
+  }
+a:hover > img {
+    -webkit-transform: scale3d(1.1, 1.1, 1.1);
+    transform: scale3d(1.1, 1.1, 1.1);
+    cursor: pointer;
+  }
+
+
+  .full-screen{
+    visibility: hidden;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: 100;
+    & .img{
+        width: 100%;
+        height: 100%;
+        background-image: url("https://firebasestorage.googleapis.com/v0/b/shop-dfb7b.appspot.com/o/1CKqHk1XnZmUyeV2N22n%2F2?alt=media&token=cfdc6f01-b58d-42d0-8e6e-3fb9dce8315f");
+        filter: blur(8px);
+        -webkit-filter: blur(8px);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        z-index: 100;
+    }
+
+}
+.full-screen-image{
+  display: grid;
+  place-items: center;
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: auto 1fr auto;
+  z-index: 150;
+}
+#full-screen-image{
+    z-index: 150;
     max-width: 100%;
+    text-align: center;
 }

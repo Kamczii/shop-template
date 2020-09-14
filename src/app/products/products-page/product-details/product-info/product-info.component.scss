@@ -1,0 +1,22 @@
+
+.mat-card:not([class*=mat-elevation-z]){
+    box-shadow: none;
+}
+
+.mat-card{
+    background-color:transparent ;
+    padding: 0;
+}
+
+form{
+    display: inline-block
+}
+
+.spacer{
+    display: inline-block;
+    width: 1rem;
+}
+
+p{
+    font-weight: 500;
+}

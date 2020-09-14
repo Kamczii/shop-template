@@ -1,6 +1,6 @@
 <mat-form-field>
   <mat-label>Marka</mat-label>
-  <mat-select [formControl]="control" (selectionChange)="selectionChange($event.value)">
+  <mat-select [formControl]="control">
     <mat-select-trigger>
       {{control.value}}
     </mat-select-trigger>

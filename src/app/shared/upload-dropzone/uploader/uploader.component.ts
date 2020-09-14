@@ -33,14 +33,19 @@ export class UploaderComponent implements OnInit, OnDestroy {
     for (let i = 0; i < files.length; i++) {
       this.files.push(files.item(i));
       this.onChange.emit(this.files.length)
+      console.log(files.item(i));
+      this.readFileUrl(files.item(i));
+    }
+  }
 
-      var reader = new FileReader();
+  readFileUrl(file: File){
+    var reader = new FileReader();
 
-      reader.readAsDataURL(files.item(i)); // read file as data url
+    reader.readAsDataURL(file); // read file as data url
 
-      reader.onload = (event) => { // called once readAsDataURL is completed=
-        this.urls.push({ name: files.item(i).name, url: reader.result });
-      }
+    reader.onload = (event) => { // called once readAsDataURL is completed=
+      console.log(reader.result)
+      this.urls.push({ name: file.name, url: reader.result });
     }
   }
 

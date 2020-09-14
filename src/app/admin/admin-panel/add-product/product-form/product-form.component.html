@@ -30,8 +30,6 @@
     <div>
       <app-category-select [formControlName]="'category'"></app-category-select>
     </div>
-
-    {{productForm.value | json}}
     <mat-form-field class="chip-list">
       <mat-chip-list #chipList aria-label="Advantages selection">
         <mat-chip *ngFor="let advantage of advantages.value" [selectable]="selectable" [removable]="removable"

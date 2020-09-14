@@ -12,8 +12,9 @@ import { ProductGalleryComponent } from './products-page/product-details/product
 import { ProductInfoComponent } from './products-page/product-details/product-info/product-info.component';
 import { ShoppingCartButtonComponent } from './products-page/shopping-cart-button/shopping-cart-button.component';
 import { SharedModule } from '../shared/shared.module';
-import { MatCardModule, MatPaginatorModule, MatRippleModule, MatButtonModule, MatChipsModule, MatExpansionModule } from '@angular/material';
+import { MatCardModule, MatPaginatorModule, MatRippleModule, MatButtonModule, MatChipsModule, MatExpansionModule, MatIconModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FullScreenComponent } from './products-page/product-details/product-gallery/full-screen/full-screen.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ProductDetailsComponent,
     ProductGalleryComponent,
     ProductInfoComponent,
-    ShoppingCartButtonComponent,],
+    ShoppingCartButtonComponent,
+    FullScreenComponent,],
   imports: [
     CommonModule,
     ProductsRoutingModule,
@@ -38,7 +40,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     MatButtonModule,
     MatChipsModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatButtonModule,
+    MatIconModule
   ]
 })
 export class ProductsModule { }

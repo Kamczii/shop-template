@@ -1,11 +1,9 @@
-<mat-card class="example-card" *ngIf="product">
-  <mat-card-header>
+<mat-card *ngIf="product">
+    <mat-card-title><app-price [price]="product.price"></app-price></mat-card-title>
     <mat-card-title>{{product.name}}</mat-card-title>
     <mat-card-subtitle>{{product.brand}}</mat-card-subtitle>
     <mat-card-subtitle>
-      <app-price [price]="product.price"></app-price>
     </mat-card-subtitle>
-  </mat-card-header>
   <mat-card-content>
     <p *ngIf="product.description">
       {{product.description}}
@@ -14,11 +12,13 @@
     <mat-chip-list aria-label="Cechy">
       <mat-chip *ngFor="let advantage of product.advantages" color="accent">{{advantage}}</mat-chip>
     </mat-chip-list>
-    <form [formGroup]="productForm">
-      <app-size-select [sizeList]="availableSizes" [formControlName]="'size'"></app-size-select>
-    </form>
   </mat-card-content>
-  <mat-card-actions>
+    
+    <div style="display: inline">
+      <form [formGroup]="productForm">
+        <app-size-select [sizeList]="availableSizes" [formControlName]="'size'"></app-size-select>
+      </form>
+    </div>
+    <div class="spacer"></div>
     <app-shopping-cart-button (add)="addToCart()" [disabled]="productForm.invalid"></app-shopping-cart-button>
-  </mat-card-actions>
 </mat-card>
