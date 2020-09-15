@@ -46,7 +46,8 @@ import { Router } from '@angular/router';
     CartModule,
     ProductsModule,
     AdminModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent],

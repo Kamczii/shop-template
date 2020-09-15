@@ -26,7 +26,7 @@
       </button>
       <span class="spacer"></span>
       <button mat-button style="padding: 1rem" [routerLink]="['/cart']" routerLinkActive="active-link">Koszyk
-        <mat-icon matBadge="{{cartService.cartItemsCount()}}" matBadgeColor="warn">shopping_cart</mat-icon>
+        <mat-icon matBadge="{{cartService.cartItemsCount()}}" matBadgeColor="accent">shopping_cart</mat-icon>
         <span class="cdk-visually-hidden">
           Koszyk
         </span></button>
@@ -43,7 +43,7 @@
       </a>
       <app-login-logout-button></app-login-logout-button>
       <a mat-list-item [routerLink]="['/cart']">Koszyk
-        <mat-icon matBadge="{{cartService.cartItemsCount()}}" matBadgeColor="warn">shopping_cart</mat-icon>
+        <mat-icon matBadge="{{cartService.cartItemsCount()}}" matBadgeColor="accent">shopping_cart</mat-icon>
         <span class="cdk-visually-hidden">
           Koszyk
         </span></a>

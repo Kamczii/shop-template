@@ -1,14 +1,18 @@
+@import '../styles/_variables';
+
 .bg{
     background-image: url('../assets/bg.JPG');
-    min-height: 90vh;
+    min-height: calc(100vh - 64px);
     background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
-  background-size: 100% 100%;
+  background-size:cover;
 }
 .footer{
-    position: absolute;
+    position: sticky;
     bottom:0;
+    height: 100%;
     width: 100%;
     color: white;
+    background-color: $primary;
 }

@@ -1,5 +1,12 @@
 @import '../../../styles/_variables';
-
+mat-sidenav{
+  height: calc(100vh);
+  position: fixed;
+}
+mat-sidenav-content{
+  min-height: calc(100vh - 64px);
+  margin-top: 64px;
+}
 
 button{
   letter-spacing:  .1rem;
@@ -18,9 +25,9 @@ button{
 }
 
 .mat-toolbar.mat-primary {
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 1;
+  z-index: 2;
 }
 
 
