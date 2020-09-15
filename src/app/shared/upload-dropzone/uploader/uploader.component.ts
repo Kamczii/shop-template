@@ -38,7 +38,7 @@ export class UploaderComponent implements OnInit, OnDestroy {
     }
   }
 
-  readFileUrl(file: File){
+  readFileUrl(file: File) {
     var reader = new FileReader();
 
     reader.readAsDataURL(file); // read file as data url

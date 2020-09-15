@@ -1,6 +1,7 @@
 .items-container{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(217px, 1fr));
+    grid-gap: 1rem;
     border-radius: 24px;
 }
 .item{

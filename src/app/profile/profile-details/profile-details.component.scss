@@ -1,4 +1,6 @@
-
+.tab-content{
+    padding: 15px;
+}
 .basic img{
     margin-top: -60px;
     max-width: 200px;
@@ -23,4 +25,25 @@ mat-card{
 .address{
     display:grid;
     grid-template-columns: auto 1fr;
+}
+
+.info, .address{
+    border: 3px solid black;
+    padding: 5px;
+    &::before{
+        position:absolute;
+        top: 3px;
+        left: 26px;
+        padding: 0 10px;
+        background: white;
+        font-weight: bold;
+    }
+}
+
+.info::before{
+    content: 'Kontakt';
+}
+
+.address::before{
+    content: 'Adres';
 }

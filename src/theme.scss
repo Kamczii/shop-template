@@ -1,4 +1,5 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 @import '~@angular/material/theming';
 // Plus imports for other components in your app.
 
@@ -8,6 +9,14 @@
 // have to load a single css file for Angular Material in your app.
 // Be sure that you only ever include this mixin once!
 @include mat-core();
+
+$custom-typography: mat-typography-config(
+  $font-family: 'Nunito, sans-serif'
+);
+// Override typography for all Angular Material, including mat-base-typography and all components.
+@include angular-material-typography($custom-typography);
+// Override the typography in the core CSS.
+@include mat-core($custom-typography);
 
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker

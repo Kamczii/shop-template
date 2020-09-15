@@ -27,6 +27,8 @@
 }
   &:hover .content{
       color: white;
+      
+      background-color: transparent;
   }
 
 }
@@ -57,8 +59,14 @@ a:hover{ text-decoration: none}
 .content{
     z-index: 2;
     position: absolute;
-    top: 30px;
-    left: 30px;
+    bottom: 0px;
+    width: 100%;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+    background-color: rgba(255, 255, 255, .5);
+    box-sizing: border-box;
+    padding: 5px;
+    border-radius: 5px;
 }
 
 h4{
@@ -68,7 +76,6 @@ h4{
 .line{
     width: 80px;
     height: 3px;
-    background-color: $primary;
     display: block;
     margin-bottom: 15px;
 }

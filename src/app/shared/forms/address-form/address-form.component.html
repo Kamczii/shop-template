@@ -1,23 +1,23 @@
 <div class="form" [formGroup]="addressForm">
-            <div>
-                <mat-form-field class="example-full-width">
-                    <mat-label>Imię</mat-label>
-                    <input matInput formControlName="name">
-                    <mat-error *ngIf="addressForm.controls.name.touched && addressForm.controls.name.hasError('required')">
-                        Pole <strong>wymagane</strong>
-                    </mat-error>
-                </mat-form-field>
-            </div>
-            <div>
-                <mat-form-field class="example-full-width">
-                    <mat-label>Nazwisko</mat-label>
-                    <input matInput formControlName="lastName">
-                    <mat-error
-                        *ngIf="addressForm.controls.lastName.touched && addressForm.controls.lastName.hasError('required')">
-                        Pole <strong>wymagane</strong>
-                    </mat-error>
-                </mat-form-field>
-            </div>
+    <div>
+        <mat-form-field class="example-full-width">
+            <mat-label>Imię</mat-label>
+            <input matInput formControlName="name">
+            <mat-error *ngIf="addressForm.controls.name.touched && addressForm.controls.name.hasError('required')">
+                Pole <strong>wymagane</strong>
+            </mat-error>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field class="example-full-width">
+            <mat-label>Nazwisko</mat-label>
+            <input matInput formControlName="lastName">
+            <mat-error
+                *ngIf="addressForm.controls.lastName.touched && addressForm.controls.lastName.hasError('required')">
+                Pole <strong>wymagane</strong>
+            </mat-error>
+        </mat-form-field>
+    </div>
     <div>
         <mat-form-field class="example-full-width">
             <mat-label>Miasto</mat-label>
@@ -27,33 +27,32 @@
             </mat-error>
         </mat-form-field>
     </div>
-        <div>
-            <mat-form-field class="example-full-width">
-                <mat-label>Ulica</mat-label>
-                <input matInput formControlName="street">
-                <mat-error *ngIf="addressForm.controls.street.touched && addressForm.controls.street.hasError('required')">
-                    Pole <strong>wymagane</strong>
-                </mat-error>
-            </mat-form-field>
-        </div>
-        <div>
-            <mat-form-field class="example-full-width">
-                <mat-label>Nr. domu/mieszkania</mat-label>
-                <input matInput formControlName="number">
-                <mat-error
-                    *ngIf="addressForm.controls.number.touched && addressForm.controls.number.hasError('required')">
-                    Pole <strong>wymagane</strong>
-                </mat-error>
-            </mat-form-field>
-        </div>
-        <div>
-            <mat-form-field class="example-full-width">
-                <mat-label>Kod pocztowy</mat-label>
-                <input matInput formControlName="zipCode">
-                <mat-error
-                    *ngIf="addressForm.controls.zipCode.touched && addressForm.controls.zipCode.hasError('required')">
-                    Pole <strong>wymagane</strong>
-                </mat-error>
-            </mat-form-field>
-        </div>
+    <div>
+        <mat-form-field class="example-full-width">
+            <mat-label>Ulica</mat-label>
+            <input matInput formControlName="street">
+            <mat-error *ngIf="addressForm.controls.street.touched && addressForm.controls.street.hasError('required')">
+                Pole <strong>wymagane</strong>
+            </mat-error>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field class="example-full-width">
+            <mat-label>Nr. domu/mieszkania</mat-label>
+            <input matInput formControlName="number">
+            <mat-error *ngIf="addressForm.controls.number.touched && addressForm.controls.number.hasError('required')">
+                Pole <strong>wymagane</strong>
+            </mat-error>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field class="example-full-width">
+            <mat-label>Kod pocztowy</mat-label>
+            <input matInput formControlName="zipCode">
+            <mat-error
+                *ngIf="addressForm.controls.zipCode.touched && addressForm.controls.zipCode.hasError('required')">
+                Pole <strong>wymagane</strong>
+            </mat-error>
+        </mat-form-field>
+    </div>
 </div>

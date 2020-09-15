@@ -1,9 +1,11 @@
 <mat-card *ngIf="product">
-    <mat-card-title><app-price [price]="product.price"></app-price></mat-card-title>
-    <mat-card-title>{{product.name}}</mat-card-title>
-    <mat-card-subtitle>{{product.brand}}</mat-card-subtitle>
-    <mat-card-subtitle>
-    </mat-card-subtitle>
+  <mat-card-title>
+    <app-price [price]="product.price"></app-price>
+  </mat-card-title>
+  <mat-card-title>{{product.name}}</mat-card-title>
+  <mat-card-subtitle>{{product.brand}}</mat-card-subtitle>
+  <mat-card-subtitle>
+  </mat-card-subtitle>
   <mat-card-content>
     <p *ngIf="product.description">
       {{product.description}}
@@ -13,12 +15,12 @@
       <mat-chip *ngFor="let advantage of product.advantages" color="accent">{{advantage}}</mat-chip>
     </mat-chip-list>
   </mat-card-content>
-    
-    <div style="display: inline">
-      <form [formGroup]="productForm">
-        <app-size-select [sizeList]="availableSizes" [formControlName]="'size'"></app-size-select>
-      </form>
-    </div>
-    <div class="spacer"></div>
-    <app-shopping-cart-button (add)="addToCart()" [disabled]="productForm.invalid"></app-shopping-cart-button>
+
+  <div style="display: inline">
+    <form [formGroup]="productForm">
+      <app-size-select [sizeList]="availableSizes" [formControlName]="'size'"></app-size-select>
+    </form>
+  </div>
+  <div class="spacer"></div>
+  <app-shopping-cart-button (add)="addToCart()" [disabled]="productForm.invalid"></app-shopping-cart-button>
 </mat-card>

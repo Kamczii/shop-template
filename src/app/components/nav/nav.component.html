@@ -5,11 +5,12 @@
     </button>
     <img src="assets/logo.png" [routerLink]="['']">
     <div fxShow="true" fxHide.lt-md>
-      <button mat-button style="padding: 1rem" [routerLink]="['/products']">
+      <button mat-button style="padding: 1rem" [routerLink]="['/products']" routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{exact: true}">
         Wszystko
       </button>
       <button *ngFor="let category of categories" mat-button style="padding: 1rem"
-        [routerLink]="['/products/categories',category]">
+        [routerLink]="['/products/categories',category]" routerLinkActive="active-link">
         {{category}}
       </button>
     </div>
@@ -19,11 +20,12 @@
       <app-search-products-input></app-search-products-input>
     </div>
     <div fxShow="true" fxHide.lt-md>
-      <button mat-button style="padding: 1rem" [routerLink]="['/admin']" *ngIf="hasAdmin()&&user">
+      <button mat-button style="padding: 1rem" [routerLink]="['/admin']" *ngIf="hasAdmin()&&user"
+        routerLinkActive="active-link">
         Panel administratora
       </button>
       <span class="spacer"></span>
-      <button mat-button style="padding: 1rem" [routerLink]="['/cart']">Koszyk
+      <button mat-button style="padding: 1rem" [routerLink]="['/cart']" routerLinkActive="active-link">Koszyk
         <mat-icon matBadge="{{cartService.cartItemsCount()}}" matBadgeColor="warn">shopping_cart</mat-icon>
         <span class="cdk-visually-hidden">
           Koszyk

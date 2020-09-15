@@ -10,17 +10,17 @@ export class ProductGalleryComponent implements OnInit {
   @Input() imageURLs: Map<number, string> = new Map<number, string>();
 
   fullScreenEnabled = false;
-  currentKey=0;
-  
-  @ViewChild('background', {static: false})
+  currentKey = 0;
+
+  @ViewChild('background', { static: false })
   backgroundRef: ElementRef;
-  @ViewChild('backgroundImage', {static: false})
+  @ViewChild('backgroundImage', { static: false })
   backgroundImageRef: ElementRef;
 
-  
-  @ViewChild('image', {static: false})
+
+  @ViewChild('image', { static: false })
   imageRef: ElementRef;
-  @ViewChild('imageContainer', {static: false})
+  @ViewChild('imageContainer', { static: false })
   imageContainerRef: ElementRef;
 
   constructor() { }
@@ -42,33 +42,33 @@ export class ProductGalleryComponent implements OnInit {
     this.makeFullPageInvisible();
   }
 
-  makeFullPageVisible(){
+  makeFullPageVisible() {
     this.backgroundRef.nativeElement.style.visibility = 'visible';
     this.imageContainerRef.nativeElement.style.visibility = 'visible';
   }
 
-  makeFullPageInvisible(){
+  makeFullPageInvisible() {
     this.backgroundRef.nativeElement.style.visibility = 'hidden';
     this.imageContainerRef.nativeElement.style.visibility = 'hidden';
   }
 
-  nextImage(){
+  nextImage() {
     this.currentKey++;
-    if(this.currentKey>this.imageURLs.size)
-      this.currentKey=1;
+    if (this.currentKey > this.imageURLs.size)
+      this.currentKey = 1;
     this.setImage(this.currentKey);
   }
 
-  previousImage(){
+  previousImage() {
     this.currentKey--;
-    if(this.currentKey<1)
-      this.currentKey=1;
+    if (this.currentKey < 1)
+      this.currentKey = 1;
     this.setImage(this.currentKey);
   }
 
 
-  setImage(key){
+  setImage(key) {
     this.imageRef.nativeElement.src = this.imageURLs.get(key);
-    this.backgroundImageRef.nativeElement.style.backgroundImage = 'url('+this.imageURLs.get(key)+')';
+    this.backgroundImageRef.nativeElement.style.backgroundImage = 'url(' + this.imageURLs.get(key) + ')';
   }
 }

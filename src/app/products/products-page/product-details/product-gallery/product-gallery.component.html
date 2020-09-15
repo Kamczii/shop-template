@@ -1,28 +1,30 @@
 <figure *ngIf="!fullScreenEnabled">
     <div class="gallery-container">
-            <a  *ngFor="let image of imageURLs | keyvalue" (click)="openFullScreen(image.key)"><img [src]="image.value"></a>
+        <a *ngFor="let image of imageURLs | keyvalue" (click)="openFullScreen(image.key)"><img [src]="image.value"></a>
     </div>
 </figure>
 
 <div #background class="full-screen bg-white">
     <div #backgroundImage class="img"></div>
-    
+
 </div>
 
-<div  #imageContainer  class="full-screen full-screen-image" style="
+<div #imageContainer class="full-screen full-screen-image" style="
 background-color: none;">
     <div></div>
     <div></div>
-    <button mat-icon-button color="warn" aria-label="Example icon button with a bookmark icon" (click)="closeFullScreen()">
+    <button mat-icon-button color="warn" aria-label="Example icon button with a bookmark icon"
+        (click)="closeFullScreen()">
         <mat-icon>close</mat-icon>
     </button>
-    <button mat-icon-button color="accent" aria-label="Example icon button with a bookmark icon"  (click)="previousImage()">
+    <button mat-icon-button color="accent" aria-label="Example icon button with a bookmark icon"
+        (click)="previousImage()">
         <mat-icon>navigate_before</mat-icon>
     </button>
-    
+
     <img #image id="full-screen-image" class="mat-elevation-z14" [src]="imageURLs.get(0)" alt="image">
 
-    <button mat-icon-button color="accent" aria-label="Example icon button with a bookmark icon"  (click)="nextImage()">
+    <button mat-icon-button color="accent" aria-label="Example icon button with a bookmark icon" (click)="nextImage()">
         <mat-icon>navigate_next</mat-icon>
     </button>
     <div></div>

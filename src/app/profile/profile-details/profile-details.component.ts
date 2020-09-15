@@ -25,7 +25,7 @@ export class ProfileDetailsComponent implements OnInit {
   editEmail: boolean = false;
   editPhone: boolean = false;
   editAddress: boolean = false;
-  
+
   constructor(private auth: AuthService, private fb: FormBuilder, private orderService: OrderService) {
     this.addressForm = this.fb.group({
       address: []

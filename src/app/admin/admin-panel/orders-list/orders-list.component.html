@@ -1,4 +1,7 @@
 <mat-card>
+    <mat-card-header>
+        <mat-card-title>Zamówienia</mat-card-title>
+    </mat-card-header>
     <app-status-form [value]="orderPanelService.getFilterStatusValue()" (onChange)="setStatusFilterValue($event)">
     </app-status-form>
     <div *ngIf="orderPanelService.orders$ | async as orders; else loading">

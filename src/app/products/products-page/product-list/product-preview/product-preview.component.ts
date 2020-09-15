@@ -13,18 +13,18 @@ export class ProductPreviewComponent implements OnInit, AfterViewInit {
   @Input() product: Product;
   images: Map<number, string> = new Map<number, string>();
 
-  @ViewChild('wrapper',{static: false})
+  @ViewChild('wrapper', { static: false })
   wrapperRef: ElementRef;
-  
+
   constructor(private storageService: StorageService) { }
 
   ngAfterViewInit(): void {
     let that = this;
     this.storageService.getImagesByProductId(this.product.id).subscribe(data => data.items.forEach(item => item.getDownloadURL().then(function (url) {
       that.images.set(+item.name, url);
-      if(+item.name==1){that.wrapperRef.nativeElement.style.backgroundImage = 'url('+url+')';}
+      if (+item.name == 1) { that.wrapperRef.nativeElement.style.backgroundImage = 'url(' + url + ')'; }
     })));
-    
+
   }
   ngOnInit() {
 

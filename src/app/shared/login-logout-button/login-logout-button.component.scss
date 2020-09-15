@@ -1,4 +1,11 @@
+@import "../../../styles/_variables";
+button{
+  letter-spacing:  .1rem;
+}
 img{
     width: 30px;
     margin-left: .25rem;
 }
+.active-link{
+    color: $accent;
+  }
