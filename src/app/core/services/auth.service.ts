@@ -20,6 +20,10 @@ export class AuthService {
     private afs: AngularFirestore,
     private router: Router) {
 
+    this.subscribeToUser();
+  }
+
+  subscribeToUser(){
     this.user$ = this.afAuth.authState.pipe(
       switchMap(user => {
         if (user) {
@@ -29,23 +33,7 @@ export class AuthService {
         }
       })
     )
-    // this.user$ = of({
-    //   "uid": "HfjqhTqGs2gCsUSrhvEyOkM43Lw2",
-    //   "email": "funnykamil2000@gmail.com",
-    //   "photoURL": "https://lh3.googleusercontent.com/a-/AOh14GhcafJAJjhIH5ZTfptsM66bzD6QjMt3h56ny4UQ",
-    //   "address": {
-    //     "name": "Kamilek",
-    //     "city": "Bydgoszcz",
-    //     "lastName": "Czepielek",
-    //     "street": "jaśkowa dolina",
-    //     "number": "21/5",
-    //     "zipCode": "86-003"
-    //   },
-    //   "displayName": "K4mczi"
-    // });;
-
   }
-
 
   updateEmail(email: string) {
     return this.user$.pipe(
@@ -109,18 +97,16 @@ export class AuthService {
     // Sets user data to firestore on login
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
 
-    let data = <User>{};
-    data = {
+    let data = {
       uid: user.uid,
       email: user.email,
       displayName: user.displayName,
       photoURL: user.photoURL,
       roles: {
-        basic: true,
-        admin: false
+        basic: true
       }
     }
-
+    this.subscribeToUser();
     return userRef.set(data, { merge: true })
 
   }
@@ -141,6 +127,7 @@ export class AuthService {
   }
   private checkAuthorization(user: User, allowedRoles: string[]): boolean {
     if (!user) return false
+    console.log("s")
     for (const role of allowedRoles) {
       if (user.roles[role]) {
         return true
