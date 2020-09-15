@@ -1,3 +1,6 @@
+.form{
+  max-width: 500px;
+}
 .example-form {
     max-width: 500px;
     width: 100%;
@@ -9,4 +12,8 @@
   
   td {
     padding-right: 8px;
+  }
+
+  .col-md-5, .col-md-6, .col-md-2, .col-md-7, .col-md-1, .col-md-4, .col-md-3, .col-md-8{
+    padding:0;
   }

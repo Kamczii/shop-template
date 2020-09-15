@@ -24,7 +24,8 @@ export class ProfileDetailsComponent implements OnInit {
 
   editEmail: boolean = false;
   editPhone: boolean = false;
-
+  editAddress: boolean = false;
+  
   constructor(private auth: AuthService, private fb: FormBuilder, private orderService: OrderService) {
     this.addressForm = this.fb.group({
       address: []
@@ -33,7 +34,7 @@ export class ProfileDetailsComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]]
     });
     this.phoneForm = this.fb.group({
-      phone: []
+      phone: ['', [Validators.required]]
     });
   }
 

@@ -1,12 +1,40 @@
+@import '../../../../../styles/variables';
+
 .example-ripple-container:hover{
     cursor: pointer;
 }
-.card{
+
+
+.wrapper{
     height: 350px;
     display: flex;
     flex-direction: column;
-    padding: 1rem;
+    background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position:relative;
+    border-radius: 5px;
+  &:hover .overlay {
+    width:100%;
+    height:100%;
+    position:absolute;
+    background-color:#000;
+    opacity:0.35;
+  }
+
+  &:hover .line{
+    background-color: white;
 }
+  &:hover .content{
+      color: white;
+  }
+
+}
+.overlay{
+    border-radius: 5px;
+}
+
+
 .card img{
     height: 70%;
     object-fit:cover
@@ -17,4 +45,30 @@ mat-card-content{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+a{
+    color: inherit; 
+}
+a:hover{ text-decoration: none} 
+
+.line, .content, .overlay{
+    transition: .4s;
+}
+.content{
+    z-index: 2;
+    position: absolute;
+    top: 30px;
+    left: 30px;
+}
+
+h4{
+    line-height: 1.3;
+}
+
+.line{
+    width: 80px;
+    height: 3px;
+    background-color: $primary;
+    display: block;
+    margin-bottom: 15px;
 }

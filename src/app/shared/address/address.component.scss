@@ -1,7 +1,7 @@
-
-.row{
-    max-width: 100%;
-    margin: 0;
+.address-container{
+    display: grid;
+    grid-template-columns:1fr 1fr;
+    column-gap: 1rem;
 }
 .el{
     box-sizing: border-box;

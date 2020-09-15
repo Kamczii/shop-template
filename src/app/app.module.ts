@@ -19,6 +19,7 @@ import { ProductsModule } from './products/products.module';
 import { FooterComponent } from './components/footer/footer.component';
 import { AdminModule } from './admin/admin.module';
 import { TestingComponent } from './components/testing/testing.component';
+import { Router } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -51,4 +52,6 @@ import { TestingComponent } from './components/testing/testing.component';
   bootstrap: [AppComponent],
 
 })
-export class AppModule { }
+export class AppModule {
+  
+ }

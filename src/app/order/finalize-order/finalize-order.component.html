@@ -1,64 +1,68 @@
-<mat-horizontal-stepper linear #stepper>
-  <div class="steps-container">
-    <mat-step [stepControl]="dataForm" [editable]="true">
-      <form [formGroup]="dataForm">
-        <ng-template matStepLabel>Adres</ng-template>
-        <app-address-form formControlName="address"></app-address-form>
-
-        <div class="contact-form" formGroupName="contactForm">
-
-          <div>
-            <app-phone-input [formControlName]="'phone'"></app-phone-input>
+<div class="container">
+  <mat-card>
+    <mat-horizontal-stepper linear #stepper>
+      <div class="steps-container">
+        <mat-step [stepControl]="dataForm" [editable]="true">
+          <form [formGroup]="dataForm">
+            <ng-template matStepLabel>Adres</ng-template>
+            <app-address-form formControlName="address"></app-address-form>
+    
+            <div class="contact-form" formGroupName="contactForm">
+    
+              <div>
+                <app-phone-input [formControlName]="'phone'"></app-phone-input>
+              </div>
+              <div>
+                <app-email-input [formControlName]="'email'"></app-email-input>
+              </div>
+            </div>
+          </form>
+    
+    
+          <button mat-flat-button color="primary" matStepperNext>Dalej</button>
+        </mat-step>
+    
+        <mat-step [stepControl]="paymentForm" [editable]="true">
+          <ng-template matStepLabel>Płatność</ng-template>
+          <form [formGroup]="paymentForm">
+            <ng-template matStepLabel>Adres</ng-template>
+            <app-payment formControlName="paymentMethod"></app-payment>
+    
+            <button mat-flat-button color="primary" matStepperNext>Dalej</button>
+          </form>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Zrobione</ng-template>
+          <table>
+            <tr>
+              <th>Nazwa</th>
+              <th>Ilość</th>
+              <th>Rozmiar</th>
+              <th>Cena</th>
+            </tr>
+            <tr *ngFor="let item of cart">
+              <td>{{item.product.name}}</td>
+              <td>{{item.count}}</td>
+              <td>{{item.size}}</td>
+              <td>
+                <app-price [price]="item.product.price"></app-price>
+              </td>
+            </tr>
+          </table>
+          <div class="row">
+            <div class="col-md-6 col-sm-12">
+              <p><b>E-mail: </b>{{this.dataForm.value.contactForm.email}}</p>
+              <p><b>Telefon: </b>{{this.dataForm.value.contactForm.phone}}</p>
+              <app-address *ngIf="dataForm.value" [address]="dataForm.controls.address.value"></app-address>
+            </div>
+            <div class="col-md-6 col-sm-12">
+              <p *ngIf="paymentForm.value.paymentMethod"><b>Forma płatności:
+                </b>{{paymentForm.value.paymentMethod.paymentMethod}}</p>
+            </div>
           </div>
-          <div>
-            <app-email-input [formControlName]="'email'"></app-email-input>
-          </div>
-        </div>
-      </form>
-
-
-      <button mat-flat-button color="primary" matStepperNext>Dalej</button>
-    </mat-step>
-
-    <mat-step [stepControl]="paymentForm" [editable]="true">
-      <ng-template matStepLabel>Płatność</ng-template>
-      <form [formGroup]="paymentForm">
-        <ng-template matStepLabel>Adres</ng-template>
-        <app-payment formControlName="paymentMethod"></app-payment>
-
-        <button mat-flat-button color="primary" matStepperNext>Dalej</button>
-      </form>
-    </mat-step>
-    <mat-step>
-      <ng-template matStepLabel>Zrobione</ng-template>
-      <table>
-        <tr>
-          <th>Nazwa</th>
-          <th>Ilość</th>
-          <th>Rozmiar</th>
-          <th>Cena</th>
-        </tr>
-        <tr *ngFor="let item of cart">
-          <td>{{item.product.name}}</td>
-          <td>{{item.count}}</td>
-          <td>{{item.size}}</td>
-          <td>
-            <app-price [price]="item.product.price"></app-price>
-          </td>
-        </tr>
-      </table>
-      <div class="row">
-        <div class="col-md-6 col-sm-12">
-          <p><b>E-mail:</b>{{this.dataForm.get('contactForm.email')}}</p>
-          <p><b>Telefon:</b>{{this.dataForm.get('contactForm.phone')}}</p>
-          <app-address *ngIf="dataForm.value" [address]="dataForm.controls.address.value"></app-address>
-        </div>
-        <div class="col-md-6 col-sm-12">
-          <p *ngIf="paymentForm.value.paymentMethod"><b>Forma płatności:
-            </b>{{paymentForm.value.paymentMethod.paymentMethod}}</p>
-        </div>
+          <app-confirm-button message="Złóż zamówienie" disabled="false" (confirmed)="order()"></app-confirm-button>
+        </mat-step>
       </div>
-      <app-confirm-button message="Złóż zamówienie" disabled="false" (confirmed)="order()"></app-confirm-button>
-    </mat-step>
-  </div>
-</mat-horizontal-stepper>
+    </mat-horizontal-stepper>
+  </mat-card>
+</div>

@@ -1,75 +1,66 @@
 <div *ngIf="auth.user$ | async as user; else loading">
   <div class="container">
-    <div class="row">
-      <div class="col-md-4 basic">
-        <mat-card>
-          <img [src]="user.photoURL">
-
-          <h3 align="center" class="mt-2">{{user.displayName}}</h3>
-        </mat-card>
-      </div>
-      <div class="col-md-8">
-        <mat-card>
-          <mat-tab-group mat-align-tabs="center">
-            <mat-tab label="Informacje">
-              <div class="tab-container p-2">
-                <p><b>E-mail:</b> {{user.email}}<button mat-icon-button color="primary" (click)="editEmail=!editEmail"
-                    aria-label="edit">
-                    <mat-icon>edit</mat-icon>
-                  </button>
-                </p>
-                <form *ngIf="editEmail" class="example-form" [formGroup]="emailForm" (submit)="updateEmail()">
-                  <app-email-input [formControlName]="'email'"></app-email-input><button [disabled]="emailForm.invalid"
-                    mat-icon-button color="primary" aria-label="Example icon button with a menu icon" type="submit">
-                    <mat-icon>check</mat-icon>
-                  </button>
-                </form>
-                <p><b>Telefon:</b> {{user.phone}}<button mat-icon-button color="primary" aria-label="edit"
-                    (click)="editPhone=!editPhone">
-                    <mat-icon>edit</mat-icon>
-                  </button></p>
-                <form *ngIf="editPhone" class="example-form" [formGroup]="phoneForm" (submit)="updatePhone()">
-                  <app-phone-input [formControlName]="'phone'"></app-phone-input><button mat-icon-button color="primary"
-                    [disabled]="phoneForm.invalid" aria-label="Example icon button with a menu icon" type="submit">
-                    <mat-icon>check</mat-icon>
-                  </button>
-                </form>
-              </div>
-            </mat-tab>
-            <mat-tab label="Adres">
-              <div class="tab-container p-2">
-                <app-address [address]="user.address"></app-address>
-                <mat-expansion-panel hideToggle fxShow="false" fxShow.gt-xs>
-                  <mat-expansion-panel-header>
-                    <mat-panel-title>
-                      Edytuj
-                    </mat-panel-title>
-                    <mat-panel-description>
-                      Naciśnij by rozwinąć formularz
-                    </mat-panel-description>
-                  </mat-expansion-panel-header>
-                  <form [formGroup]="addressForm">
-                    <app-address-form formControlName="address"></app-address-form>
-                  </form>
-                  <app-confirm-button (confirmed)="updateAddress()" message="Zmień" [disabled]="addressForm.invalid">
-                  </app-confirm-button>
-                </mat-expansion-panel>
-              </div>
-            </mat-tab>
-            <mat-tab label="Zamówienia">
-              <div *ngIf="orders$ | async as orders; else loading" class="tab-container p-2">
-                <div *ngFor="let order of orders">
-                  <app-order [order]="order"></app-order>
+      <mat-card class="mat-elevation-z9">
+        <div class="basic">
+            <img [src]="user.photoURL">
+  
+            <h3  class="mt-2">{{user.displayName}}</h3>
+        </div>
+        <div>
+            <mat-tab-group mat-align-tabs="center">
+              <mat-tab label="Informacje">
+                <div >
+                  <div class="info">
+                    <p><b>E-mail:</b> {{user.email}}<button mat-icon-button color="primary" (click)="editEmail=!editEmail"
+                        aria-label="edit">
+                        <mat-icon>edit</mat-icon>
+                      </button>
+                    </p>
+                    <form *ngIf="editEmail" class="example-form" [formGroup]="emailForm" (submit)="updateEmail()">
+                      <app-email-input [formControlName]="'email'"></app-email-input><button [disabled]="emailForm.invalid"
+                        mat-icon-button color="primary" aria-label="Example icon button with a menu icon" type="submit">
+                        <mat-icon>check</mat-icon>
+                      </button>
+                    </form>
+                    <p><b>Telefon:</b> {{user.phone}}<button mat-icon-button color="primary" aria-label="edit"
+                        (click)="editPhone=!editPhone">
+                        <mat-icon>edit</mat-icon>
+                      </button></p>
+                    <form *ngIf="editPhone" class="example-form" [formGroup]="phoneForm" (submit)="updatePhone()">
+                      <app-phone-input [formControlName]="'phone'"></app-phone-input><button mat-icon-button color="primary"
+                        [disabled]="phoneForm.invalid" aria-label="Example icon button with a menu icon" type="submit">
+                        <mat-icon>check</mat-icon>
+                      </button>
+                    </form>
+                  </div>
+                    <div class="address">
+                      <app-address [address]="user.address"></app-address><button mat-icon-button color="primary" aria-label="edit"
+                      (click)="editAddress=!editAddress">
+                      <mat-icon>edit</mat-icon>
+                    </button>
+                     </div>
+                     <form *ngIf="editAddress" [formGroup]="addressForm" (submit)="updateAddress()">
+                        <app-address-form formControlName="address"></app-address-form>
+                        <button [disabled]="addressForm.invalid"
+                        mat-icon-button color="primary" aria-label="Example icon button with a menu icon" type="submit">
+                        <mat-icon>check</mat-icon>
+                      </button>
+                      </form>
                 </div>
-              </div>
-              <ng-template #loading>
-                <app-loading-spinner></app-loading-spinner>
-              </ng-template>
-            </mat-tab>
-          </mat-tab-group>
-        </mat-card>
-      </div>
-    </div>
+              </mat-tab>
+              <mat-tab label="Zamówienia">
+                <div *ngIf="orders$ | async as orders; else loading" class="tab-container p-2">
+                  <div *ngFor="let order of orders">
+                    <app-order [order]="order"></app-order>
+                  </div>
+                </div>
+                <ng-template #loading>
+                  <app-loading-spinner></app-loading-spinner>
+                </ng-template>
+              </mat-tab>
+            </mat-tab-group>
+        </div>
+      </mat-card>
   </div>
 </div>
 <ng-template #loading>

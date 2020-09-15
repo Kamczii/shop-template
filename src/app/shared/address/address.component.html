@@ -1,16 +1,9 @@
-<div class="gray-color address-container">
-    <div class="row">
-        <div class="col-sm-12 col-md-6 el"><b>Imię: </b>{{address?.name}}</div>
-        <div class="col-sm-12 col-md-6 el"><b>Nazwisko: </b>{{address?.lastName}}</div>
-    </div>
-    <div>
-        <div class="col-sm-12 el"><b>Miasto: </b>{{address?.city}}</div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12 col-md-6 el"><b>Ulica: </b>{{address?.street}}</div>
-        <div class="col-sm-12 col-md-6 el"><b>Nr: </b>{{address?.number}}</div>
-    </div>
-    <div>
-        <div class="col-sm-12 el"><b>Kod-pocztowy: </b>{{address?.zipCode}}</div>
+<div class="gray-color">
+    <div class="address-container">
+        <div><b>Imię: </b></div><div>{{address?.name}}</div>
+        <div><b>Nazwisko: </b></div><div>{{address?.lastName}}</div>
+        <div><b>Miasto: </b></div><div>{{address?.city}}</div>
+        <div><b>Ulica i nr: </b></div><div>{{address?.street}} {{address?.number}}</div>
+        <div><b>Kod-pocztowy: </b></div><div>{{address?.zipCode}}</div>
     </div>
 </div>

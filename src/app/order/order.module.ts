@@ -5,7 +5,7 @@ import { OrderRoutingModule } from './order-routing.module';
 import { FinalizeOrderComponent } from './finalize-order/finalize-order.component';
 import { ShippingComponent } from './finalize-order/shipping/shipping.component';
 import { PaymentComponent } from './finalize-order/payment/payment.component';
-import { MatStepperModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, MatListModule, MatTableModule } from '@angular/material';
+import { MatStepperModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, MatListModule, MatTableModule, MatCardModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { MatRadioModule } from '@angular/material/radio';
@@ -28,7 +28,8 @@ import { MatRadioModule } from '@angular/material/radio';
     FormsModule,
     MatIconModule,
     MatListModule,
-    MatTableModule
+    MatTableModule,
+    MatCardModule,
   ]
 })
 export class OrderModule { }
