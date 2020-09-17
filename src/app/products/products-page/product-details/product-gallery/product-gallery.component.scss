@@ -53,6 +53,7 @@ a:hover > img {
 }
 .full-screen-image{
   display: grid;
+  padding-top: 64px;
   height: 100%;
   place-items: center;
   grid-template-columns: auto 1fr auto;

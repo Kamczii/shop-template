@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ErrorStateMatcher, MatSnackBar } from '@angular/material';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
 
 
@@ -19,7 +20,7 @@ export class LoginFormComponent implements OnInit {
     return this.loginForm.controls['password']
   }
 
-  constructor(private fb: FormBuilder, private auth: AuthService, private _snackBar: MatSnackBar) {
+  constructor(private fb: FormBuilder, private auth: AuthService, private _snackBar: MatSnackBar, private router: Router) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.email, Validators.required]],
       password: ['', Validators.required]
@@ -39,7 +40,7 @@ export class LoginFormComponent implements OnInit {
   }
 
   login() {
-    this.auth.login(this.getEmailControl().value, this.getPasswordControl().value).catch(err => {
+    this.auth.login(this.getEmailControl().value, this.getPasswordControl().value).then(data=>this.router.navigate(['/'])).catch(err => {
       if (err.code == "auth/user-not-found") this.openSnackBar("Nie ma takiego użytkownika", "zamknij");
     });
   }
