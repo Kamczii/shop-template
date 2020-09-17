@@ -19,7 +19,7 @@ export class GoogleAuthButtonComponent implements OnInit {
   constructor(
     private matIconRegistry: MatIconRegistry,
     private domSanitizer: DomSanitizer,
-    private auth: AuthService) {
+    public auth: AuthService) {
     this.matIconRegistry.addSvgIcon(
       "google-logo",
       this.domSanitizer.bypassSecurityTrustResourceUrl(googleLogoURL));

@@ -1,5 +1,5 @@
 <div class="table-wrapper">
-    <mat-card>
+    <mat-card *ngIf="cartItems.length>0">
         <div *ngFor="let item of cartItems; let i = index">
             <div class="item m-3">
                 <app-cart-item [item]="item"></app-cart-item>

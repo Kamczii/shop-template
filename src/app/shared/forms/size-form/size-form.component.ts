@@ -31,7 +31,6 @@ export class SizeFormComponent implements OnInit {
       symbol: FilterSymbol.arany,
       value: array
     }
-    console.log(filter)
     this.filterChanged.emit(filter);
   }
 }

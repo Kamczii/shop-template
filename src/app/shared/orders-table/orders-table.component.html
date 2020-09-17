@@ -1,0 +1,18 @@
+<table *ngIf="orders.length>0">
+    <thead>
+        <tr>
+            <th>Data</th>
+            <th>Status</th>
+            <th>Ilość</th>
+            <th>Metoda płatności</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let order of orders" (click)="rowSelect(order);">
+            <td>{{order.date.toDate() | date: 'dd/MM/yyyy, HH:mm'}}</td>
+            <td>{{order.status}}</td>
+            <td>{{order.items.length}}</td>
+            <td>{{order.paymentMethod}}</td>
+        </tr>
+    </tbody>
+</table>

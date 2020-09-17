@@ -12,7 +12,25 @@
         grid-template-columns: 1fr;
     }
 }
-
+@media (min-width: 780px) {
+    .content, .contact{
+        
+    &::before{ 
+        display: block;
+        color: $accent;
+        position: absolute;
+        top: 15px;
+        background-color: $primary;
+        padding: 0 5px;
+    }
+    }
+    .content::before{
+        content: 'Opis';
+    }
+    .contact::before{
+        content: 'Kontakt';
+    }
+}
 mat-icon{
     position: relative;
     top: 5px;
@@ -23,29 +41,11 @@ mat-icon{
 .contact{
     box-sizing: border-box;
     border: 3px solid $accent;
-    &::before{ 
-        content: 'Kontakt';
-        display: block;
-        color: $accent;
-        position: absolute;
-        top: 15px;
-        background-color: $primary;
-        padding: 0 5px;
-    }
 }
 .content{
     display: grid;
     place-items: center;
     border: 3px solid $accent;
-    &::before{ 
-        content: 'Opis';
-        display: block;
-        color: $accent;
-        position: absolute;
-        top: 15px;
-        background-color: $primary;
-        padding: 0 5px;
-    }
 }
 .social-media mat-icon{
     font-size: 48px;

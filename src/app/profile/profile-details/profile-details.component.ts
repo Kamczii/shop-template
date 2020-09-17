@@ -26,7 +26,7 @@ export class ProfileDetailsComponent implements OnInit {
   editPhone: boolean = false;
   editAddress: boolean = false;
 
-  constructor(private auth: AuthService, private fb: FormBuilder, private orderService: OrderService) {
+  constructor(public auth: AuthService, private fb: FormBuilder, private orderService: OrderService) {
     this.addressForm = this.fb.group({
       address: []
     });
@@ -46,13 +46,16 @@ export class ProfileDetailsComponent implements OnInit {
 
 
   updateAddress() {
-    this.auth.updateAddress(this.addressForm.value.address).pipe(take(1)).subscribe(res => console.log(res));
+    this.auth.updateAddress(this.addressForm.value.address).pipe(take(1)).subscribe(res => {
+      //console.log(res)
+    });
   }
 
   updateEmail() {
     this.auth.updateEmail(this.emailForm.value.email).pipe(take(1)).subscribe(data => {
       this.editEmail = false;
-    }, error => console.log(error));
+    }, error => console.log(error)
+    );
   }
 
   updatePhone() {

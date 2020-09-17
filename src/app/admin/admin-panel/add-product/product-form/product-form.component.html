@@ -43,11 +43,10 @@
     </mat-form-field>
   </mat-step>
 
-
   <mat-step>
     <ng-template matStepLabel>Rozmiarówka</ng-template>
     <mat-list role="list" formArrayName="sizes">
-      <mat-list-item *ngFor="let size of getControls().sizes.controls">
+      <mat-list-item *ngFor="let size of productForm.get('sizes')['controls']">
         <mat-form-field [formGroup]="size">
           <mat-label>{{size.controls.size.value}}</mat-label>
           <input formControlName="count" matInput type="number" min="0">

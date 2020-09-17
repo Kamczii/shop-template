@@ -13,7 +13,6 @@ export class ProductService {
   constructor(private firestore: AngularFirestore, private storageService: StorageService) { }
 
   getAllProducts(limit: number, filters?: BaseFilter[]): Observable<Product[]> {
-    console.log(filters)
     return this.firestore.collection<Product>('products', ref => {
       let query: firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
       if (filters) {
@@ -65,6 +64,7 @@ export class ProductService {
 
   addProduct(value: Product) {
     value.date = new Date();
+    value.price = +value.price;
     value.nameLowerCase = value.name.toLowerCase();
     return this.firestore.collection<Product>('products').add(value);
   }

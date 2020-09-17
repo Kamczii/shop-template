@@ -27,7 +27,7 @@ mat-card{
     grid-template-columns: auto 1fr;
 }
 
-.info, .address{
+@media (min-width:768px){.info, .address{
     border: 3px solid black;
     padding: 5px;
     &::before{
@@ -46,4 +46,9 @@ mat-card{
 
 .address::before{
     content: 'Adres';
+}
+}
+
+.orders:nth-child(even){
+     
 }

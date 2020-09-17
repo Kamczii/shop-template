@@ -127,7 +127,6 @@ export class AuthService {
   }
   private checkAuthorization(user: User, allowedRoles: string[]): boolean {
     if (!user) return false
-    console.log("s")
     for (const role of allowedRoles) {
       if (user.roles[role]) {
         return true

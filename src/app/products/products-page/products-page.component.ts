@@ -19,10 +19,12 @@ export class ProductsPageComponent implements OnInit {
   endBefore: Product;
   filter: BaseFilter[] = [];
   category: string;
-
+  panelOpenState;
 
   constructor(private productService: ProductService, private route: ActivatedRoute) {
-
+    window.innerWidth<768 ? this.panelOpenState = false : this.panelOpenState = true;
+    
+      
     this.route.params.subscribe((params) => {
       let index = this.filter.findIndex(value => {
         return (value.field == 'category')

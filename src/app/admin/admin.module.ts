@@ -11,10 +11,9 @@ import { StatusFormComponent } from './admin-panel/orders-list/status-form/statu
 import { AddProductComponent } from './admin-panel/add-product/add-product.component';
 import { ProductFormComponent } from './admin-panel/add-product/product-form/product-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { SizesCountFormComponent } from './admin-panel/add-product/sizes-count-form/sizes-count-form.component';
 
 @NgModule({
-  declarations: [AdminPanelComponent, OrdersListComponent, OrderComponent, StatusFormComponent, AddProductComponent, ProductFormComponent, SizesCountFormComponent],
+  declarations: [AdminPanelComponent, OrdersListComponent, OrderComponent, StatusFormComponent, AddProductComponent, ProductFormComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,

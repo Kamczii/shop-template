@@ -33,6 +33,7 @@ import { UploaderComponent } from './upload-dropzone/uploader/uploader.component
 import { PriceDirective } from './directives/price.directive';
 import { IntegerDirective } from './directives/interger.directive';
 import { SizeSelect } from './forms/inputs/size-select/size-select.component';
+import { OrdersTableComponent } from './orders-table/orders-table.component';
 
 
 
@@ -67,7 +68,8 @@ import { SizeSelect } from './forms/inputs/size-select/size-select.component';
     CategorySelectComponent,
     BrandFilterComponent,
     PriceDirective,
-    IntegerDirective
+    IntegerDirective,
+    OrdersTableComponent
   ],
   imports: [
     CommonModule,
@@ -110,6 +112,7 @@ import { SizeSelect } from './forms/inputs/size-select/size-select.component';
     UploaderComponent,
     PriceInputComponent,
     SearchProductsInputComponent,
-    PhoneInputComponent]
+    PhoneInputComponent,
+    OrdersTableComponent]
 })
 export class SharedModule { }

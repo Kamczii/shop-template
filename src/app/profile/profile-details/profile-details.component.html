@@ -59,9 +59,7 @@
           </mat-tab>
           <mat-tab label="Zamówienia">
             <div *ngIf="orders$ | async as orders; else loading" class="tab-container p-2">
-              <div *ngFor="let order of orders">
-                <app-order [order]="order"></app-order>
-              </div>
+              <app-orders-table [orders]="orders"></app-orders-table>
             </div>
             <ng-template #loading>
               <app-loading-spinner></app-loading-spinner>

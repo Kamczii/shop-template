@@ -99,7 +99,7 @@ export class ProductFormComponent implements ControlValueAccessor, OnDestroy, On
     this.onTouched = fn;
   }
 
-  validate(_: FormControl) {
+  validate() {
     return this.productForm.valid && this.imagesCount > 0;
   }
 

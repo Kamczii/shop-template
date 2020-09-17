@@ -8,7 +8,7 @@ export interface Order {
     phone: string;
     items: CartItem[];
     purchaserId?: string;
-    date: Date;
+    date: any;
     address: AddressFormValues;
     paymentMethod: string;
     status: OrderStatus;

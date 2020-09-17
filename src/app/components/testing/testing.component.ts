@@ -21,6 +21,6 @@ export class TestingComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.form.value)
+    
   }
 }

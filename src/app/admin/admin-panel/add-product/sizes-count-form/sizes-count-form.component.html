@@ -1,8 +1,0 @@
-<mat-selection-list (selectionChange)="sizesSelectionChanged($event)">
-  <div class="sizes" *ngFor="let size of sizes | enumToArray">
-    <mat-list-option [value]="size">
-      {{size.name}}
-    </mat-list-option>
-    <input *ngIf="selectedSizes.has(size.name)" fromControlName="sizes" matInput type="number" placeholder="np. 119">
-  </div>
-</mat-selection-list>

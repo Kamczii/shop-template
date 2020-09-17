@@ -33,7 +33,6 @@ export class UploaderComponent implements OnInit, OnDestroy {
     for (let i = 0; i < files.length; i++) {
       this.files.push(files.item(i));
       this.onChange.emit(this.files.length)
-      console.log(files.item(i));
       this.readFileUrl(files.item(i));
     }
   }
@@ -44,7 +43,6 @@ export class UploaderComponent implements OnInit, OnDestroy {
     reader.readAsDataURL(file); // read file as data url
 
     reader.onload = (event) => { // called once readAsDataURL is completed=
-      console.log(reader.result)
       this.urls.push({ name: file.name, url: reader.result });
     }
   }
@@ -52,9 +50,8 @@ export class UploaderComponent implements OnInit, OnDestroy {
   uploadFiles(productId) {
     let id = 1;
     for (let file of this.files) {
-      console.log(file);
       this.storageService.uploadFile(file, productId + "/" + (id++)).then((data) => {
-        data.ref.getDownloadURL().then(url => { console.log(url); this.productService.addImageToProduct(productId, id, url) });
+        data.ref.getDownloadURL().then(url => {this.productService.addImageToProduct(productId, id, url) });
       });
     }
   }

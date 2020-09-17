@@ -1,10 +1,11 @@
 {
   "hosting": {
-    "public": "dist",
+    "public": "dist/shop",
     "ignore": [
       "firebase.json",
       "**/.*",
-      "**/node_modules/**"
+      "**/node_modules/**",
+      "**/functions"
     ],
     "rewrites": [
       {
@@ -17,6 +18,7 @@
     "predeploy": [
       "npm --prefix \"$RESOURCE_DIR\" run lint",
       "npm --prefix \"$RESOURCE_DIR\" run build"
-    ]
+    ],
+    "source": "functions"
   }
 }

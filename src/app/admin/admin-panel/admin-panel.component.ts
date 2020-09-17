@@ -17,7 +17,7 @@ export class AdminPanelComponent implements OnInit {
 
   currentId: string = null;
 
-  constructor(private OrderPanelService: OrderPanelService) { }
+  constructor(public OrderPanelService: OrderPanelService) { }
 
   ngOnInit() {
 
